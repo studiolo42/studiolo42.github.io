@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Studiolo — Jeevan Kumar. A personal cabinet of curiosities: art, music, natural history, photography, and books.">
+  <title>Studiolo — Jeevan Kumar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-logo">
+    Studiolo
+    <span>JEEVAN KUMAR</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#art">Art</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#nature">Natural History</a></li>
+    <li><a href="#photography">Photography</a></li>
+    <li><a href="#books">Books</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ A Cabinet of Curiosities ✦</div>
+    <h1><em>Studiolo</em></h1>
+    <p class="hero-sub">The Renaissance scholar's private room — where art, science, music, and nature coexisted without contradiction. This is mine.</p>
+    <div class="hero-name">JEEVAN KUMAR · SOLIVAGANT42</div>
+    <div class="hero-scroll">↓ EXPLORE ↓</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ ABOUT ══════════════════════════════ -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2 class="section-title reveal">The Curious<br>Mind Behind<br>the Cabinet</h2>
+        <div class="divider"></div>
+        <p class="reveal">I am Jeevan Kumar — a polymath by temperament, if not always by achievement. I believe the greatest minds in history were not specialists. Leonardo dissected bodies and painted the Mona Lisa. Darwin sailed the world and revolutionized biology. Goethe wrote poetry and studied plant morphology.</p>
+        <p class="reveal">This site is my attempt at a <em>studiolo</em> — the private study room that Renaissance scholars maintained, filled with books, instruments, specimens, artworks, and maps. A space where the boundaries between disciplines dissolved.</p>
+        <div class="pull reveal">"The noblest pleasure is the joy of understanding."<br><small style="font-size:0.7em; opacity:0.6;">— Leonardo da Vinci</small></div>
+        <p class="reveal">Here you will find essays on the history of art, notes on music theory and composers, observations from natural history, thoughts on photography, and reflections on the books that have changed how I see the world. Everything is connected. That is the premise.</p>
+      </div>
+      <div class="about-interests reveal">
+        <a href="#art" class="interest-chip">
+          <span class="chip-icon">🎨</span>
+          <span class="chip-label">Art & Art History</span>
+          <span class="chip-desc">RENAISSANCE → NOW</span>
+        </a>
+        <a href="#music" class="interest-chip">
+          <span class="chip-icon">🎼</span>
+          <span class="chip-label">Music</span>
+          <span class="chip-desc">CLASSICAL → JAZZ</span>
+        </a>
+        <a href="#nature" class="interest-chip">
+          <span class="chip-icon">🦋</span>
+          <span class="chip-label">Natural History</span>
+          <span class="chip-desc">BIOLOGY · GEOLOGY</span>
+        </a>
+        <a href="#photography" class="interest-chip">
+          <span class="chip-icon">📷</span>
+          <span class="chip-label">Photography</span>
+          <span class="chip-desc">LIGHT · SHADOW · TIME</span>
+        </a>
+        <a href="#books" class="interest-chip">
+          <span class="chip-icon">📚</span>
+          <span class="chip-label">Books & Literature</span>
+          <span class="chip-desc">A READING LIFE</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ ART ══════════════════════════════ -->
+<section class="section" id="art">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--art);">Art & Art History</div>
+    <h2 class="section-title reveal">Six Centuries of<br><em>Beauty, Rupture</em><br>& Reinvention</h2>
+    <div class="divider" style="background:var(--art);"></div>
+    <p class="section-intro reveal">From the breathtaking mastery of the Renaissance to the deliberate chaos of Modernism — why did we build the most beautiful visual tradition in history, and then dismantle it?</p>
+
+    <!-- Featured Article -->
+    <div class="article-card reveal">
+      <div class="article-card-visual">
+        <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="cardBg" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#2a1f0e"/>
+              <stop offset="100%" stop-color="#0a0806"/>
+            </radialGradient>
+            <radialGradient id="cardFace" cx="38%" cy="32%" r="62%">
+              <stop offset="0%" stop-color="#d4a870"/>
+              <stop offset="55%" stop-color="#9a6a35"/>
+              <stop offset="100%" stop-color="#3a1a08"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="360" fill="url(#cardBg)"/>
+          <!-- Grid lines suggestion -->
+          <line x1="200" y1="0" x2="200" y2="360" stroke="rgba(201,168,76,0.05)" stroke-width="1"/>
+          <line x1="0" y1="180" x2="400" y2="180" stroke="rgba(201,168,76,0.05)" stroke-width="1"/>
+          <!-- Renaissance half -->
+          <ellipse cx="110" cy="155" rx="55" ry="65" fill="url(#cardFace)"/>
+          <path d="M 145 90 Q 165 100 165 155 Q 165 210 148 220 Q 165 208 167 155 Q 167 100 158 92 Z" fill="#1a0804" opacity="0.5"/>
+          <ellipse cx="93" cy="148" rx="12" ry="8" fill="#1a1008"/>
+          <circle cx="93" cy="146" r="5" fill="#080502"/>
+          <ellipse cx="128" cy="151" rx="11" ry="7" fill="#1a1008"/>
+          <circle cx="128" cy="149" r="4.5" fill="#080502"/>
+          <path d="M 95 190 Q 110 196 126 190" stroke="#5a2a10" stroke-width="2" fill="none" opacity="0.8"/>
+          <path d="M 55 90 Q 110 72 165 90 Q 165 65 130 58 Q 110 54 90 58 Q 70 65 55 90 Z" fill="#1a1008" opacity="0.95"/>
+          <!-- Cubist half -->
+          <polygon points="220,90 300,85 314,225 210,230" fill="#c4956a" opacity="0.85"/>
+          <polygon points="300,85 340,110 340,225 314,225" fill="#9a6a40" opacity="0.8"/>
+          <polygon points="180,115 220,90 210,230 175,212" fill="#aa7850" opacity="0.78"/>
+          <polygon points="230,115 265,110 268,138 228,142" fill="#2a2030" opacity="0.9"/>
+          <ellipse cx="248" cy="127" rx="9" ry="6" fill="#0a0818"/>
+          <ellipse cx="312" cy="133" rx="11" ry="7" fill="#2a2030" opacity="0.9" transform="rotate(-18,312,133)"/>
+          <circle cx="312" cy="131" r="4" fill="#0a0818"/>
+          <polygon points="242,155 258,185 238,192 228,175" fill="#8a5a30" opacity="0.8"/>
+          <polygon points="222,208 262,203 268,218 228,222" fill="#8a2a15" opacity="0.85"/>
+          <polygon points="185,112 300,85 308,60 200,55 183,68" fill="#1a1008" opacity="0.95"/>
+          <!-- Dividing line - timeline crack -->
+          <line x1="196" y1="0" x2="200" y2="360" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <!-- Gold glow at crack -->
+          <rect x="193" y="0" width="7" height="360" fill="url(#cardBg)" opacity="0.3"/>
+          <!-- Labels -->
+          <text x="100" y="290" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="8" font-family="monospace">RENAISSANCE</text>
+          <text x="100" y="302" text-anchor="middle" fill="rgba(201,168,76,0.25)" font-size="7" font-family="monospace">1400–1600</text>
+          <text x="295" y="290" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="8" font-family="monospace">MODERN</text>
+          <text x="295" y="302" text-anchor="middle" fill="rgba(201,168,76,0.25)" font-size="7" font-family="monospace">1900–NOW</text>
+        </svg>
+      </div>
+      <div class="article-card-body">
+        <div>
+          <div class="article-tag">FEATURED ESSAY</div>
+          <h3>The Arc of Art: Renaissance to Modern</h3>
+          <p>Why is Renaissance painting so impossibly beautiful — and why do we call ugly things art today? A visual and intellectual journey through 600 years of beauty, rupture, and reinvention. From Leonardo's sfumato to Pollock's drips, from Caravaggio's tenebrism to Warhol's soup cans.</p>
+        </div>
+        <a href="articles/art-history.html" class="read-link">READ THE ESSAY →</a>
+      </div>
+    </div>
+
+    <!-- Coming soon articles -->
+    <div class="coming-soon-grid reveal">
+      <div class="coming-card">
+        <h4>Vermeer & the Camera Obscura</h4>
+        <p>Did the master of light cheat? The fascinating science behind his impossible interiors.</p>
+        <span class="soon-tag">COMING SOON</span>
+      </div>
+      <div class="coming-card">
+        <h4>Why Caravaggio Was Dangerous</h4>
+        <p>A murderer who painted saints. How personal darkness became transcendent light.</p>
+        <span class="soon-tag">COMING SOON</span>
+      </div>
+      <div class="coming-card">
+        <h4>The Colour Blue</h4>
+        <p>Ultramarine cost more than gold. How one pigment shaped the entire history of painting.</p>
+        <span class="soon-tag">COMING SOON</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ MUSIC ══════════════════════════════ -->
+<section class="section" id="music">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--music);">Music</div>
+    <h2 class="section-title reveal">Sound as the<br><em>Architecture</em><br>of Feeling</h2>
+    <div class="divider" style="background:var(--music); opacity:0.5;"></div>
+    <p class="section-intro reveal">Music is the only art that exists entirely in time — you cannot revisit a moment the way you can look again at a painting. That makes it the most mysterious and the most human of all the arts.</p>
+
+    <div class="music-grid reveal">
+      <div class="music-cell">
+        <div class="cell-era">BAROQUE · 1600–1750</div>
+        <h4>Johann Sebastian Bach</h4>
+        <p>The architecture of counterpoint — voices in mathematically perfect conversation. The Well-Tempered Clavier is the Bible of Western music: both a technical treatise and an act of profound beauty.</p>
+      </div>
+      <div class="music-cell">
+        <div class="cell-era">CLASSICAL · 1750–1820</div>
+        <h4>Mozart & Haydn</h4>
+        <p>The mastery of form — the sonata, the symphony, the string quartet. Mozart's late symphonies achieve a perfection of balance that has never been surpassed. Complexity made to feel effortless.</p>
+      </div>
+      <div class="music-cell">
+        <div class="cell-era">ROMANTIC · 1820–1900</div>
+        <h4>Beethoven Onward</h4>
+        <p>When Beethoven lost his hearing and kept composing, something new entered music: the idea that art could be a direct expression of the artist's inner struggle. The self became the subject.</p>
+      </div>
+      <div class="music-cell">
+        <div class="cell-era">20th CENTURY</div>
+        <h4>Jazz & Ravel</h4>
+        <p>Two parallel revolutions: Jazz brought rhythmic liberation and improvisational freedom from America's African heritage. Ravel brought harmonic colour of an almost painterly richness from France.</p>
+      </div>
+      <div class="music-cell">
+        <div class="cell-era">MINIMALISM</div>
+        <h4>Arvo Pärt & Glass</h4>
+        <p>After the maximalism of the 20th century, a return to stillness. Pärt's tintinnabuli method — music stripped to its barest harmonic bones — achieves a silence within sound.</p>
+      </div>
+      <div class="music-cell">
+        <div class="cell-era">INDIAN CLASSICAL</div>
+        <h4>Raga & Tala</h4>
+        <p>A musical system as sophisticated as anything in the Western tradition — built on the interplay of raga (melodic framework) and tala (rhythmic cycle). Music as a form of meditation.</p>
+      </div>
+    </div>
+
+    <div class="music-quote reveal">
+      "Without music, life would be a mistake."
+      <cite>— Friedrich Nietzsche</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ NATURAL HISTORY ══════════════════════════════ -->
+<section class="section" id="nature">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--nature);">Natural History</div>
+    <h2 class="section-title reveal">The World<br>As It <em>Actually</em><br>Is</h2>
+    <div class="divider" style="background:var(--nature); opacity:0.5;"></div>
+    <p class="section-intro reveal">Natural history is the oldest human obsession — the desire to name, classify, and understand the living world. It requires the same careful attention as art, the same patience as music, and the same humility before something greater than yourself.</p>
+
+    <div class="nature-mosaic reveal">
+      <div class="nature-card large">
+        <div class="card-icon">🦕</div>
+        <h4>Deep Time</h4>
+        <p>The Earth is 4.5 billion years old. Life has existed for 3.8 billion years. Homo sapiens have been here for 300,000 years — a single blink. Understanding geological time is perhaps the most radical shift in perspective available to any human mind. It doesn't diminish us; it contextualizes us.</p>
+        <p style="margin-top:1rem;">The fossil record is the most extraordinary library ever discovered — a history of every creature that ever lived, written in stone. Every ammonite spiral is a chapter. Every trilobite is a sentence.</p>
+        <div class="latin">Tempus edax rerum — Time, the devourer of all things</div>
+      </div>
+      <div class="nature-card">
+        <div class="card-icon">🦋</div>
+        <h4>Entomology</h4>
+        <p>There are more species of beetle than of any other animal. The diversity of insect life is so vast as to be almost incomprehensible — and yet each species occupies a precise ecological niche.</p>
+        <div class="latin">Coleoptera · 400,000 species</div>
+      </div>
+      <div class="nature-card">
+        <div class="card-icon">🌿</div>
+        <h4>Botany & Plant Intelligence</h4>
+        <p>Plants communicate through underground fungal networks. Some trees live for thousands of years. The oldest known individual organism is a bristlecone pine — 5,000 years old.</p>
+        <div class="latin">Arbor vitae — Tree of life</div>
+      </div>
+      <div class="nature-card">
+        <div class="card-icon">🌊</div>
+        <h4>The Ocean</h4>
+        <p>95% of Earth's living space is ocean. We have better maps of the surface of Mars than of the ocean floor. The deep sea contains creatures that seem more alien than anything we have imagined.</p>
+        <div class="latin">Mare incognitum</div>
+      </div>
+      <div class="nature-card">
+        <div class="card-icon">🔬</div>
+        <h4>Evolutionary Biology</h4>
+        <p>Darwin's insight — descent with modification through natural selection — is the single most powerful idea in the history of biology. It connects every living thing to every other.</p>
+        <div class="latin">Omnis cellula e cellula</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ PHOTOGRAPHY ══════════════════════════════ -->
+<section class="section" id="photography">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--photo);">Photography</div>
+    <h2 class="section-title reveal"><em>Light</em> Written<br>on Silver & Time</h2>
+    <div class="divider" style="background:var(--photo); opacity:0.5;"></div>
+
+    <div class="photo-statement reveal">
+      <p style="font-size:1.25rem; line-height:1.9; color:rgba(245,240,232,0.75); margin-bottom:1.5rem;">Photography means "writing with light" — from the Greek <em>phōs</em> (light) and <em>graphé</em> (writing). Every photograph is a sentence written by photons. The photographer chooses only when to let the light in, and for how long.</p>
+      <p style="font-size:1.25rem; line-height:1.9; color:rgba(245,240,232,0.75);">What interests me most is the paradox at photography's heart: it appears to capture objective reality — a moment as it actually was — but every photograph is a radical subjective act. What is included, what is excluded, where the light falls, what moment is chosen — each decision reflects a mind as much as a scene.</p>
+    </div>
+
+    <div class="photo-philosophy reveal">
+      <div class="photo-pillar">
+        <div class="num">01</div>
+        <h4>Light & Shadow</h4>
+        <p>Chiaroscuro exists in photography as much as in Caravaggio. The relationship between what is illuminated and what is swallowed by darkness is the fundamental grammar of the image.</p>
+      </div>
+      <div class="photo-pillar">
+        <div class="num">02</div>
+        <h4>The Decisive Moment</h4>
+        <p>Henri Cartier-Bresson called it <em>l'instant décisif</em> — the fraction of a second when form, content, and meaning align perfectly. Most photographers spend their lives hunting it.</p>
+      </div>
+      <div class="photo-pillar">
+        <div class="num">03</div>
+        <h4>Time Made Visible</h4>
+        <p>Every photograph is also a document of entropy. The people in old photographs are all dead now. That knowledge transforms every image into something vertiginous — a moment stolen from time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ BOOKS ══════════════════════════════ -->
+<section class="section" id="books">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--books);">Books & Literature</div>
+    <h2 class="section-title reveal">A Life<br>Spent in <em>Other</em><br>Minds</h2>
+    <div class="divider" style="background:var(--books); opacity:0.5;"></div>
+    <p class="section-intro reveal">Reading is the closest thing we have to time travel and telepathy combined. These are books that rewired how I see the world.</p>
+
+    <div class="books-list reveal">
+      <div class="book-entry">
+        <div class="book-num">01 · NATURAL HISTORY</div>
+        <h4>The Selfish Gene</h4>
+        <div class="author">RICHARD DAWKINS · 1976</div>
+        <p>Reframed evolution from the organism's perspective to the gene's. One of those books where you finish it and the world looks genuinely different.</p>
+      </div>
+      <div class="book-entry">
+        <div class="book-num">02 · ART</div>
+        <h4>The Shock of the New</h4>
+        <div class="author">ROBERT HUGHES · 1980</div>
+        <p>The definitive account of modern art — passionate, opinionated, brilliantly written. Hughes loved great art enough to defend it and hate bad art enough to say so.</p>
+      </div>
+      <div class="book-entry">
+        <div class="book-num">03 · MUSIC</div>
+        <h4>The Rest Is Noise</h4>
+        <div class="author">ALEX ROSS · 2007</div>
+        <p>The history of 20th-century music told as cultural and political history. Makes you hear Shostakovich differently when you understand what Stalin was doing to his country.</p>
+      </div>
+      <div class="book-entry">
+        <div class="book-num">04 · SCIENCE</div>
+        <h4>A Short History of Nearly Everything</h4>
+        <div class="author">BILL BRYSON · 2003</div>
+        <p>The best popular science book ever written — the history of how humans came to understand the universe, told with wonder, precision, and a great deal of affectionate comedy.</p>
+      </div>
+      <div class="book-entry">
+        <div class="book-num">05 · PHILOSOPHY</div>
+        <h4>The Birth of Tragedy</h4>
+        <div class="author">FRIEDRICH NIETZSCHE · 1872</div>
+        <p>Nietzsche's argument that the greatest art holds Dionysian chaos and Apollonian order in perfect tension. Written in a fever. Still undefeated as a theory of why art matters.</p>
+      </div>
+      <div class="book-entry">
+        <div class="book-num">06 · BIOGRAPHY</div>
+        <h4>Leonardo da Vinci</h4>
+        <div class="author">WALTER ISAACSON · 2017</div>
+        <p>The definitive modern biography of history's greatest polymath. What emerges is not a genius but a man of insatiable curiosity who refused to stop asking questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-logo">Studiolo</div>
+  <div class="footer-tagline">JEEVAN KUMAR · SOLIVAGANT42 · A CABINET OF CURIOSITIES</div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#art">Art</a>
+    <a href="#music">Music</a>
+    <a href="#nature">Natural History</a>
+    <a href="#photography">Photography</a>
+    <a href="#books">Books</a>
+    <a href="https://github.com/solivagant42" target="_blank">GitHub ↗</a>
+  </div>
+  <div class="footer-copy">© 2025 Jeevan Kumar · Built with curiosity, not frameworks</div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id], footer');
+  const navItems = document.querySelectorAll('.nav-links a');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(a => {
+          a.style.color = '';
+          if (a.getAttribute('href') === '#' + entry.target.id) {
+            a.style.color = 'var(--gold)';
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => sectionObserver.observe(s));
+</script>
+
+</body>
+</html>

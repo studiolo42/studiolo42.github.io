@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Arc of Art — Studiolo · Jeevan Kumar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* article-page overrides — nav spacing */
+  .hero { min-height: 0; padding-top: 8rem; padding-bottom: 4rem; }
+  body > .nav + * { padding-top: 0; }
+</style>
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8cc7a;
+    --cream: #f5f0e8;
+    --dark: #0e0c09;
+    --ink: #1a1610;
+    --rust: #8b3a2a;
+    --slate: #4a5568;
+    --modern-red: #cc2200;
+    --modern-blue: #0033cc;
+    --modern-yellow: #ffcc00;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    background: radial-gradient(ellipse at center, #1a1208 0%, #0e0c09 70%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
+  }
+
+  .hero-ornament {
+    font-size: 1rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--cream);
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-sub {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: rgba(245,240,232,0.6);
+    max-width: 650px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+    margin-bottom: 3rem;
+  }
+
+  .scroll-hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.2s forwards, pulse 2s ease 2s infinite;
+  }
+
+  /* ── BIG QUESTION ── */
+  .big-question {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .big-question h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    font-style: italic;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    line-height: 1.2;
+  }
+
+  .big-question p {
+    font-size: 1.25rem;
+    max-width: 760px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.85;
+    color: #333;
+  }
+
+  /* ── ERA SECTIONS ── */
+  .era {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .era-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 1.5rem;
+  }
+
+  .era-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.25;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .era-title-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+
+  .era-title-block .date-range {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+  }
+
+  .era-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .era-body { grid-template-columns: 1fr; }
+    .era-number { font-size: 4rem; }
+  }
+
+  .era-text p {
+    font-size: 1.15rem;
+    line-height: 1.95;
+    color: rgba(245,240,232,0.85);
+    margin-bottom: 1.3rem;
+  }
+
+  .era-text .highlight {
+    border-left: 3px solid var(--gold);
+    padding-left: 1.2rem;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--gold-light);
+    margin: 1.5rem 0;
+  }
+
+  .era-text h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  /* ── PAINTING GALLERY ── */
+  .painting-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .painting-frame {
+    border: 2px solid rgba(201,168,76,0.4);
+    padding: 1.2rem;
+    position: relative;
+    background: rgba(201,168,76,0.04);
+  }
+
+  .painting-frame::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201,168,76,0.15);
+    pointer-events: none;
+  }
+
+  .painting-visual {
+    width: 100%;
+    aspect-ratio: 4/3;
+    margin-bottom: 0.9rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .painting-visual svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+
+  .painting-caption {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .painting-desc {
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* ── TECHNIQUE BOX ── */
+  .technique-box {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .technique-box h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+
+  .technique-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    align-items: start;
+  }
+
+  .technique-item .t-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--gold-light);
+    white-space: nowrap;
+    min-width: 130px;
+    font-size: 1rem;
+  }
+
+  .technique-item .t-desc {
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.6;
+  }
+
+  /* ── FULL WIDTH PAINTING ── */
+  .full-painting-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .full-painting-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    margin-bottom: 2rem;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .paintings-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .paintings-row { grid-template-columns: 1fr; }
+  }
+
+  .paintings-row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .paintings-row-2 { grid-template-columns: 1fr; }
+  }
+
+  /* ── KEY FACTORS SECTION ── */
+  .factors-section {
+    background: #07050300;
+    padding: 6rem 2rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    background: linear-gradient(180deg, #0a0806 0%, #050402 100%);
+  }
+
+  .factors-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+  }
+
+  .factors-section .section-sub {
+    text-align: center;
+    color: rgba(245,240,232,0.5);
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+    font-style: italic;
+  }
+
+  .factors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .factor-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2rem;
+    transition: border-color 0.3s;
+  }
+
+  .factor-card:hover { border-color: rgba(201,168,76,0.5); }
+
+  .factor-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+
+  .factor-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--gold-light);
+    margin-bottom: 0.8rem;
+  }
+
+  .factor-card p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.7);
+  }
+
+  /* ── QUOTE DIVIDER ── */
+  .quote-divider {
+    padding: 5rem 2rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .quote-divider blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding: 0 3rem;
+  }
+
+  .quote-divider blockquote::before,
+  .quote-divider blockquote::after {
+    content: '"';
+    font-size: 6rem;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    line-height: 1;
+  }
+
+  .quote-divider blockquote::before { top: -1rem; left: 0; }
+  .quote-divider blockquote::after { content: '"'; bottom: -3rem; right: 0; }
+  .quote-divider cite { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--gold); letter-spacing: 0.2em; font-style: normal; }
+
+  /* ── SIDE BY SIDE COMPARISON ── */
+  .comparison-section {
+    padding: 5rem 2rem;
+    background: #080604;
+  }
+
+  .comparison-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .comparison-section .comp-sub {
+    text-align: center;
+    color: rgba(245,240,232,0.5);
+    font-style: italic;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto 4rem;
+    align-items: center;
+  }
+
+  @media (max-width: 700px) {
+    .comp-grid { grid-template-columns: 1fr; }
+  }
+
+  .comp-vs {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    opacity: 0.5;
+    text-align: center;
+  }
+
+  .comp-card { border: 1px solid rgba(201,168,76,0.2); overflow: hidden; }
+
+  .comp-visual {
+    width: 100%;
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comp-visual svg { width: 100%; height: 100%; position: absolute; inset: 0; }
+
+  .comp-label {
+    padding: 1rem 1.2rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .comp-label h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--cream); margin-bottom: 0.2rem; }
+  .comp-label p { font-size: 0.85rem; color: rgba(245,240,232,0.5); font-style: italic; }
+
+  /* ── TIMELINE ── */
+  .timeline-section {
+    padding: 6rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .timeline-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    text-align: center;
+    margin-bottom: 4rem;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .timeline { position: relative; padding-left: 2rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+  }
+
+  .timeline-item { position: relative; padding: 0 0 3.5rem 2.5rem; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px; top: 6px;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .timeline-item .t-date { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 0.4rem; }
+  .timeline-item h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.6rem; color: var(--cream); }
+  .timeline-item p { font-size: 1rem; line-height: 1.8; color: rgba(245,240,232,0.65); }
+
+  .timeline-item .t-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    margin-top: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .tag-beauty { border: 1px solid var(--gold); color: var(--gold); }
+  .tag-shift { border: 1px solid #7a9a6a; color: #7a9a6a; }
+  .tag-break { border: 1px solid var(--rust); color: var(--rust); }
+  .tag-idea { border: 1px solid #888; color: #888; }
+
+  /* ── VERDICT ── */
+  .verdict {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 7rem 2rem;
+  }
+
+  .verdict-inner { max-width: 820px; margin: 0 auto; }
+
+  .verdict h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .verdict h2 em { color: var(--rust); font-style: italic; }
+
+  .verdict p { font-size: 1.2rem; line-height: 1.95; margin-bottom: 1.5rem; color: #2a2a2a; }
+
+  .verdict h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--rust);
+    font-style: italic;
+  }
+
+  .verdict .answer-box {
+    border-left: 5px solid var(--rust);
+    padding: 1.5rem 2rem;
+    background: rgba(139,58,42,0.07);
+    margin: 2.5rem 0;
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  .verdict .gold-box {
+    border-left: 5px solid var(--gold);
+    padding: 1.5rem 2rem;
+    background: rgba(201,168,76,0.07);
+    margin: 2.5rem 0;
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: #2a2010;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .footer p { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: rgba(245,240,232,0.3); letter-spacing: 0.2em; }
+
+  .separator { width: 60px; height: 1px; background: var(--gold); margin: 2rem auto; opacity: 0.5; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav class="nav"><a class="nav-logo" href="../index.html" style="text-decoration:none;">Studiolo<span>JEEVAN KUMAR</span></a><ul class="nav-links"><li><a href="../index.html#about">About</a></li><li><a href="../index.html#art">Art</a></li><li><a href="../index.html#music">Music</a></li><li><a href="../index.html#nature">Natural History</a></li><li><a href="../index.html#photography">Photography</a></li><li><a href="../index.html#books">Books</a></li></ul></nav>
+<div style="max-width:1200px;margin:0 auto;padding:6.5rem 2rem 0;"><a href="../index.html#art" class="article-nav-back">← Back to Studiolo</a></div>
+
+<!-- ════════════════════════════════════════ HERO ════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-ornament">✦ A Visual & Intellectual Journey ✦</div>
+  <h1>The <em>Arc</em><br>of Art</h1>
+  <p class="hero-sub">From the breathtaking mastery of the Renaissance to the deliberate chaos of Modernism — what happened, why, and whether anything truly went wrong.</p>
+  <div class="scroll-hint">↓ SCROLL TO EXPLORE ↓</div>
+</section>
+
+<!-- ════════════════════════════════════════ BIG QUESTION ════════════════════════════════════════ -->
+<section class="big-question">
+  <h2>"Why is Renaissance art so impossibly beautiful — and why do we call ugly things art today?"</h2>
+  <div class="separator"></div>
+  <p>This is one of the most honest and important questions you can ask about human culture. The answer involves philosophy, religion, capitalism, war, photography, ego, and a fundamental transformation in what human beings believed art was <em>for</em>.</p>
+  <p>It is a story spanning 600 years — of extraordinary beauty being built, refined, then deliberately demolished. Some of that demolition was genius. Some was fraud. Understanding which is which is the beginning of wisdom about art.</p>
+</section>
+
+<!-- ════════════════════════════════════════ ERA I: RENAISSANCE ════════════════════════════════════════ -->
+<section style="background: linear-gradient(to bottom, #0e0c09, #130f08);">
+  <div class="era">
+    <div class="era-header">
+      <div class="era-number">I</div>
+      <div class="era-title-block">
+        <h2>The Renaissance</h2>
+        <div class="date-range">1400s – 1600s · ITALY → EUROPE · THE SUMMIT OF SKILL</div>
+      </div>
+    </div>
+    <div class="era-body">
+      <div class="era-text">
+        <p>The Renaissance — meaning <em>rebirth</em> — was Europe waking up from a thousand years of medieval flatness and rediscovering the ancient Greek and Roman conviction that the human body, the natural world, and mathematical proportion were sacred and worth depicting with total fidelity.</p>
+        <p>Medieval art had been deliberately two-dimensional and symbolic. A figure's size indicated spiritual importance, not physical reality. Gold backgrounds replaced actual skies. The goal was to point <em>toward</em> God, not to recreate the world He made. Beautiful in its own way — but a different purpose entirely.</p>
+        <p>Then, in Florence in the early 1400s, something cracked open. Brunelleschi worked out the mathematics of linear perspective. Masaccio used it immediately in frescoes that made walls dissolve into three-dimensional space. The race had begun: to make the painting a window so convincing you'd reach through it.</p>
+        <p class="highlight">The goal was singular and shared across every artist, patron, and viewer: make the painting indistinguishable from looking at the real world through glass.</p>
+        <p>This was not easy. It required mastering an entire science of vision, light, anatomy, and geometry. Artists trained for 10–20 years under master craftsmen — grinding pigments, stretching canvases, copying drawings — before touching an important surface. Leonardo da Vinci spent years dissecting human corpses to understand how muscles moved beneath skin. Michelangelo could sculpt a marble figure so accurate that viewers wept, believing it might breathe.</p>
+
+        <div class="technique-box">
+          <h4>THE FOUR PILLARS OF RENAISSANCE MASTERY</h4>
+          <div class="technique-item">
+            <span class="t-name">Chiaroscuro</span>
+            <span class="t-desc">The dramatic graduation from light into deep shadow, giving figures weight, volume, and the illusion of three dimensions on a flat surface.</span>
+          </div>
+          <div class="technique-item">
+            <span class="t-name">Linear Perspective</span>
+            <span class="t-desc">Brunelleschi's mathematical system: parallel lines converge at a "vanishing point," creating the optical illusion of infinite depth.</span>
+          </div>
+          <div class="technique-item">
+            <span class="t-name">Sfumato</span>
+            <span class="t-desc">Leonardo's invention — blending edges so gradually they become invisible, like the haze of real atmosphere. The Mona Lisa's smile is sfumato.</span>
+          </div>
+          <div class="technique-item">
+            <span class="t-name">Contrapposto</span>
+            <span class="t-desc">Figures posed with weight shifted to one leg, shoulders and hips counter-rotating — the natural stance of a living body, stolen from Greek sculpture.</span>
+          </div>
+        </div>
+
+        <p>Equally important: the artists were <em>servants</em>. They painted for the Church, for princes, for the Medici banking dynasty. Patrons dictated subject, size, color, and number of figures. There was no room for "personal expression." You painted what was ordered, and you painted it as flawlessly as God-given talent and decades of discipline would allow. The result was collective excellence pointed at a shared vision of beauty.</p>
+      </div>
+      <div class="painting-showcase">
+
+        <!-- Painting 1: Annunciation / Sacred scene -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="skyR" cx="70%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#9abbd4" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#2a4a6a" stop-opacity="0.6"/>
+                </radialGradient>
+                <radialGradient id="haloR" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#e8cc7a" stop-opacity="0.9"/>
+                  <stop offset="70%" stop-color="#c9a84c" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="floorR" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#9a7a50"/>
+                  <stop offset="100%" stop-color="#3a2a10"/>
+                </linearGradient>
+              </defs>
+              <!-- Room interior -->
+              <rect width="400" height="300" fill="#2a1f0e"/>
+              <!-- Left wall (dark) -->
+              <rect x="0" y="0" width="195" height="260" fill="#1e1508"/>
+              <!-- Right exterior / open loggia with sky -->
+              <rect x="195" y="0" width="205" height="235" fill="url(#skyR)"/>
+              <!-- Dividing column -->
+              <rect x="191" y="0" width="9" height="245" fill="#6a5030"/>
+              <rect x="191" y="240" width="9" height="20" rx="2" fill="#5a4020"/>
+              <!-- Architrave top -->
+              <rect x="0" y="0" width="400" height="18" fill="#4a3520"/>
+              <!-- Floor with perspective tiles -->
+              <polygon points="0,265 400,265 400,300 0,300" fill="url(#floorR)"/>
+              <!-- Floor tile lines - converging perspective -->
+              <line x1="0" y1="300" x2="200" y2="240" stroke="#8a6a40" stroke-width="1" opacity="0.6"/>
+              <line x1="80" y1="300" x2="220" y2="240" stroke="#8a6a40" stroke-width="1" opacity="0.5"/>
+              <line x1="160" y1="300" x2="240" y2="240" stroke="#8a6a40" stroke-width="1" opacity="0.4"/>
+              <line x1="240" y1="300" x2="280" y2="240" stroke="#8a6a40" stroke-width="1" opacity="0.4"/>
+              <line x1="320" y1="300" x2="320" y2="240" stroke="#8a6a40" stroke-width="1" opacity="0.5"/>
+              <line x1="0" y1="265" x2="400" y2="265" stroke="#8a6a40" stroke-width="1" opacity="0.4"/>
+              <line x1="0" y1="280" x2="400" y2="280" stroke="#8a6a40" stroke-width="1" opacity="0.3"/>
+              <!-- Halo on angel -->
+              <ellipse cx="90" cy="68" rx="30" ry="8" fill="url(#haloR)" opacity="0.8"/>
+              <!-- Angel figure -->
+              <ellipse cx="90" cy="75" rx="17" ry="20" fill="#c8906a"/>
+              <!-- Angel robe -->
+              <path d="M 65 95 Q 60 170 70 235 L 115 235 Q 120 170 118 95 Z" fill="#4a7a9b" opacity="0.9"/>
+              <!-- Wing left -->
+              <path d="M 65 110 Q 30 85 18 125 Q 38 140 65 130 Z" fill="#f0e8d8" opacity="0.75"/>
+              <path d="M 65 125 Q 25 110 15 145 Q 40 152 65 145 Z" fill="#e0d8c8" opacity="0.65"/>
+              <!-- Wing detail lines -->
+              <line x1="18" y1="125" x2="65" y2="120" stroke="#c0b8a8" stroke-width="0.5" opacity="0.6"/>
+              <line x1="15" y1="140" x2="65" y2="135" stroke="#c0b8a8" stroke-width="0.5" opacity="0.5"/>
+              <!-- Angel hand gesture -->
+              <path d="M 108 130 Q 125 125 130 140 Q 120 148 108 145 Z" fill="#c8906a" opacity="0.85"/>
+              <!-- Mary halo -->
+              <ellipse cx="305" cy="73" rx="28" ry="7" fill="url(#haloR)" opacity="0.8"/>
+              <!-- Mary figure -->
+              <ellipse cx="305" cy="80" rx="16" ry="19" fill="#c49a6a"/>
+              <!-- Mary blue mantle -->
+              <path d="M 280 100 Q 270 150 278 235 L 335 235 Q 338 150 332 100 Z" fill="#1a3a6a" opacity="0.85"/>
+              <!-- Mary red dress beneath -->
+              <path d="M 290 100 Q 290 160 295 235 L 318 235 Q 320 160 318 100 Z" fill="#8b2a2a" opacity="0.7"/>
+              <!-- Mary hands (prayer) -->
+              <path d="M 290 120 Q 295 115 305 118 Q 310 115 318 120 Q 315 135 305 133 Q 294 135 290 120 Z" fill="#c49a6a" opacity="0.85"/>
+              <!-- Light ray / Holy Spirit -->
+              <line x1="135" y1="75" x2="275" y2="80" stroke="#e8d870" stroke-width="0.8" opacity="0.5" stroke-dasharray="4,4"/>
+              <!-- Distant hills through loggia -->
+              <path d="M 195 160 Q 240 140 280 150 Q 320 155 400 140 L 400 235 L 195 235 Z" fill="#2a5a2a" opacity="0.35"/>
+              <path d="M 260 135 Q 300 120 340 128 Q 370 125 400 118 L 400 145 Q 360 150 320 142 Q 285 145 260 155 Z" fill="#3a6a3a" opacity="0.25"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Annunciation · Early Renaissance</text>
+            </svg>
+          </div>
+          <div class="painting-caption">THE ANNUNCIATION — Fra Angelico Style, c.1440</div>
+          <div class="painting-desc">Observe the converging floor tiles drawing the eye into depth — pure linear perspective. The angel's wings are anatomically articulated. The loggia opens onto a real Tuscan landscape. Every element is in service of making you believe you are witnessing an actual moment.</div>
+        </div>
+
+        <!-- Painting 2: Portrait -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="portBg" cx="40%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#2a2015"/>
+                  <stop offset="100%" stop-color="#0a0806"/>
+                </radialGradient>
+                <radialGradient id="skinLight" cx="35%" cy="30%" r="60%">
+                  <stop offset="0%" stop-color="#d4a870" stop-opacity="1"/>
+                  <stop offset="70%" stop-color="#9a6a3a" stop-opacity="1"/>
+                  <stop offset="100%" stop-color="#3a2010" stop-opacity="1"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#portBg)"/>
+              <!-- Sfumato background landscape (Mona Lisa style) -->
+              <path d="M 0 160 Q 100 140 200 155 Q 300 145 400 160 L 400 300 L 0 300 Z" fill="#1a2a1a" opacity="0.4"/>
+              <path d="M 0 130 Q 80 110 160 125 Q 240 115 320 120 Q 360 115 400 125 L 400 160 Q 300 145 200 155 Q 100 140 0 160 Z" fill="#2a3a2a" opacity="0.3"/>
+              <path d="M 150 100 Q 200 90 230 95" stroke="#4a5a4a" stroke-width="20" fill="none" opacity="0.3" stroke-linecap="round"/>
+              <!-- Veil/gauze at top -->
+              <path d="M 120 0 Q 200 15 270 0 L 270 40 Q 200 55 120 40 Z" fill="#3a3020" opacity="0.6"/>
+              <!-- Bust / collar -->
+              <path d="M 100 230 Q 130 200 200 195 Q 270 200 300 230 L 320 300 L 80 300 Z" fill="#1a1208" opacity="0.9"/>
+              <!-- Neckline detail -->
+              <path d="M 155 230 Q 200 215 245 230" stroke="#3a2a15" stroke-width="2" fill="none" opacity="0.7"/>
+              <!-- Face - sfumato style, light from upper left -->
+              <ellipse cx="200" cy="145" rx="55" ry="65" fill="url(#skinLight)"/>
+              <!-- Shadow side of face -->
+              <path d="M 230 80 Q 255 90 255 145 Q 255 205 230 210 Q 255 200 255 145 Q 255 90 245 83 Z" fill="#2a1a08" opacity="0.45"/>
+              <!-- Forehead highlight -->
+              <ellipse cx="185" cy="105" rx="25" ry="15" fill="#d8b07a" opacity="0.4"/>
+              <!-- Eyes - sfumato softness -->
+              <ellipse cx="178" cy="138" rx="14" ry="7" fill="#1a1208"/>
+              <ellipse cx="178" cy="137" rx="6" ry="5" fill="#0a0806"/>
+              <ellipse cx="176" cy="136" rx="2" ry="2" fill="#c8a050" opacity="0.3"/><!-- catchlight -->
+              <ellipse cx="222" cy="140" rx="13" ry="7" fill="#1a1208"/>
+              <ellipse cx="222" cy="139" rx="5" ry="5" fill="#0a0806"/>
+              <ellipse cx="220" cy="138" rx="2" ry="2" fill="#c8a050" opacity="0.3"/>
+              <!-- Nose - sfumato, barely defined edge -->
+              <path d="M 197 145 Q 193 165 185 172 Q 195 175 215 172 Q 207 165 203 145" fill="#9a6a3a" opacity="0.4"/>
+              <!-- Mouth - enigmatic -->
+              <path d="M 178 188 Q 200 195 222 188" stroke="#6a3a1a" stroke-width="2" fill="none" opacity="0.7"/>
+              <path d="M 182 189 Q 200 196 218 189" stroke="#8a5a2a" stroke-width="1" fill="none" opacity="0.5"/>
+              <!-- Hair - parted center, softly painted -->
+              <path d="M 145 110 Q 145 80 200 75 Q 255 80 255 110" fill="#1a1008" opacity="0.9"/>
+              <path d="M 145 110 Q 130 130 128 160 Q 125 190 135 220" fill="#1a1008" stroke="#1a1008" stroke-width="12" opacity="0.8" stroke-linejoin="round"/>
+              <path d="M 255 110 Q 268 130 270 160 Q 272 190 262 220" fill="#1a1008" stroke="#1a1008" stroke-width="10" opacity="0.8"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Portrait · Leonardo da Vinci Style</text>
+            </svg>
+          </div>
+          <div class="painting-caption">SFUMATO PORTRAIT — Leonardo Style, c.1503–1519</div>
+          <div class="painting-desc">Notice how there are no hard edges anywhere on the face — every boundary dissolves into the next tone. This is sfumato. The eyes hold an expression impossible to name. The background landscape melts into atmospheric haze. Five hundred years later, no one has fully replicated it.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Row of 3 Renaissance details -->
+    <div class="full-painting-section" style="padding-top:2rem; padding-left:0; padding-right:0; max-width:100%;">
+      <h3>The Details that Make Renaissance Art Extraordinary</h3>
+      <div class="paintings-row">
+
+        <!-- Detail 1: Hand study -->
+        <div class="painting-frame">
+          <div class="painting-visual" style="aspect-ratio:1;">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="handBg" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="#2a2015"/>
+                  <stop offset="100%" stop-color="#0e0c08"/>
+                </radialGradient>
+                <radialGradient id="handSkin" cx="45%" cy="40%" r="65%">
+                  <stop offset="0%" stop-color="#c8906a"/>
+                  <stop offset="60%" stop-color="#a07040"/>
+                  <stop offset="100%" stop-color="#5a3a18"/>
+                </radialGradient>
+              </defs>
+              <rect width="300" height="300" fill="url(#handBg)"/>
+              <!-- Hand study - anatomically detailed -->
+              <!-- Palm -->
+              <path d="M 100 200 Q 90 170 95 140 Q 98 120 108 110 Q 120 100 135 108 Q 145 95 155 102 Q 165 90 178 98 Q 188 85 200 95 Q 212 105 205 125 Q 215 130 210 155 Q 205 175 195 200 Z" fill="url(#handSkin)"/>
+              <!-- Thumb -->
+              <path d="M 100 200 Q 82 195 75 178 Q 68 158 78 148 Q 90 140 100 155 Q 102 170 100 200 Z" fill="url(#handSkin)" opacity="0.9"/>
+              <!-- Index finger -->
+              <path d="M 108 110 Q 103 90 108 72 Q 113 58 122 60 Q 131 62 133 78 Q 135 95 135 108 Z" fill="url(#handSkin)" opacity="0.95"/>
+              <!-- Middle finger -->
+              <path d="M 145 95 Q 143 73 148 57 Q 153 45 163 47 Q 172 49 173 65 Q 174 81 178 98 Z" fill="url(#handSkin)" opacity="0.95"/>
+              <!-- Ring finger -->
+              <path d="M 165 90 Q 167 70 172 55 Q 177 44 186 47 Q 195 50 194 67 Q 193 82 200 95 Z" fill="url(#handSkin)" opacity="0.9"/>
+              <!-- Little finger slightly curled -->
+              <path d="M 200 95 Q 208 80 214 72 Q 220 67 227 72 Q 233 78 228 92 Q 222 105 210 115 Q 212 130 210 155 Z" fill="url(#handSkin)" opacity="0.88"/>
+              <!-- Knuckle highlights -->
+              <circle cx="122" cy="108" r="4" fill="#d4a870" opacity="0.5"/>
+              <circle cx="155" cy="100" r="4" fill="#d4a870" opacity="0.5"/>
+              <circle cx="178" cy="97" r="3.5" fill="#d4a870" opacity="0.5"/>
+              <circle cx="200" cy="94" r="3" fill="#d4a870" opacity="0.45"/>
+              <!-- Finger shadows/creases -->
+              <line x1="108" y1="90" x2="122" y2="92" stroke="#5a3010" stroke-width="1" opacity="0.4"/>
+              <line x1="148" y1="78" x2="162" y2="80" stroke="#5a3010" stroke-width="1" opacity="0.4"/>
+              <line x1="172" y1="75" x2="184" y2="78" stroke="#5a3010" stroke-width="1" opacity="0.35"/>
+              <!-- Wrist tendon lines -->
+              <line x1="120" y1="200" x2="130" y2="240" stroke="#8a5a30" stroke-width="1" opacity="0.5"/>
+              <line x1="150" y1="200" x2="155" y2="245" stroke="#8a5a30" stroke-width="1" opacity="0.45"/>
+              <line x1="178" y1="200" x2="178" y2="245" stroke="#8a5a30" stroke-width="1" opacity="0.4"/>
+              <!-- Annotation lines -->
+              <line x1="70" y1="170" x2="40" y2="160" stroke="#c9a84c" stroke-width="0.7" opacity="0.5" stroke-dasharray="3,3"/>
+              <text x="35" y="155" fill="rgba(201,168,76,0.6)" font-size="8" font-family="monospace" text-anchor="end">THENAR</text>
+              <line x1="115" y1="65" x2="85" y2="45" stroke="#c9a84c" stroke-width="0.7" opacity="0.5" stroke-dasharray="3,3"/>
+              <text x="82" y="40" fill="rgba(201,168,76,0.6)" font-size="8" font-family="monospace" text-anchor="end">PHALANX</text>
+              <text x="150" y="290" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">ANATOMY STUDY · Leonardo Style</text>
+            </svg>
+          </div>
+          <div class="painting-caption">ANATOMICAL HAND STUDY</div>
+          <div class="painting-desc">Renaissance masters dissected corpses to understand every tendon and bone. These were not practice sketches — they were scientific documents of the human machine.</div>
+        </div>
+
+        <!-- Detail 2: Drapery study -->
+        <div class="painting-frame">
+          <div class="painting-visual" style="aspect-ratio:1;">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="drapBg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a1a2a"/>
+                  <stop offset="100%" stop-color="#0a0a12"/>
+                </linearGradient>
+              </defs>
+              <rect width="300" height="300" fill="url(#drapBg)"/>
+              <!-- Drapery folds - complex fabric study -->
+              <!-- Main cloth body -->
+              <path d="M 60 0 Q 80 30 70 80 Q 65 130 80 180 Q 90 220 75 300 L 225 300 Q 215 230 230 180 Q 250 130 240 80 Q 230 30 250 0 Z" fill="#3a5a8a" opacity="0.9"/>
+              <!-- Deep shadow fold left -->
+              <path d="M 70 80 Q 80 110 90 130 Q 100 150 95 180 Q 88 200 92 230 L 75 300 L 60 300 Q 55 250 70 200 Q 80 170 72 140 Q 65 120 65 80 Z" fill="#1a2a4a" opacity="0.95"/>
+              <!-- Highlight ridge center -->
+              <path d="M 140 20 Q 145 60 148 100 Q 150 140 145 180 Q 142 210 148 250 L 155 300 L 148 300 Q 144 255 142 220 Q 138 185 140 150 Q 142 115 138 75 Q 136 45 138 20 Z" fill="#6a8abf" opacity="0.8"/>
+              <!-- Secondary fold right -->
+              <path d="M 200 60 Q 215 90 220 130 Q 225 165 215 200 Q 205 230 218 270 L 225 300 L 240 300 Q 235 260 220 225 Q 210 200 218 165 Q 226 135 220 100 Q 215 75 210 55 Z" fill="#2a4a7a" opacity="0.9"/>
+              <!-- Tertiary folds -->
+              <path d="M 100 40 Q 108 70 105 110 Q 102 140 110 165" stroke="#5a7aaf" stroke-width="3" fill="none" opacity="0.6"/>
+              <path d="M 175 50 Q 182 85 178 120 Q 175 148 180 175" stroke="#4a6a9f" stroke-width="2.5" fill="none" opacity="0.55"/>
+              <!-- Gathering at top -->
+              <path d="M 60 0 Q 100 18 150 12 Q 200 6 250 0 Q 230 28 200 22 Q 160 32 120 25 Q 90 30 60 0 Z" fill="#5a7aaf" opacity="0.7"/>
+              <!-- Cast shadow at bottom -->
+              <path d="M 60 285 Q 100 278 150 280 Q 200 278 240 285 L 240 300 L 60 300 Z" fill="#0a0a18" opacity="0.6"/>
+              <text x="150" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">DRAPERY STUDY · Leonardo Style</text>
+            </svg>
+          </div>
+          <div class="painting-caption">DRAPERY FOLD STUDY</div>
+          <div class="painting-desc">Apprentices spent months painting nothing but cloth — studying how fabric falls, gathers, and casts shadows. This mastery is why Renaissance robes look so impossibly real.</div>
+        </div>
+
+        <!-- Detail 3: Perspective study -->
+        <div class="painting-frame">
+          <div class="painting-visual" style="aspect-ratio:1;">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="archBg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#9ab5c8" stop-opacity="0.6"/>
+                  <stop offset="60%" stop-color="#3a5a7a" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#1a2a3a"/>
+                </linearGradient>
+              </defs>
+              <rect width="300" height="300" fill="#1a1208"/>
+              <!-- Sky through arches -->
+              <rect x="0" y="0" width="300" height="300" fill="url(#archBg)" opacity="0.6"/>
+              <!-- Vanishing point lines from center -->
+              <!-- Floor grid converging to VP at center -->
+              <line x1="0" y1="300" x2="150" y2="150" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+              <line x1="50" y1="300" x2="150" y2="150" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+              <line x1="100" y1="300" x2="150" y2="150" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+              <line x1="150" y1="300" x2="150" y2="150" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+              <line x1="200" y1="300" x2="150" y2="150" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+              <line x1="250" y1="300" x2="150" y2="150" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+              <line x1="300" y1="300" x2="150" y2="150" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+              <!-- Horizontal lines (depth) -->
+              <line x1="0" y1="300" x2="300" y2="300" stroke="#8a7050" stroke-width="1" opacity="0.6"/>
+              <line x1="0" y1="275" x2="300" y2="275" stroke="#8a7050" stroke-width="1" opacity="0.5"/>
+              <line x1="0" y1="250" x2="300" y2="250" stroke="#8a7050" stroke-width="1" opacity="0.5"/>
+              <line x1="0" y1="220" x2="300" y2="220" stroke="#8a7050" stroke-width="1" opacity="0.4"/>
+              <line x1="0" y1="190" x2="300" y2="190" stroke="#8a7050" stroke-width="1" opacity="0.35"/>
+              <line x1="0" y1="168" x2="300" y2="168" stroke="#8a7050" stroke-width="1" opacity="0.3"/>
+              <!-- Arch columns -->
+              <rect x="0" y="0" width="35" height="260" fill="#5a4520"/>
+              <rect x="35" y="0" width="10" height="260" fill="#3a2a10" opacity="0.5"/>
+              <rect x="255" y="0" width="35" height="260" fill="#5a4520"/>
+              <rect x="245" y="0" width="10" height="260" fill="#3a2a10" opacity="0.5"/>
+              <!-- Arch curve -->
+              <path d="M 35 0 Q 150 50 265 0" stroke="#6a5530" stroke-width="8" fill="none"/>
+              <path d="M 35 0 Q 150 48 265 0" stroke="#8a7550" stroke-width="3" fill="none" opacity="0.7"/>
+              <!-- Second arch deeper -->
+              <path d="M 75 168 Q 150 205 225 168" stroke="#4a3520" stroke-width="5" fill="none" opacity="0.7"/>
+              <!-- Third arch even deeper -->
+              <path d="M 100 210 Q 150 235 200 210" stroke="#3a2a15" stroke-width="4" fill="none" opacity="0.6"/>
+              <!-- Vanishing point dot -->
+              <circle cx="150" cy="150" r="3" fill="#c9a84c" opacity="0.8"/>
+              <circle cx="150" cy="150" r="8" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.5"/>
+              <!-- VP label -->
+              <text x="162" y="148" fill="rgba(201,168,76,0.7)" font-size="8" font-family="monospace">VP</text>
+              <text x="150" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">LINEAR PERSPECTIVE · Brunelleschi System</text>
+            </svg>
+          </div>
+          <div class="painting-caption">LINEAR PERSPECTIVE STUDY</div>
+          <div class="painting-desc">All lines converge at the "vanishing point" — a mathematical invention that creates the illusion of infinite depth on a flat surface. This was one of the greatest intellectual breakthroughs of the 15th century.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ ERA II: BAROQUE ════════════════════════════════════════ -->
+<section style="background: linear-gradient(to bottom, #100d08, #0a0806);">
+  <div class="era">
+    <div class="era-header">
+      <div class="era-number">II</div>
+      <div class="era-title-block">
+        <h2>The Baroque</h2>
+        <div class="date-range">1600s – 1750s · CARAVAGGIO · REMBRANDT · VERMEER</div>
+      </div>
+    </div>
+    <div class="era-body">
+      <div class="era-text">
+        <p>Baroque artists inherited all the technical mastery of the Renaissance — and turned the dial up to maximum emotional intensity. Where Renaissance painting aimed for calm, ordered beauty, Baroque painting aimed to <em>grab you by the throat</em>.</p>
+        <p>Caravaggio is the revolutionary figure. He would hire real working people — prostitutes, thieves, murderers — as models for sacred scenes. His Virgin Mary lay dead like a real woman, swollen and pale. His apostles had dirty feet and calloused hands. The Church rejected some works as blasphemous. But those who understood saw something new: sacred events happening to <em>real humans</em>, not gilded symbols.</p>
+        <p>His lighting — a single source from one direction, cutting through absolute darkness — was theatrical in a way the world had never seen. Figures seem to materialize from nothing.</p>
+        <p class="highlight">Baroque is still breathtakingly beautiful. The technique remains Renaissance-level masterful. What changed was the emotional temperature — from serene contemplation to raw, urgent drama.</p>
+        <p>Rembrandt van Rijn pushed portraiture to its ultimate limits. He painted himself over 90 times across his life — a psychological autobiography in paint. He could render the sheen of silk, the roughness of velvet, the translucency of aged skin in the same painting with equal mastery. His late self-portraits, showing a man broken by bankruptcy and loss, are among the most psychologically honest images ever made.</p>
+        <p>Vermeer painted domestic interiors — women reading letters, making lace, pouring milk — with a stillness and light quality so perfect that 20th-century scientists discovered he likely used a camera obscura to project the scene before painting it. Still extraordinary. The technique was uncompromised.</p>
+      </div>
+      <div class="painting-showcase">
+        <!-- Baroque: Caravaggio style -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="carLight" cx="62%" cy="28%" r="50%">
+                  <stop offset="0%" stop-color="#d8a860" stop-opacity="0.95"/>
+                  <stop offset="45%" stop-color="#8a5520" stop-opacity="0.6"/>
+                  <stop offset="100%" stop-color="#000000" stop-opacity="0.95"/>
+                </radialGradient>
+                <radialGradient id="faceSkin" cx="40%" cy="35%" r="60%">
+                  <stop offset="0%" stop-color="#d0956a"/>
+                  <stop offset="55%" stop-color="#9a6030"/>
+                  <stop offset="100%" stop-color="#3a1a08"/>
+                </radialGradient>
+              </defs>
+              <!-- Total darkness -->
+              <rect width="400" height="300" fill="#050302"/>
+              <!-- Light pool -->
+              <rect width="400" height="300" fill="url(#carLight)"/>
+              <!-- Central figure emerging from dark -->
+              <!-- Torso/shoulder -->
+              <path d="M 110 300 Q 100 220 115 160 Q 125 120 145 100 L 260 100 Q 275 130 270 180 Q 265 230 270 300 Z" fill="#2a1a08" opacity="0.9"/>
+              <!-- Lit shoulder/arm -->
+              <path d="M 170 100 Q 200 90 230 95 Q 250 100 260 120 Q 255 135 240 130 Q 220 115 190 118 Q 175 120 170 100 Z" fill="#c8905a" opacity="0.9"/>
+              <!-- Face - strongly lit one side -->
+              <ellipse cx="198" cy="68" rx="42" ry="48" fill="url(#faceSkin)"/>
+              <!-- Shadow half - hard edge -->
+              <path d="M 215 20 Q 240 30 240 68 Q 240 105 225 115 Q 238 105 240 68 Q 240 30 228 22 Z" fill="#1a0a04" opacity="0.7"/>
+              <!-- Lit forehead highlight -->
+              <ellipse cx="182" cy="42" rx="20" ry="12" fill="#dca870" opacity="0.55"/>
+              <!-- Eyes -->
+              <ellipse cx="180" cy="62" rx="12" ry="7" fill="#0f0a05"/>
+              <circle cx="180" cy="61" r="5" fill="#080502"/>
+              <ellipse cx="214" cy="65" rx="11" ry="6" fill="#0f0a05"/>
+              <circle cx="214" cy="64" r="4" fill="#080502"/>
+              <!-- Catchlights -->
+              <circle cx="177" cy="59" r="1.5" fill="#e8d090" opacity="0.7"/>
+              <circle cx="211" cy="62" r="1.2" fill="#e8d090" opacity="0.5"/>
+              <!-- Nose lit side -->
+              <path d="M 192 72 Q 188 88 180 96 Q 190 100 208 96 Q 200 88 196 72 Z" fill="#b07848" opacity="0.7"/>
+              <!-- Mouth -->
+              <path d="M 178 108 Q 198 115 217 108" stroke="#5a2a10" stroke-width="2.5" fill="none" opacity="0.8"/>
+              <!-- Hair dark -->
+              <path d="M 156 20 Q 180 8 198 10 Q 220 8 240 20 Q 255 35 255 55 Q 240 30 215 25 Q 198 22 180 25 Q 162 30 155 50 Z" fill="#080402" opacity="0.95"/>
+              <!-- Second figure in deep shadow (background) -->
+              <ellipse cx="330" cy="150" rx="30" ry="35" fill="#0d0806" opacity="0.8"/>
+              <ellipse cx="340" cy="125" rx="22" ry="28" fill="#1a0e08" opacity="0.6"/>
+              <!-- Third figure left edge -->
+              <path d="M 0 80 Q 30 70 55 90 Q 65 110 55 140 Q 40 120 20 130 Q 5 110 0 80 Z" fill="#1a0e08" opacity="0.7"/>
+              <!-- Hand reaching into light from shadow -->
+              <path d="M 55 150 Q 80 140 105 152 Q 115 160 108 175 Q 95 180 78 175 Q 60 168 55 150 Z" fill="#c8905a" opacity="0.85"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.35)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Caravaggio Style · Tenebrism</text>
+            </svg>
+          </div>
+          <div class="painting-caption">THE CALLING OF ST. MATTHEW — Caravaggio Style, c.1600</div>
+          <div class="painting-desc">Tenebrism at its most extreme — figures sculpted entirely by a single light source against pure blackness. The technique was revolutionary. Notice the third figure barely visible in shadow. Caravaggio didn't blend light into dark — he cut between them like a knife.</div>
+        </div>
+
+        <!-- Baroque: Rembrandt self portrait style -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="rembBg" cx="48%" cy="40%" r="55%">
+                  <stop offset="0%" stop-color="#3a2a15"/>
+                  <stop offset="100%" stop-color="#0a0806"/>
+                </radialGradient>
+                <radialGradient id="rembFace" cx="42%" cy="38%" r="60%">
+                  <stop offset="0%" stop-color="#c8906a" stop-opacity="1"/>
+                  <stop offset="50%" stop-color="#9a6a3a"/>
+                  <stop offset="85%" stop-color="#5a3a18"/>
+                  <stop offset="100%" stop-color="#2a1a08"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#rembBg)"/>
+              <!-- Warm golden glow background -->
+              <ellipse cx="195" cy="140" rx="130" ry="140" fill="#2a1a08" opacity="0.5"/>
+              <!-- Beret/cap -->
+              <path d="M 130 85 Q 145 50 195 48 Q 245 46 262 80 Q 270 100 255 108 Q 240 75 195 73 Q 155 75 140 108 Q 128 102 130 85 Z" fill="#1a1208" opacity="0.95"/>
+              <!-- Face - aged, lit from upper left -->
+              <ellipse cx="195" cy="140" rx="55" ry="62" fill="url(#rembFace)"/>
+              <!-- Deep shadow right side -->
+              <path d="M 220 78 Q 250 95 250 140 Q 250 185 230 200 Q 250 185 252 140 Q 252 95 235 80 Z" fill="#0f0805" opacity="0.75"/>
+              <!-- Aged forehead creases - impasto texture suggested -->
+              <path d="M 160 112 Q 180 109 200 111" stroke="#a07040" stroke-width="1" fill="none" opacity="0.4"/>
+              <path d="M 158 120 Q 178 117 198 119" stroke="#a07040" stroke-width="0.8" fill="none" opacity="0.35"/>
+              <!-- Nose - bulbous, aged, realistic -->
+              <path d="M 188 148 Q 182 165 177 173 Q 188 178 212 173 Q 207 165 202 148 Z" fill="#8a5a30" opacity="0.65"/>
+              <ellipse cx="183" cy="170" rx="8" ry="5" fill="#7a4a28" opacity="0.5"/>
+              <ellipse cx="207" cy="170" rx="7" ry="4" fill="#7a4a28" opacity="0.45"/>
+              <!-- Eyes - deeply set, wisdom-filled -->
+              <ellipse cx="172" cy="138" rx="13" ry="8" fill="#1a1008"/>
+              <circle cx="172" cy="137" r="5.5" fill="#0a0806"/>
+              <circle cx="170" cy="135" r="1.5" fill="#d0a850" opacity="0.5"/>
+              <ellipse cx="215" cy="142" rx="12" ry="7" fill="#1a1008"/>
+              <circle cx="215" cy="141" r="5" fill="#0a0806"/>
+              <!-- Bags under eyes - aged -->
+              <path d="M 160 143 Q 172 148 184 143" stroke="#6a4020" stroke-width="1.2" fill="none" opacity="0.5"/>
+              <path d="M 205 147 Q 215 151 226 147" stroke="#6a4020" stroke-width="1" fill="none" opacity="0.45"/>
+              <!-- Mouth - thin lipped, aged -->
+              <path d="M 174 192 Q 195 198 215 192" stroke="#5a2a10" stroke-width="2" fill="none" opacity="0.7"/>
+              <!-- Thick impasto collar whites -->
+              <path d="M 130 220 Q 145 205 195 200 Q 245 205 265 220 L 275 280 L 120 280 Z" fill="#e8e0d0" opacity="0.7"/>
+              <!-- Dark coat -->
+              <path d="M 90 300 Q 95 240 110 210 Q 130 220 195 215 Q 260 220 280 210 Q 295 240 305 300 Z" fill="#1a1208" opacity="0.95"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.35)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Rembrandt Self-Portrait Style</text>
+            </svg>
+          </div>
+          <div class="painting-caption">SELF-PORTRAIT — Rembrandt Style, c.1660s</div>
+          <div class="painting-desc">Rembrandt painted himself over 90 times — a lifelong psychological diary. Notice the impasto texture, the warm amber light, the unflinching record of aging. This is not idealization. This is truth. His late portraits are among the most emotionally honest images in human history.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ DISRUPTION: PHOTOGRAPHY ════════════════════════════════════════ -->
+<section class="factors-section">
+  <h2>The Great Disruption</h2>
+  <p class="section-sub">Six forces collided in the 19th century and shattered the 400-year tradition of painted beauty</p>
+  <div class="factors-grid">
+    <div class="factor-card">
+      <span class="factor-icon">📷</span>
+      <h3>Photography (1839)</h3>
+      <p>When the daguerreotype appeared, it could capture a human face more accurately than ten years of painting training. The existential question was immediate: if a machine can perfectly reproduce reality, what is the purpose of a painter? Every subsequent art movement is an attempt to answer this.</p>
+    </div>
+    <div class="factor-card">
+      <span class="factor-icon">⚙️</span>
+      <h3>The Industrial Revolution</h3>
+      <p>Cities became grey, mechanical, and inhuman. The Romantics fled to nature and emotion in protest. Later, modernists embraced the machine aesthetic. Either way, the serene world of Renaissance painting felt remote and dishonest. Artists wanted to paint how the new world <em>felt</em> — fractured, fast, ugly, electric.</p>
+    </div>
+    <div class="factor-card">
+      <span class="factor-icon">🏛️</span>
+      <h3>Loss of Religious Patronage</h3>
+      <p>The Church had funded art for centuries with a clear directive: glorify God. As secularism rose, this shared mission collapsed. Artists became free — but free to do <em>what</em>? Without an agreed purpose, art splintered into hundreds of competing private visions. There was no longer any shared standard of success.</p>
+    </div>
+    <div class="factor-card">
+      <span class="factor-icon">💣</span>
+      <h3>World War I (1914–1918)</h3>
+      <p>Twenty million dead in industrial-scale slaughter. Classical beauty now felt like a lie — a prettified mask over the real face of civilization, which had just shown itself capable of factory-scale murder. Artists like the Dadaists responded with deliberate ugliness and absurdity as acts of moral honesty. If culture produced this, then culture must be destroyed.</p>
+    </div>
+    <div class="factor-card">
+      <span class="factor-icon">🧠</span>
+      <h3>Freud & The Unconscious</h3>
+      <p>Freud's discovery that beneath our rational surface lurked irrational dreams, desires, and fears gave artists permission to bypass rational beauty entirely. The Surrealists painted the unconscious — impossible dreamscapes that made no visual logic but felt psychologically truer than any realistic scene could.</p>
+    </div>
+    <div class="factor-card">
+      <span class="factor-icon">📜</span>
+      <h3>Philosophy Changes Everything</h3>
+      <p>Hegel argued art's purpose was to express <em>Spirit and Ideas</em>, not to imitate nature. Nietzsche declared old values dead. By the early 20th century, the art world had accepted that skill in representation was philosophically irrelevant — what mattered was the concept, the statement, the provocation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ ERA III: IMPRESSIONISM ════════════════════════════════════════ -->
+<section style="background: linear-gradient(to bottom, #0e0c09, #0a0806);">
+  <div class="era">
+    <div class="era-header">
+      <div class="era-number">III</div>
+      <div class="era-title-block">
+        <h2>Impressionism — The First Crack</h2>
+        <div class="date-range">1860s – 1890s · MONET · RENOIR · DEGAS · PARIS</div>
+      </div>
+    </div>
+    <div class="era-body">
+      <div class="era-text">
+        <p>In 1874, a group of painters rejected from the official Paris Salon held their own exhibition. A critic mocked Monet's painting <em>Impression, Sunrise</em> with the word "impressionist" — intending it as an insult. It became the movement's name.</p>
+        <p>The Impressionists were NOT abandoning skill. They were making a sophisticated visual argument: <em>the human eye does not actually see sharp edges and flat areas of color. It sees light, in constant flux, in patches of color that the brain assembles into objects.</em> So painting those patches directly was actually <em>more accurate</em> than the painstaking academic rendering.</p>
+        <p>Monet would set up multiple canvases before the same haystack or cathedral and paint them at different hours of day, capturing how light transformed the same object into something unrecognizable by afternoon. He spent thirty years painting the water lily pond at his garden in Giverny — not because he couldn't paint anything else, but because the study of light on water was an infinite subject.</p>
+        <p class="highlight">This was still mastery — but mastery of a different, more subjective truth. The shift was from "what does the world look like?" to "how does the world appear to my eye?"</p>
+        <p>Degas painted ballet dancers obsessively — not in posed grace but in the unglamorous moments: warming up, adjusting a shoe, caught in an awkward stance. He used photography's cropped, accidental compositions. He painted what the eye actually catches, not what the mind composes. Still extraordinarily beautiful. But the subject of painting had quietly shifted from the world to the act of perception itself.</p>
+      </div>
+      <div class="painting-showcase">
+        <!-- Monet style water lilies -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="blurSoft"><feGaussianBlur stdDeviation="1.2"/></filter>
+                <filter id="blurMed"><feGaussianBlur stdDeviation="2"/></filter>
+                <filter id="blurLight"><feGaussianBlur stdDeviation="0.8"/></filter>
+              </defs>
+              <!-- Water base - complex reflections -->
+              <rect width="400" height="300" fill="#1a3040"/>
+              <!-- Sky reflection -->
+              <rect width="400" height="120" fill="#3a6888" opacity="0.5"/>
+              <!-- Impressionist broken brushstrokes - water -->
+              <!-- Horizontal stroke patches simulating reflected light and color -->
+              <rect x="0" y="10" width="55" height="6" rx="3" fill="#5a8aaa" opacity="0.5" filter="url(#blurLight)"/>
+              <rect x="60" y="15" width="40" height="5" rx="2" fill="#4a7a9a" opacity="0.6"/>
+              <rect x="110" y="8" width="70" height="7" rx="3" fill="#6a9abc" opacity="0.55"/>
+              <rect x="190" y="12" width="45" height="6" rx="3" fill="#5a8aac" opacity="0.5"/>
+              <rect x="245" y="6" width="60" height="8" rx="3" fill="#7aaabe" opacity="0.5"/>
+              <rect x="315" y="14" width="75" height="5" rx="3" fill="#4a8aaa" opacity="0.55"/>
+              <!-- Mid water reflections - more complex -->
+              <rect x="20" y="50" width="50" height="5" rx="2" fill="#3a6878" opacity="0.7"/>
+              <rect x="80" y="55" width="35" height="6" rx="3" fill="#4a7888" opacity="0.65"/>
+              <rect x="125" y="48" width="65" height="7" rx="3" fill="#2a5868" opacity="0.75"/>
+              <rect x="200" y="52" width="50" height="5" rx="2" fill="#3a6880" opacity="0.7"/>
+              <rect x="260" y="46" width="70" height="8" rx="3" fill="#5a7890" opacity="0.65"/>
+              <rect x="340" y="54" width="55" height="5" rx="2" fill="#3a6878" opacity="0.7"/>
+              <!-- Willow reflection strips - vertical green -->
+              <rect x="340" y="0" width="8" height="140" rx="4" fill="#4a6a2a" opacity="0.4" filter="url(#blurSoft)"/>
+              <rect x="352" y="0" width="6" height="160" rx="3" fill="#3a5a1a" opacity="0.35" filter="url(#blurSoft)"/>
+              <rect x="360" y="0" width="9" height="130" rx="4" fill="#5a7a3a" opacity="0.3" filter="url(#blurSoft)"/>
+              <!-- Water lily pads - impressionist blobs -->
+              <ellipse cx="60" cy="185" rx="32" ry="13" fill="#2a5a1a" opacity="0.85" filter="url(#blurLight)"/>
+              <ellipse cx="60" cy="183" rx="12" ry="5" fill="#fad870" opacity="0.95"/><!-- flower -->
+              <ellipse cx="60" cy="182" rx="6" ry="3" fill="#f8c840" opacity="0.8"/>
+              <ellipse cx="155" cy="200" rx="38" ry="14" fill="#3a6a20" opacity="0.8" filter="url(#blurLight)"/>
+              <ellipse cx="155" cy="198" rx="10" ry="4.5" fill="#f8d060" opacity="0.95"/>
+              <ellipse cx="255" cy="175" rx="28" ry="11" fill="#2a5a18" opacity="0.85" filter="url(#blurLight)"/>
+              <ellipse cx="255" cy="174" rx="9" ry="4" fill="#fce880" opacity="0.9"/>
+              <ellipse cx="335" cy="195" rx="35" ry="13" fill="#3a6828" opacity="0.8" filter="url(#blurLight)"/>
+              <ellipse cx="335" cy="193" rx="11" ry="4.5" fill="#f8d858" opacity="0.9"/>
+              <ellipse cx="100" cy="228" rx="25" ry="10" fill="#2a5a18" opacity="0.8" filter="url(#blurLight)"/>
+              <ellipse cx="220" cy="240" rx="30" ry="11" fill="#3a6820" opacity="0.75" filter="url(#blurLight)"/>
+              <ellipse cx="220" cy="239" rx="8" ry="3.5" fill="#fce070" opacity="0.85"/>
+              <!-- Reflections of lilies in water -->
+              <ellipse cx="60" cy="215" rx="20" ry="6" fill="#f5d050" opacity="0.15" filter="url(#blurMed)"/>
+              <ellipse cx="155" cy="225" rx="22" ry="7" fill="#f5cc40" opacity="0.12" filter="url(#blurMed)"/>
+              <!-- Atmospheric sky patches at top -->
+              <rect x="0" y="0" width="400" height="30" fill="rgba(180,210,230,0.15)" filter="url(#blurMed)"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Water Lilies · Monet Style, c.1906</text>
+            </svg>
+          </div>
+          <div class="painting-caption">WATER LILIES — Monet Style, c.1906</div>
+          <div class="painting-desc">No hard edges exist anywhere. The pond surface, the lily pads, the flower reflections, the sky — all dissolve into each other through broken brushstrokes of pure color. Monet spent 30 years painting this pond. The closer you stand, the more abstract it becomes. Step back, and reality assembles itself.</div>
+        </div>
+
+        <!-- Degas ballet dancer -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="degasBlur"><feGaussianBlur stdDeviation="0.8"/></filter>
+                <linearGradient id="stageFloor" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#8a6a3a"/>
+                  <stop offset="100%" stop-color="#4a3a1a"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="#1a1208"/>
+              <!-- Stage floor - receding perspective -->
+              <polygon points="0,200 400,180 400,300 0,300" fill="url(#stageFloor)" opacity="0.7"/>
+              <!-- Stage floor boards -->
+              <line x1="0" y1="220" x2="400" y2="203" stroke="#6a5020" stroke-width="1" opacity="0.4"/>
+              <line x1="0" y1="240" x2="400" y2="223" stroke="#6a5020" stroke-width="1" opacity="0.4"/>
+              <line x1="0" y1="260" x2="400" y2="243" stroke="#6a5020" stroke-width="1" opacity="0.4"/>
+              <line x1="0" y1="280" x2="400" y2="263" stroke="#6a5020" stroke-width="1" opacity="0.35"/>
+              <!-- Background dancers - impressionist, barely defined -->
+              <ellipse cx="310" cy="145" rx="18" ry="22" fill="#c49a6a" opacity="0.3" filter="url(#degasBlur)"/>
+              <path d="M 295 165 Q 300 220 298 260 L 325 260 Q 324 220 330 165 Z" fill="#d8c8e0" opacity="0.2" filter="url(#degasBlur)"/>
+              <ellipse cx="355" cy="150" rx="15" ry="18" fill="#c49a6a" opacity="0.25" filter="url(#degasBlur)"/>
+              <path d="M 342 168 Q 346 215 344 255 L 366 255 Q 365 215 370 168 Z" fill="#c8b8d8" opacity="0.2" filter="url(#degasBlur)"/>
+              <!-- Main dancer - central -->
+              <!-- Tutu skirt - layers -->
+              <path d="M 148 175 Q 120 185 95 178 Q 110 200 148 205 Q 185 200 215 190 Q 200 178 175 175 Z" fill="#f0e8f8" opacity="0.85"/>
+              <path d="M 148 175 Q 125 188 100 184 Q 115 207 148 212 Q 180 207 210 196 Q 195 182 175 175 Z" fill="#e0d0f0" opacity="0.7"/>
+              <path d="M 148 175 Q 130 192 108 190 Q 120 212 148 218 Q 175 212 202 202 Q 188 185 170 175 Z" fill="#d0c0e8" opacity="0.55"/>
+              <!-- Bodice -->
+              <path d="M 128 110 Q 145 100 165 102 Q 182 100 195 110 Q 192 150 185 175 L 110 175 Q 115 150 128 110 Z" fill="#c8a0c0" opacity="0.9"/>
+              <!-- Head -->
+              <ellipse cx="155" cy="80" rx="22" ry="25" fill="#c8966a"/>
+              <!-- Hair up in bun -->
+              <path d="M 133 65 Q 140 48 155 45 Q 170 43 180 58 Q 175 50 162 48 Q 148 48 140 62 Z" fill="#2a1a08" opacity="0.9"/>
+              <circle cx="158" cy="48" r="8" fill="#2a1a08" opacity="0.85"/>
+              <!-- Eyes -->
+              <ellipse cx="146" cy="82" rx="7" ry="4" fill="#1a1008"/>
+              <ellipse cx="164" cy="83" rx="7" ry="4" fill="#1a1008"/>
+              <!-- Arms raised gracefully -->
+              <path d="M 128 112 Q 108 100 90 82 Q 80 68 88 62 Q 96 58 102 70 Q 110 88 128 108 Z" fill="#c8966a" opacity="0.9"/>
+              <path d="M 195 112 Q 220 95 238 75 Q 248 62 240 56 Q 232 52 225 63 Q 215 80 195 110 Z" fill="#c8966a" opacity="0.88"/>
+              <!-- Hands at end of arms -->
+              <ellipse cx="88" cy="60" rx="8" ry="6" fill="#c8966a" opacity="0.85"/>
+              <ellipse cx="241" cy="54" rx="7" ry="5" fill="#c8966a" opacity="0.85"/>
+              <!-- Legs and pointe -->
+              <path d="M 128 210 Q 122 240 118 280 L 138 280 Q 140 250 145 218 Z" fill="#c8966a" opacity="0.8"/>
+              <path d="M 172 208 Q 178 238 184 278 L 165 278 Q 160 248 155 218 Z" fill="#c8966a" opacity="0.78"/>
+              <!-- Pointe shoes -->
+              <path d="M 108 278 Q 115 285 138 282 L 138 278 Z" fill="#e8c0a8" opacity="0.8"/>
+              <path d="M 165 278 Q 165 285 187 282 L 184 278 Z" fill="#e8c0a8" opacity="0.78"/>
+              <!-- Stage light glow from above left -->
+              <ellipse cx="80" cy="0" rx="120" ry="80" fill="#d8b850" opacity="0.06"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.35)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Ballet Dancer · Degas Style, c.1880</text>
+            </svg>
+          </div>
+          <div class="painting-caption">BALLET DANCER — Degas Style, c.1880</div>
+          <div class="painting-desc">Degas used photography's accidental cropping — a dancer mid-gesture, background figures blurred and incomplete. The stage floor recedes in perspective. The tutu layers dissolve into impressionist touch. Still technically brilliant — but capturing a fleeting moment, not a composed ideal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ ERA IV: POST-IMPRESSIONISM ════════════════════════════════════════ -->
+<section style="background: #0a0806; padding: 5rem 0;">
+  <div class="era">
+    <div class="era-header">
+      <div class="era-number">IV</div>
+      <div class="era-title-block">
+        <h2>Post-Impressionism — Art Goes Inward</h2>
+        <div class="date-range">1886–1910s · VAN GOGH · CÉZANNE · GAUGUIN</div>
+      </div>
+    </div>
+    <div class="era-body">
+      <div class="era-text">
+        <p>Three giants pulled in three different directions, and together they broke open the door to everything that followed.</p>
+        <h4>Vincent van Gogh — Emotion as Color</h4>
+        <p>Van Gogh had been a preacher before he was a painter. He believed painting should convey the spiritual essence of things — not their surface appearance. His swirling skies, his pulsating stars, his writhing cypress trees weren't what those things looked like. They were what they <em>felt like</em> to a man of overwhelming, almost unbearable feeling. He sold one painting in his lifetime and died poor. Within twenty years of his death, he was recognized as one of the greatest painters who ever lived.</p>
+        <h4>Paul Cézanne — Structure Over Surface</h4>
+        <p>Cézanne wanted to paint what lay beneath the surface shimmer of Impressionist color — the geometric <em>bones</em> of the world. His apples aren't round; they're arrangements of planes that suggest roundness. His Mont Sainte-Victoire mountain is simultaneously flat and deep. He wrote: "treat nature by the cylinder, the sphere, the cone." Picasso called him "the father of us all." Without Cézanne, there is no Cubism.</p>
+        <h4>Paul Gauguin — Primitivism & Escape</h4>
+        <p>Gauguin fled to Tahiti to escape what he saw as the moral corruption of European civilization. His flat, bold colors and simplified forms borrowed from non-Western art — Polynesian, Japanese woodblock prints, Egyptian friezes. He was rejecting the entire European tradition of three-dimensional illusionism in favor of something more primal and direct.</p>
+        <p class="highlight">Together, these three men established a new principle: art's purpose is not to show what the world looks like, but to reveal how the artist experiences and understands it. This shift, once made, could not be unmade.</p>
+      </div>
+      <div class="painting-showcase">
+        <!-- Van Gogh starry night style -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="vgBlur"><feGaussianBlur stdDeviation="0.5"/></filter>
+                <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#f8e870" stop-opacity="1"/>
+                  <stop offset="60%" stop-color="#e8c840" stop-opacity="0.6"/>
+                  <stop offset="100%" stop-color="#c8a020" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#e8f0f8" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#8aaccc" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <!-- Deep night sky -->
+              <rect width="400" height="300" fill="#0a1428"/>
+              <!-- Van Gogh swirling sky - impasto brushstroke style -->
+              <!-- Large swirl 1 - upper left -->
+              <path d="M 0 60 Q 40 30 80 50 Q 120 70 100 100 Q 80 130 40 110 Q 0 90 0 60 Z" fill="#1a3a6a" opacity="0.7"/>
+              <path d="M 5 65 Q 45 38 82 55 Q 115 72 95 100 Q 78 122 42 108 Q 8 90 5 65 Z" fill="#2a4a7a" opacity="0.6"/>
+              <!-- Swirl 2 -->
+              <path d="M 80 40 Q 140 10 200 30 Q 260 50 240 90 Q 220 120 160 100 Q 100 80 80 40 Z" fill="#1e3870" opacity="0.65"/>
+              <path d="M 90 45 Q 145 18 200 37 Q 252 55 232 90 Q 215 115 160 98 Q 105 80 90 45 Z" fill="#2a4878" opacity="0.55"/>
+              <!-- Swirl 3 upper right -->
+              <path d="M 240 20 Q 310 0 370 30 Q 400 50 390 80 Q 370 100 310 85 Q 260 70 240 20 Z" fill="#182e60" opacity="0.7"/>
+              <!-- Swirling lines - Van Gogh's characteristic stroke -->
+              <path d="M 0 80 Q 50 60 100 80 Q 150 100 200 80 Q 250 60 300 80 Q 350 100 400 80" stroke="#3a5890" stroke-width="8" fill="none" opacity="0.5" stroke-linecap="round"/>
+              <path d="M 0 95 Q 60 75 110 95 Q 160 115 220 90 Q 270 70 320 90 Q 370 110 400 90" stroke="#2a4880" stroke-width="6" fill="none" opacity="0.5" stroke-linecap="round"/>
+              <path d="M 0 110 Q 50 90 100 115 Q 150 138 200 115 Q 250 92 310 112 Q 355 128 400 110" stroke="#4a6898" stroke-width="5" fill="none" opacity="0.45"/>
+              <!-- Moon -->
+              <circle cx="310" cy="45" r="28" fill="url(#moonGlow)"/>
+              <circle cx="310" cy="45" r="20" fill="#f5e050" opacity="0.9"/>
+              <!-- Stars with halos -->
+              <circle cx="55" cy="38" r="4" fill="url(#starGlow)"/>
+              <circle cx="55" cy="38" r="2.5" fill="#e8f0f8" opacity="0.95"/>
+              <circle cx="175" cy="22" r="5" fill="url(#starGlow)"/>
+              <circle cx="175" cy="22" r="3" fill="#f0f8ff" opacity="0.95"/>
+              <circle cx="130" cy="55" r="3.5" fill="url(#starGlow)"/>
+              <circle cx="130" cy="55" r="2" fill="#e8f0fc" opacity="0.9"/>
+              <circle cx="225" cy="35" r="4" fill="url(#starGlow)"/>
+              <circle cx="225" cy="35" r="2.5" fill="#f0f8f8" opacity="0.9"/>
+              <circle cx="368" cy="28" r="3" fill="url(#starGlow)"/>
+              <circle cx="368" cy="28" r="1.8" fill="#f0f0f8" opacity="0.9"/>
+              <circle cx="22" cy="25" r="3.2" fill="url(#starGlow)"/>
+              <circle cx="22" cy="25" r="1.9" fill="#f0f8ff" opacity="0.9"/>
+              <!-- Cypress tree - flame-like, turbulent -->
+              <path d="M 55 300 Q 45 250 48 200 Q 45 160 50 120 Q 55 85 62 60 Q 68 85 72 120 Q 78 160 75 200 Q 77 250 68 300 Z" fill="#0a1a08" opacity="0.95"/>
+              <path d="M 52 200 Q 42 185 38 165 Q 42 170 52 180 Z" fill="#0e2010" opacity="0.8"/>
+              <path d="M 70 180 Q 80 168 85 150 Q 78 158 70 168 Z" fill="#0e2010" opacity="0.8"/>
+              <path d="M 50 150 Q 38 138 35 118 Q 42 127 52 140 Z" fill="#0e2010" opacity="0.75"/>
+              <!-- Village below - simplified, glowing -->
+              <rect x="0" y="200" width="400" height="100" fill="#1a2a1a"/>
+              <!-- Hills -->
+              <path d="M 0 215 Q 80 195 160 210 Q 240 225 320 205 Q 360 198 400 208 L 400 300 L 0 300 Z" fill="#152510" opacity="0.9"/>
+              <!-- Village lights/windows -->
+              <rect x="100" y="230" width="8" height="6" fill="#e8c840" opacity="0.7"/>
+              <rect x="118" y="225" width="6" height="5" fill="#e8c840" opacity="0.65"/>
+              <rect x="155" y="235" width="9" height="6" fill="#e8c840" opacity="0.6"/>
+              <rect x="200" y="228" width="7" height="5" fill="#e8c840" opacity="0.65"/>
+              <rect x="228" y="232" width="8" height="6" fill="#e8c840" opacity="0.6"/>
+              <!-- Church spire -->
+              <path d="M 270 240 L 274 200 L 278 240 Z" fill="#0a1808" opacity="0.85"/>
+              <rect x="268" y="238" width="12" height="18" fill="#0e1e0a" opacity="0.9"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · The Starry Night · Van Gogh Style, 1889</text>
+            </svg>
+          </div>
+          <div class="painting-caption">THE STARRY NIGHT — Van Gogh Style, 1889</div>
+          <div class="painting-desc">The sky doesn't look like this. Stars don't have visible halos. The sky doesn't swirl in great turbulent eddies. But this is how Van Gogh FELT the night — alive, enormous, churning with a beauty so overwhelming it was almost terrifying. He painted this from a psychiatric hospital. He'd cut off his ear months earlier.</div>
+        </div>
+
+        <!-- Cezanne mountain style -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Cezanne geometric landscape style -->
+              <rect width="400" height="300" fill="#8a9ab0"/>
+              <!-- Sky - flat color patches, Cezanne style -->
+              <rect width="400" height="150" fill="#7a8eaa" opacity="0.8"/>
+              <rect x="0" y="20" width="180" height="60" fill="#8a9eba" opacity="0.5"/>
+              <rect x="160" y="10" width="140" height="70" fill="#9aaec8" opacity="0.4"/>
+              <rect x="280" y="25" width="120" height="55" fill="#8898b8" opacity="0.45"/>
+              <!-- Mountain - Cezanne's Mont Sainte-Victoire -->
+              <!-- The mountain is shown as geometric planes, not smooth -->
+              <!-- Left slope -->
+              <polygon points="0,160 130,80 200,140 80,200" fill="#8a6a50" opacity="0.9"/>
+              <!-- Right slope -->
+              <polygon points="200,140 310,75 400,150 300,200" fill="#9a7860" opacity="0.85"/>
+              <!-- Peak area -->
+              <polygon points="130,80 200,55 270,78 200,140" fill="#a08870" opacity="0.9"/>
+              <!-- Mountain shadow facets - geometric -->
+              <polygon points="155,100 200,80 215,120 170,130" fill="#6a5040" opacity="0.7"/>
+              <polygon points="215,100 265,80 278,120 230,130" fill="#7a6050" opacity="0.65"/>
+              <!-- Foreground - geometric color blocks -->
+              <!-- Pine trees as geometric shapes -->
+              <polygon points="20,200 35,155 50,200" fill="#2a3a1a" opacity="0.9"/>
+              <polygon points="45,205 58,162 72,205" fill="#2a3a18" opacity="0.85"/>
+              <polygon points="68,208 80,168 94,208" fill="#1a2a10" opacity="0.9"/>
+              <!-- Fields as geometric patches -->
+              <polygon points="0,200 200,160 300,180 0,250" fill="#6a8a3a" opacity="0.7"/>
+              <polygon points="200,160 400,145 400,220 250,230" fill="#7a9a4a" opacity="0.65"/>
+              <polygon points="0,250 300,195 400,225 400,300 0,300" fill="#5a7a2a" opacity="0.75"/>
+              <!-- Small geometric houses -->
+              <rect x="140" y="170" width="20" height="14" fill="#c8a060" opacity="0.8"/>
+              <polygon points="138,170 150,160 162,170" fill="#a07840" opacity="0.85"/>
+              <rect x="168" y="172" width="16" height="12" fill="#c09850" opacity="0.8"/>
+              <!-- Flat paint strokes visible - hatching -->
+              <line x1="0" y1="230" x2="100" y2="220" stroke="#4a6a1a" stroke-width="4" opacity="0.3" stroke-linecap="round"/>
+              <line x1="20" y1="245" x2="120" y2="232" stroke="#4a6a1a" stroke-width="3" opacity="0.25"/>
+              <line x1="250" y1="215" x2="370" y2="205" stroke="#5a7a2a" stroke-width="4" opacity="0.3"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Mont Sainte-Victoire · Cézanne Style</text>
+            </svg>
+          </div>
+          <div class="painting-caption">MONT SAINTE-VICTOIRE — Cézanne Style, c.1902</div>
+          <div class="painting-desc">Cézanne painted this mountain over 60 times. Notice how the mountain is made of flat geometric planes, not blended tone. The sky, fields, and mountain are all equal — there's no hierarchy of foreground and background. He was looking for the structure beneath surface appearance. Picasso called him "the father of us all."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ ERA V: CUBISM & ABSTRACTION ════════════════════════════════════════ -->
+<section style="background: linear-gradient(to bottom, #0a0806, #0e0c09);">
+  <div class="era">
+    <div class="era-header">
+      <div class="era-number">V</div>
+      <div class="era-title-block">
+        <h2>Cubism & Abstraction — Art Becomes Ideas</h2>
+        <div class="date-range">1907 – 1930s · PICASSO · BRAQUE · KANDINSKY · MONDRIAN</div>
+      </div>
+    </div>
+    <div class="era-body">
+      <div class="era-text">
+        <p>Picasso and Braque invented Cubism together in 1907–1914 — one of the most radical breaks in art history. Starting from Cézanne's geometric planes, they asked: why should a painting show only one view of an object? The mind knows a face has two eyes even when one is hidden in profile. A table exists in three dimensions even in a two-dimensional painting. Why not show <em>all</em> of it simultaneously?</p>
+        <p>The result looks "wrong" to the eye trained on Renaissance perspective — because it deliberately is. Cubism shows multiple viewpoints at once, collapsing time and angle into a single image. It is analytical, not emotional. The mind, not the eye, is the viewer's instrument.</p>
+        <p>Then Wassily Kandinsky went further still: he painted with no subject at all. Pure color, pure shape, pure line — with no reference to any external reality. He believed colors and forms had direct emotional equivalents, the way musical notes do. Blue = spiritual. Yellow = aggressive. A painting could move you without depicting anything recognizable, the way a symphony moves you without telling a story.</p>
+        <p class="highlight">This was the decisive break. Once Kandinsky proved you could make a painting about nothing but the relationships between shapes and colors — and still have it mean something — the door to everything was open. Art had fully become a medium for pure ideas.</p>
+        <p>Mondrian took abstraction to its logical extreme: grids of black lines with primary color rectangles. No curves. No reference to nature. Pure rational order. He called it "Neoplasticism" and believed it expressed the universal harmony beneath surface reality. Many people look at a Mondrian and see decoration. He believed he was painting the fundamental structure of existence.</p>
+      </div>
+      <div class="painting-showcase">
+        <!-- Cubist portrait -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Cubism - Weeping Woman / Portrait style -->
+              <rect width="400" height="300" fill="#1a1615"/>
+              <!-- Multiple background planes -->
+              <polygon points="0,0 200,0 160,300 0,300" fill="#2a2015" opacity="0.9"/>
+              <polygon points="200,0 400,0 400,300 260,300" fill="#1a1a25" opacity="0.9"/>
+              <polygon points="120,0 280,0 310,300 90,300" fill="#252015" opacity="0.6"/>
+              <!-- Face as multiple simultaneous planes -->
+              <!-- Plane 1: front face -->
+              <polygon points="155,50 245,45 258,175 148,180" fill="#c4956a" opacity="0.9"/>
+              <!-- Plane 2: right side profile -->
+              <polygon points="245,45 285,72 285,182 258,175" fill="#9a6a40" opacity="0.85"/>
+              <!-- Plane 3: left profile -->
+              <polygon points="120,72 155,50 148,180 115,162" fill="#aa7850" opacity="0.8"/>
+              <!-- Eye 1 - front facing, geometric -->
+              <polygon points="165,78 192,75 195,98 165,100" fill="#2a2030" opacity="0.9"/>
+              <ellipse cx="180" cy="87" rx="8" ry="6" fill="#1a1020"/>
+              <circle cx="178" cy="85" r="2.5" fill="#e8c840" opacity="0.4"/>
+              <!-- Eye 2 - profile/side, displaced -->
+              <ellipse cx="248" cy="95" rx="12" ry="7" fill="#2a2030" opacity="0.9" transform="rotate(-20, 248, 95)"/>
+              <circle cx="248" cy="93" r="4" fill="#1a1020"/>
+              <!-- Nose - geometric planes -->
+              <polygon points="196,98 208,132 192,140 182,125 190,98" fill="#8a5a30" opacity="0.8"/>
+              <!-- Tears - cubist style geometric -->
+              <polygon points="165,100 175,112 162,118 155,105" fill="#3a6a9a" opacity="0.7"/>
+              <polygon points="253,105 265,118 252,125 243,110" fill="#4a7aaa" opacity="0.7"/>
+              <!-- Mouth displaced, geometric -->
+              <polygon points="160,158 195,153 202,167 165,172" fill="#7a2a18" opacity="0.85"/>
+              <!-- Hands covering face - fragmented -->
+              <polygon points="130,155 165,145 180,175 145,185" fill="#c4956a" opacity="0.8"/>
+              <polygon points="240,150 275,160 270,185 235,178" fill="#b4855a" opacity="0.8"/>
+              <!-- Hair - geometric black planes -->
+              <polygon points="110,72 155,50 245,45 285,65 280,45 245,28 155,30 110,55" fill="#1a1008" opacity="0.95"/>
+              <polygon points="285,65 310,90 305,120 285,108 285,72" fill="#0e0806" opacity="0.9"/>
+              <!-- Hat - angular -->
+              <polygon points="130,42 155,28 245,25 265,40 250,52 155,48 130,52" fill="#3a2020" opacity="0.9"/>
+              <!-- Guitar/newspaper fragments (cubist collage element) -->
+              <polygon points="20,200 80,195 90,260 25,265" fill="#2a1808" opacity="0.6"/>
+              <line x1="30" y1="210" x2="78" y2="207" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+              <line x1="32" y1="220" x2="80" y2="217" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+              <line x1="34" y1="230" x2="82" y2="227" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Cubist Portrait · Picasso Style, 1937</text>
+            </svg>
+          </div>
+          <div class="painting-caption">WEEPING WOMAN — Picasso Style, 1937</div>
+          <div class="painting-desc">The face is shown from multiple angles simultaneously — front, profile, and three-quarter. Eyes displaced. Tears rendered as geometric planes of blue. This woman is not observed; she is analyzed, dissected, and reassembled according to emotional logic, not visual logic. Picasso said: "I paint forms as I think them, not as I see them."</div>
+        </div>
+
+        <!-- Kandinsky abstract -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Kandinsky abstract - pure emotion through shape and color -->
+              <rect width="400" height="300" fill="#1a1520"/>
+              <!-- Large sweeping arcs - blue spiritual -->
+              <path d="M 0 200 Q 100 80 250 150 Q 350 200 400 100" stroke="#2a5a9a" stroke-width="12" fill="none" opacity="0.7" stroke-linecap="round"/>
+              <path d="M 0 220 Q 120 100 270 165 Q 370 210 400 120" stroke="#3a6aaa" stroke-width="6" fill="none" opacity="0.5"/>
+              <!-- Yellow aggressive forms -->
+              <polygon points="280,30 340,80 300,110 245,65" fill="#e8c020" opacity="0.85"/>
+              <polygon points="310,35 360,50 345,95 295,80" fill="#f0d030" opacity="0.7"/>
+              <!-- Red energetic circle -->
+              <circle cx="120" cy="120" r="45" fill="#c02020" opacity="0.8"/>
+              <circle cx="120" cy="120" r="30" fill="#e02020" opacity="0.6"/>
+              <circle cx="120" cy="120" r="14" fill="#f04040" opacity="0.7"/>
+              <!-- Black lines - boundaries and tension -->
+              <line x1="200" y1="0" x2="180" y2="300" stroke="#0a0806" stroke-width="3" opacity="0.8"/>
+              <line x1="50" y1="0" x2="350" y2="300" stroke="#0a0806" stroke-width="2" opacity="0.6"/>
+              <line x1="350" y1="20" x2="80" y2="280" stroke="#0a0806" stroke-width="2" opacity="0.5"/>
+              <!-- Purple spiritual triangle -->
+              <polygon points="350,150 400,250 290,250" fill="#5a2a8a" opacity="0.75"/>
+              <!-- White irregular shape -->
+              <path d="M 200 200 Q 230 170 255 195 Q 275 215 250 235 Q 225 250 200 230 Z" fill="#e8e0d8" opacity="0.8"/>
+              <!-- Green organic blob -->
+              <path d="M 30 50 Q 70 20 100 50 Q 110 80 80 95 Q 50 100 25 80 Z" fill="#2a6a2a" opacity="0.75"/>
+              <!-- Orange line -->
+              <path d="M 150 0 Q 200 80 170 150" stroke="#e07a20" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
+              <!-- Small geometric accents -->
+              <rect x="320" y="180" width="30" height="20" fill="#c9a84c" opacity="0.7" transform="rotate(-25, 335, 190)"/>
+              <circle cx="60" cy="230" r="20" fill="#1a5a9a" opacity="0.7"/>
+              <circle cx="60" cy="230" r="10" fill="#2a6aaa" opacity="0.8"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Composition VII · Kandinsky Style, 1913</text>
+            </svg>
+          </div>
+          <div class="painting-caption">COMPOSITION — Kandinsky Style, c.1913</div>
+          <div class="painting-desc">No subject. No recognizable objects. Pure color and form as direct emotional communication — like music. Kandinsky believed blue evoked spiritual depth, yellow aggressive energy, red passion, black finality. The painting is a symphony for the eye. This was the first truly abstract painting in Western art history.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ ERA VI: DADA & SURREALISM ════════════════════════════════════════ -->
+<section style="background: linear-gradient(to bottom, #0e0c09, #0a0806);">
+  <div class="era">
+    <div class="era-header">
+      <div class="era-number">VI</div>
+      <div class="era-title-block">
+        <h2>Dada & Surrealism — The Dream & The Bomb</h2>
+        <div class="date-range">1916 – 1940s · DUCHAMP · DALÍ · MAGRITTE · ERNST</div>
+      </div>
+    </div>
+    <div class="era-body">
+      <div class="era-text">
+        <p>World War I killed nearly 20 million people using the products of European civilization — railways, chemistry, engineering, guns. A generation of artists concluded that if civilization produced this, then civilization must be destroyed — including its art.</p>
+        <p>Dada (the name was chosen from a dictionary at random — deliberately meaningless) was born in Zürich in 1916. Its most famous act: Marcel Duchamp took a factory-produced urinal, signed it "R. Mutt, 1917," titled it <em>Fountain</em>, and submitted it to an art exhibition as a work of art. The exhibition committee refused it. Duchamp's point was made: the art object has no inherent value. What makes it art is the <em>decision</em> to call it art, and the context in which it is placed.</p>
+        <p>This single gesture changed art forever. After Duchamp, any object in any context could be art if an artist declared it so. Skill became entirely optional. The concept was everything.</p>
+        <p class="highlight">Surrealism, by contrast, was not nihilistic. It was genuinely trying to access a deeper truth — the truth of the unconscious mind, which Freud had revealed was stranger and more real than waking reason.</p>
+        <p>Salvador Dalí had the technical skill of the Renaissance masters — he could paint silk, glass, and skin with photographic precision. He used that skill to depict impossible things: melting watches, elephants on spider legs, women made of drawers. The technical mastery was deployed in service of dream logic. Magritte painted an extremely realistic pipe and wrote beneath it "This is not a pipe" — drawing attention to the gap between representation and reality. These weren't failures of skill. They were philosophy conducted in paint.</p>
+      </div>
+      <div class="painting-showcase">
+        <!-- Dalí melting clocks style -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="daliSky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#6a8ab0"/>
+                  <stop offset="60%" stop-color="#d4a860"/>
+                  <stop offset="100%" stop-color="#c89040"/>
+                </linearGradient>
+                <linearGradient id="daliSand" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#c8a050"/>
+                  <stop offset="100%" stop-color="#8a6020"/>
+                </linearGradient>
+              </defs>
+              <!-- Surreal landscape - Dalí style: hyper-real, impossible -->
+              <!-- Sky -->
+              <rect width="400" height="180" fill="url(#daliSky)"/>
+              <!-- Sea horizon -->
+              <rect x="0" y="155" width="400" height="20" fill="#4a6a8a" opacity="0.6"/>
+              <!-- Sand/earth -->
+              <rect x="0" y="165" width="400" height="135" fill="url(#daliSand)"/>
+              <!-- Cliff / rocky promontory - hyper detailed, Dalí style -->
+              <path d="M 270 165 Q 285 100 310 80 Q 330 70 340 90 Q 355 110 345 145 Q 335 165 310 168 Z" fill="#a07840" opacity="0.9"/>
+              <!-- Shadow on cliff -->
+              <path d="M 310 80 Q 330 70 340 90 Q 345 120 330 148 Q 320 160 310 168 Z" fill="#6a4820" opacity="0.7"/>
+              <!-- Melting watch 1 - draped over cliff edge -->
+              <path d="M 290 148 Q 305 145 318 148 Q 330 160 330 178 Q 328 195 310 200 Q 295 198 290 185 Q 286 168 290 148 Z" fill="#d4a820" opacity="0.9"/><!-- watch face -->
+              <path d="M 290 185 Q 295 210 280 230 Q 272 240 268 252 Q 278 248 288 238 Q 300 220 308 200 Q 310 200 295 198 Q 290 200 290 185 Z" fill="#c8a015" opacity="0.85"/><!-- melting drip -->
+              <!-- Watch details -->
+              <circle cx="305" cy="172" r="11" fill="#e8c030" opacity="0.7"/>
+              <circle cx="305" cy="172" r="8" fill="#d8b020" opacity="0.9"/>
+              <line x1="305" y1="172" x2="305" y2="165" stroke="#0a0806" stroke-width="1.5" opacity="0.8"/>
+              <line x1="305" y1="172" x2="310" y2="175" stroke="#0a0806" stroke-width="1.2" opacity="0.8"/>
+              <!-- Melting watch 2 - draped over strange table/object -->
+              <rect x="140" y="150" width="60" height="5" fill="#7a5a2a" opacity="0.7"/><!-- table top -->
+              <rect x="165" y="155" width="8" height="30" fill="#6a4a20" opacity="0.7"/><!-- single leg -->
+              <path d="M 135 148 Q 155 145 175 148 Q 182 162 178 178 Q 175 188 162 192 Q 148 190 140 180 Q 133 165 135 148 Z" fill="#d4a820" opacity="0.9"/><!-- watch face on table -->
+              <path d="M 135 178 Q 125 195 118 215 Q 112 228 116 238 Q 124 232 130 218 Q 136 202 140 188 Q 140 185 135 180 Z" fill="#c8a015" opacity="0.85"/><!-- drip -->
+              <circle cx="157" cy="168" r="12" fill="#e8c030" opacity="0.65"/>
+              <!-- Distorted figure/self portrait - distant, melting -->
+              <path d="M 80 155 Q 90 130 110 125 Q 120 120 125 135 Q 130 155 120 170 Q 108 178 95 175 Q 82 168 80 155 Z" fill="#c4956a" opacity="0.7"/><!-- melting head -->
+              <path d="M 95 175 Q 85 195 78 220 Q 70 240 80 245 Q 92 240 95 222 Q 98 205 100 188 Q 103 178 95 175 Z" fill="#b47850" opacity="0.65"/><!-- dripping body -->
+              <!-- Long shadow stretching across sand -->
+              <path d="M 310 168 Q 360 175 400 172 L 400 185 Q 350 188 300 182 Z" fill="#6a4010" opacity="0.4"/>
+              <!-- Ants on watch (Dalí motif) -->
+              <circle cx="290" cy="155" r="1.5" fill="#0a0806" opacity="0.7"/>
+              <circle cx="294" cy="153" r="1.2" fill="#0a0806" opacity="0.7"/>
+              <circle cx="287" cy="157" r="1.3" fill="#0a0806" opacity="0.7"/>
+              <circle cx="292" cy="159" r="1.2" fill="#0a0806" opacity="0.65"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Persistence of Memory · Dalí Style, 1931</text>
+            </svg>
+          </div>
+          <div class="painting-caption">THE PERSISTENCE OF MEMORY — Dalí Style, 1931</div>
+          <div class="painting-desc">Painted with photographic precision — the sky, sand, cliff, shadows are all meticulously observed. Only the watches are impossible, melting like soft cheese in a desert heat. This combination of hyper-realism and dream-logic is Surrealism's great trick: make the impossible feel like a memory you actually have. Dalí said he painted "hand-painted dream photographs."</div>
+        </div>
+
+        <!-- Magritte style -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="magBg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2a2a2a"/>
+                  <stop offset="100%" stop-color="#1a1a1a"/>
+                </linearGradient>
+                <linearGradient id="daySky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#4a7ab0"/>
+                  <stop offset="100%" stop-color="#8aaad0"/>
+                </linearGradient>
+              </defs>
+              <!-- Magritte: The Son of Man style - impossible juxtaposition -->
+              <!-- Dark background wall -->
+              <rect width="400" height="300" fill="url(#magBg)"/>
+              <!-- Low wall -->
+              <rect x="0" y="220" width="400" height="80" fill="#3a3020" opacity="0.9"/>
+              <!-- Day sky outside through the "opening" -->
+              <rect x="50" y="30" width="300" height="190" fill="url(#daySky)" opacity="0.9"/>
+              <!-- Clouds in daytime scene -->
+              <ellipse cx="140" cy="80" rx="50" ry="25" fill="white" opacity="0.8"/>
+              <ellipse cx="165" cy="75" rx="35" ry="20" fill="white" opacity="0.9"/>
+              <ellipse cx="118" cy="82" rx="28" ry="18" fill="white" opacity="0.85"/>
+              <ellipse cx="280" cy="95" rx="45" ry="22" fill="white" opacity="0.75"/>
+              <ellipse cx="302" cy="90" rx="30" ry="18" fill="white" opacity="0.85"/>
+              <!-- Man in bowler hat - Magritte's recurring figure -->
+              <!-- Suit/coat - dark, precise -->
+              <path d="M 145 150 Q 148 130 155 120 L 245 120 Q 252 130 255 150 L 258 220 L 142 220 Z" fill="#2a2a30" opacity="0.95"/>
+              <!-- White shirt collar -->
+              <rect x="188" y="118" width="24" height="12" fill="#e8e0d8" opacity="0.9"/>
+              <!-- Tie -->
+              <polygon points="195,130 205,130 208,175 192,175" fill="#1a3a5a" opacity="0.9"/>
+              <!-- Hands - properly dressed, holding apple -->
+              <ellipse cx="152" cy="188" rx="10" ry="12" fill="#c4956a" opacity="0.8"/>
+              <ellipse cx="248" cy="190" rx="10" ry="12" fill="#c4956a" opacity="0.8"/>
+              <!-- Apple floating in front of face - THE classic Magritte -->
+              <circle cx="200" cy="112" rx="35" ry="38" fill="#3a7a2a"/>
+              <circle cx="200" cy="112" r="35" fill="#4a8a30" opacity="0.9"/>
+              <!-- Apple highlight -->
+              <ellipse cx="188" cy="98" rx="12" ry="8" fill="#5a9a40" opacity="0.6"/>
+              <!-- Apple stem -->
+              <rect x="198" y="76" width="4" height="8" rx="2" fill="#2a1808" opacity="0.9"/>
+              <!-- Apple leaf -->
+              <path d="M 202 78 Q 215 72 218 80 Q 212 86 202 82 Z" fill="#3a6a20" opacity="0.85"/>
+              <!-- Bowler hat above where head should be (behind apple) -->
+              <ellipse cx="200" cy="75" rx="45" ry="12" fill="#1a1a20" opacity="0.95"/>
+              <path d="M 155 75 Q 155 50 200 48 Q 245 50 245 75 Z" fill="#1a1a20" opacity="0.95"/>
+              <ellipse cx="200" cy="48" rx="28" ry="8" fill="#222228" opacity="0.9"/>
+              <!-- Plaque at bottom (text reference) -->
+              <rect x="100" y="235" width="200" height="35" fill="#1a1808" opacity="0.6"/>
+              <text x="200" y="248" text-anchor="middle" fill="rgba(245,240,232,0.6)" font-size="9" font-family="serif" font-style="italic">Ceci n'est pas une pomme.</text>
+              <text x="200" y="262" text-anchor="middle" fill="rgba(201,168,76,0.5)" font-size="7" font-family="monospace">(This is not an apple.)</text>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Son of Man · Magritte Style, 1964</text>
+            </svg>
+          </div>
+          <div class="painting-caption">THE SON OF MAN — Magritte Style, 1964</div>
+          <div class="painting-desc">Magritte painted himself in a bowler hat with an apple floating before his face. He wrote: "Everything we see hides another thing. We always want to see what is hidden by what we see." The painting is philosophically precise — and demands you think, not just feel. His great pipe painting bore the text: "This is not a pipe." It isn't. It's a picture of a pipe.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ ERA VII: ABSTRACT EXPRESSIONISM & POP ════════════════════════════════════════ -->
+<section style="background: #080604; padding: 5rem 0;">
+  <div class="era">
+    <div class="era-header">
+      <div class="era-number">VII</div>
+      <div class="era-title-block">
+        <h2>Abstract Expressionism & Pop Art</h2>
+        <div class="date-range">1940s – 1970s · POLLOCK · ROTHKO · WARHOL · LICHTENSTEIN</div>
+      </div>
+    </div>
+    <div class="era-body">
+      <div class="era-text">
+        <p>After World War II, the center of the art world shifted from Paris to New York. The Americans brought a new energy — larger, louder, more physical.</p>
+        <p>Jackson Pollock laid his canvases on the floor and poured, dripped, and flung paint across them while walking around the edges. He was influenced by Jungian psychology and Native American sand painting — the idea that the act of creating was itself the artwork. The finished painting was a record of his body moving through space. He called it "action painting." When critics asked how he knew when a painting was finished, he said: "I know."</p>
+        <p>Mark Rothko painted large rectangles of luminous color, floating against each other — no imagery, no narrative. But stand before a large Rothko for five minutes and something happens: the colors begin to breathe, to pulse, to draw you in. People have reported weeping before them without knowing why. Rothko believed he was painting "basic human emotions — tragedy, ecstasy, doom." He refused to let his paintings hang in restaurants. He said they required contemplation, not decoration.</p>
+        <p class="highlight">Then Andy Warhol turned it all inside out. He printed a Campbell's soup can. He silk-screened Marilyn Monroe's face in garish colors, repeated 50 times. He said: "I want to be a machine." Pop Art demolished the boundary between "high" art and commercial culture — and in doing so, asked the most uncomfortable question: was there ever a real difference?</p>
+        <p>Warhol understood that in a mass-media, consumer society, the truly radical act was not to flee commerce but to mirror it back with deadpan precision until you couldn't tell worship from critique. His factory produced art like a factory. It was genius or cynicism or both.</p>
+      </div>
+      <div class="painting-showcase">
+        <!-- Pollock drip painting -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Pollock: action painting, drip style -->
+              <rect width="400" height="300" fill="#0a0806"/>
+              <!-- Complex web of dripped paint lines -->
+              <!-- White drips -->
+              <path d="M 20 50 Q 60 80 100 40 Q 140 0 180 60 Q 220 120 260 80 Q 300 40 340 90 Q 370 130 400 100" stroke="#e8e0d8" stroke-width="2.5" fill="none" opacity="0.8" stroke-linecap="round"/>
+              <path d="M 0 130 Q 50 100 90 150 Q 130 200 170 150 Q 210 100 250 140 Q 290 180 350 140 Q 380 120 400 150" stroke="#f0e8e0" stroke-width="2" fill="none" opacity="0.7"/>
+              <path d="M 30 220 Q 80 200 120 240 Q 160 280 200 240 Q 240 200 280 230 Q 320 260 380 220" stroke="#e8e0d8" stroke-width="1.5" fill="none" opacity="0.65"/>
+              <!-- Black drips -->
+              <path d="M 0 80 Q 40 120 80 80 Q 120 40 160 100 Q 200 160 240 110 Q 280 60 320 110 Q 360 160 400 120" stroke="#1a1208" stroke-width="4" fill="none" opacity="0.9"/>
+              <path d="M 0 180 Q 50 160 100 200 Q 150 240 200 200 Q 250 160 300 200 Q 340 230 400 200" stroke="#0a0806" stroke-width="3.5" fill="none" opacity="0.85"/>
+              <path d="M 50 10 Q 80 60 70 100 Q 60 140 90 180 Q 120 220 110 270 Q 108 290 120 300" stroke="#1a1208" stroke-width="3" fill="none" opacity="0.8"/>
+              <path d="M 200 0 Q 210 50 195 100 Q 180 150 200 200 Q 220 250 205 300" stroke="#0a0806" stroke-width="4" fill="none" opacity="0.85"/>
+              <path d="M 360 0 Q 345 50 360 100 Q 375 150 355 200 Q 340 240 360 290" stroke="#1a1208" stroke-width="3" fill="none" opacity="0.8"/>
+              <!-- Red drips -->
+              <path d="M 0 60 Q 60 90 100 60 Q 150 25 200 80 Q 240 130 290 90 Q 330 58 400 80" stroke="#8a1a0a" stroke-width="2" fill="none" opacity="0.75"/>
+              <path d="M 100 250 Q 150 230 190 265 Q 230 295 280 260 Q 320 235 370 255" stroke="#7a1808" stroke-width="1.8" fill="none" opacity="0.65"/>
+              <!-- Yellow drips -->
+              <path d="M 0 250 Q 60 230 100 260 Q 150 295 200 260 Q 240 230 290 255 Q 340 278 400 255" stroke="#c8a020" stroke-width="1.8" fill="none" opacity="0.65"/>
+              <path d="M 150 20 Q 180 60 165 100 Q 150 140 175 180" stroke="#c09818" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <!-- Blue drips -->
+              <path d="M 0 30 Q 70 60 100 30 Q 140 -5 200 40 Q 250 80 300 50 Q 340 25 400 50" stroke="#1a3a7a" stroke-width="2" fill="none" opacity="0.6"/>
+              <!-- Drip pools / spots -->
+              <circle cx="180" cy="80" r="5" fill="#e8e0d8" opacity="0.5"/>
+              <circle cx="300" cy="145" r="4" fill="#1a1208" opacity="0.8"/>
+              <circle cx="90" cy="200" r="6" fill="#8a1a0a" opacity="0.5"/>
+              <circle cx="350" cy="90" r="3" fill="#c8a020" opacity="0.6"/>
+              <!-- More texture drips short -->
+              <line x1="50" y1="50" x2="65" y2="80" stroke="#e8e0d8" stroke-width="1" opacity="0.5"/>
+              <line x1="250" y1="180" x2="240" y2="210" stroke="#e8e0d8" stroke-width="1" opacity="0.45"/>
+              <line x1="130" y1="120" x2="125" y2="145" stroke="#1a1208" stroke-width="2" opacity="0.7"/>
+              <text x="200" y="293" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Action Painting · Pollock Style, 1950</text>
+            </svg>
+          </div>
+          <div class="painting-caption">ACTION PAINTING — Pollock Style, c.1950</div>
+          <div class="painting-desc">The canvas was on the floor. Pollock walked around it, dripping and flinging paint with sticks, hardened brushes, and cans. No brushstroke touched the canvas. The painting records the physical energy of his moving body. Critics called it chaos. Pollock called it "pure harmony." Scientists later found his drip patterns follow fractal geometry found in nature.</div>
+        </div>
+
+        <!-- Warhol style pop art -->
+        <div class="painting-frame">
+          <div class="painting-visual">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Warhol: grid of repeated faces in garish colors -->
+              <!-- 4 panels like Marilyn Monroe series -->
+              <!-- Panel 1: top-left -->
+              <rect x="0" y="0" width="200" height="150" fill="#f0b020"/>
+              <ellipse cx="100" cy="65" rx="50" ry="58" fill="#c07040"/><!-- face -->
+              <path d="M 50 30 Q 100 10 150 30 Q 150 55 100 50 Q 50 55 50 30 Z" fill="#f0d020"/><!-- blonde hair -->
+              <path d="M 50 65 Q 40 50 38 65 Q 40 80 50 75 Z" fill="#f0d020" opacity="0.7"/><!-- side hair -->
+              <path d="M 150 65 Q 162 52 162 65 Q 160 80 150 75 Z" fill="#f0d020" opacity="0.7"/>
+              <ellipse cx="82" cy="62" rx="10" ry="7" fill="#4a2a6a"/><!-- eye left -->
+              <ellipse cx="118" cy="62" rx="10" ry="7" fill="#4a2a6a"/><!-- eye right -->
+              <path d="M 78" cy="62" rx="4" ry="3" fill="#2a1a3a"/>
+              <ellipse cx="78" cy="62" rx="4" ry="3" fill="#2a1a3a"/>
+              <ellipse cx="118" cy="62" rx="4" ry="3" fill="#2a1a3a"/>
+              <path d="M 80 90 Q 100 95 120 90" stroke="#e02040" stroke-width="4" fill="none" stroke-linecap="round"/><!-- mouth -->
+              <path d="M 82 90 Q 100 98 118 90 Q 100 108 82 90 Z" fill="#e02040" opacity="0.7"/>
+              <!-- eyebrows -->
+              <path d="M 72 53 Q 82 48 92 53" stroke="#2a1a0a" stroke-width="2.5" fill="none"/>
+              <path d="M 108 53 Q 118 48 128 53" stroke="#2a1a0a" stroke-width="2.5" fill="none"/>
+              <!-- Panel 2: top-right -->
+              <rect x="200" y="0" width="200" height="150" fill="#2a8a5a"/>
+              <ellipse cx="300" cy="65" rx="50" ry="58" fill="#e09060"/>
+              <path d="M 250 30 Q 300 10 350 30 Q 350 55 300 50 Q 250 55 250 30 Z" fill="#f0e020"/>
+              <path d="M 250 65 Q 238 50 238 65 Q 240 80 250 75 Z" fill="#f0e020" opacity="0.7"/>
+              <path d="M 350 65 Q 362 52 362 65 Q 360 80 350 75 Z" fill="#f0e020" opacity="0.7"/>
+              <ellipse cx="282" cy="62" rx="10" ry="7" fill="#2a2060"/>
+              <ellipse cx="318" cy="62" rx="10" ry="7" fill="#2a2060"/>
+              <ellipse cx="282" cy="62" rx="4" ry="3" fill="#0a0820"/>
+              <ellipse cx="318" cy="62" rx="4" ry="3" fill="#0a0820"/>
+              <path d="M 280 90 Q 300 95 320 90 Q 300 108 280 90 Z" fill="#d01830" opacity="0.8"/>
+              <path d="M 272 53 Q 282 48 292 53" stroke="#1a0808" stroke-width="2.5" fill="none"/>
+              <path d="M 308 53 Q 318 48 328 53" stroke="#1a0808" stroke-width="2.5" fill="none"/>
+              <!-- Panel 3: bottom-left -->
+              <rect x="0" y="150" width="200" height="150" fill="#c02080"/>
+              <ellipse cx="100" cy="215" rx="50" ry="58" fill="#d08050"/>
+              <path d="M 50 180 Q 100 160 150 180 Q 150 205 100 200 Q 50 205 50 180 Z" fill="#f8f010"/>
+              <ellipse cx="82" cy="212" rx="10" ry="7" fill="#1a4a8a"/>
+              <ellipse cx="118" cy="212" rx="10" ry="7" fill="#1a4a8a"/>
+              <ellipse cx="82" cy="212" rx="4" ry="3" fill="#0a1a4a"/>
+              <ellipse cx="118" cy="212" rx="4" ry="3" fill="#0a1a4a"/>
+              <path d="M 80 240 Q 100 245 120 240 Q 100 258 80 240 Z" fill="#e82050" opacity="0.9"/>
+              <path d="M 72 203 Q 82 198 92 203" stroke="#2a0808" stroke-width="2.5" fill="none"/>
+              <path d="M 108 203 Q 118 198 128 203" stroke="#2a0808" stroke-width="2.5" fill="none"/>
+              <!-- Panel 4: bottom-right - desaturated/grey -->
+              <rect x="200" y="150" width="200" height="150" fill="#888888"/>
+              <ellipse cx="300" cy="215" rx="50" ry="58" fill="#b0b0b0"/>
+              <path d="M 250 180 Q 300 160 350 180 Q 350 205 300 200 Q 250 205 250 180 Z" fill="#d0d0d0"/>
+              <ellipse cx="282" cy="212" rx="10" ry="7" fill="#555555"/>
+              <ellipse cx="318" cy="212" rx="10" ry="7" fill="#555555"/>
+              <ellipse cx="282" cy="212" rx="4" ry="3" fill="#2a2a2a"/>
+              <ellipse cx="318" cy="212" rx="4" ry="3" fill="#2a2a2a"/>
+              <path d="M 280 240 Q 300 245 320 240 Q 300 258 280 240 Z" fill="#888888" opacity="0.9"/>
+              <path d="M 272 203 Q 282 198 292 203" stroke="#444444" stroke-width="2.5" fill="none"/>
+              <path d="M 308 203 Q 318 198 328 203" stroke="#444444" stroke-width="2.5" fill="none"/>
+              <!-- Grid lines dividing panels -->
+              <line x1="200" y1="0" x2="200" y2="300" stroke="#0a0806" stroke-width="3"/>
+              <line x1="0" y1="150" x2="400" y2="150" stroke="#0a0806" stroke-width="3"/>
+              <text x="200" y="296" text-anchor="middle" fill="rgba(10,8,6,0.5)" font-size="7" font-family="monospace">STYLIZED IMPRESSION · Marilyn Diptych · Warhol Style, 1962</text>
+            </svg>
+          </div>
+          <div class="painting-caption">MARILYN DIPTYCH — Warhol Style, 1962</div>
+          <div class="painting-desc">Warhol made 50 silk-screen reproductions of the same publicity photo of Marilyn Monroe, made just after her death. Left half: bright, garish colors — the celebrity machine. Right half: fading into grey — the human being disappearing. It looks like a factory product. It IS a factory product. That's precisely the point.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ DIRECT COMPARISON ════════════════════════════════════════ -->
+<section class="comparison-section">
+  <h2>The Same Subject — 500 Years Apart</h2>
+  <p class="comp-sub">A human face. The most painted subject in history. Here is what changed.</p>
+
+  <div class="comp-grid">
+    <!-- Renaissance face -->
+    <div class="comp-card">
+      <div class="comp-visual">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="compFace1" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#d4a870"/>
+              <stop offset="55%" stop-color="#9a6a35"/>
+              <stop offset="90%" stop-color="#4a2a10"/>
+              <stop offset="100%" stop-color="#1a0a04"/>
+            </radialGradient>
+            <radialGradient id="compBg1" cx="30%" cy="25%" r="70%">
+              <stop offset="0%" stop-color="#3a2a15"/>
+              <stop offset="100%" stop-color="#080604"/>
+            </radialGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#compBg1)"/>
+          <path d="M 30 350 Q 30 300 50 280 Q 80 260 150 255 Q 220 260 250 280 Q 268 300 268 350 L 268 400 L 30 400 Z" fill="#1a1208" opacity="0.9"/>
+          <path d="M 60 340 Q 70 318 90 310 L 215 310 Q 234 318 240 340" fill="#e8e0d0" opacity="0.8"/>
+          <ellipse cx="150" cy="185" rx="72" ry="82" fill="url(#compFace1)"/>
+          <path d="M 205 103 Q 222 120 222 185 Q 222 248 208 262 Q 222 248 224 185 Q 224 120 215 105 Z" fill="#1a0804" opacity="0.5"/>
+          <ellipse cx="132" cy="178" rx="16" ry="9" fill="#1a1008"/>
+          <circle cx="132" cy="176" r="7" fill="#0a0806"/>
+          <circle cx="130" cy="174" r="2.5" fill="#c8a040" opacity="0.4"/>
+          <ellipse cx="170" cy="181" rx="15" ry="8" fill="#1a1008"/>
+          <circle cx="170" cy="179" r="6" fill="#0a0806"/>
+          <circle cx="168" cy="177" r="2" fill="#c8a040" opacity="0.4"/>
+          <path d="M 145 205 Q 150 218 155 205 Q 152 228 148 228 Z" fill="#8a5a30" opacity="0.55"/>
+          <path d="M 130 240 Q 150 248 170 240" stroke="#5a2a10" stroke-width="2.5" fill="none" opacity="0.8"/>
+          <path d="M 78 103 Q 150 85 222 103 Q 222 75 185 68 Q 150 63 115 68 Q 90 75 78 103 Z" fill="#1a1008" opacity="0.95"/>
+          <path d="M 78 103 Q 65 120 62 155 Q 58 190 68 228" fill="#0a0806" stroke="#0a0806" stroke-width="14" opacity="0.9"/>
+          <path d="M 222 103 Q 235 120 238 155 Q 242 190 232 228" fill="#0a0806" stroke="#0a0806" stroke-width="12" opacity="0.9"/>
+          <ellipse cx="128" cy="162" rx="20" ry="6" fill="#2a1808" opacity="0.7"/>
+          <ellipse cx="171" cy="164" rx="18" ry="5" fill="#2a1808" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="comp-label">
+        <h4>Renaissance Portrait — c.1480</h4>
+        <p>Sfumato blending, anatomical precision, psychological depth through realistic rendering. The goal: make you believe a real person is before you.</p>
+      </div>
+    </div>
+
+    <div class="comp-vs">⟷</div>
+
+    <!-- Cubist face -->
+    <div class="comp-card">
+      <div class="comp-visual">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="400" fill="#1a1518"/>
+          <polygon points="0,0 160,0 130,400 0,400" fill="#252015" opacity="0.9"/>
+          <polygon points="160,0 300,0 300,400 170,400" fill="#1a1a22" opacity="0.9"/>
+          <polygon points="90,50 210,45 225,240 80,248" fill="#c4956a" opacity="0.88"/>
+          <polygon points="210,45 255,75 255,240 225,240" fill="#9a6a40" opacity="0.85"/>
+          <polygon points="55,78 90,50 80,248 48,225" fill="#aa7850" opacity="0.8"/>
+          <polygon points="105,78 148,72 152,108 102,112" fill="#2a2030" opacity="0.9"/>
+          <ellipse cx="128" cy="90" rx="10" ry="7" fill="#0a0818"/>
+          <ellipse cx="215" cy="100" rx="13" ry="8" fill="#2a2030" opacity="0.9" transform="rotate(-15,215,100)"/>
+          <circle cx="215" cy="98" r="5" fill="#0a0818"/>
+          <polygon points="148,112 162,152 138,160 128,140 136,112" fill="#8a5a30" opacity="0.8"/>
+          <polygon points="100,175 148,170 155,190 108,195" fill="#8a2a15" opacity="0.9"/>
+          <polygon points="90,50 210,45 218,20 148,15 88,22" fill="#1a1008" opacity="0.95"/>
+          <polygon points="255,75 280,105 278,140 255,128 255,78" fill="#0e0806" opacity="0.9"/>
+          <polygon points="100,245 175,240 175,275 100,280" fill="#c4956a" opacity="0.8"/>
+          <polygon points="175,240 255,245 255,278 175,275" fill="#b48858" opacity="0.75"/>
+          <line x1="110" y1="245" x2="115" y2="278" stroke="#8a5a30" stroke-width="1" opacity="0.5"/>
+          <line x1="140" y1="242" x2="143" y2="277" stroke="#8a5a30" stroke-width="1" opacity="0.4"/>
+          <polygon points="48,340 100,330 100,380 48,390" fill="#2a1808" opacity="0.6"/>
+          <line x1="55" y1="345" x2="95" y2="338" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
+          <line x1="57" y1="356" x2="97" y2="349" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="comp-label">
+        <h4>Cubist Portrait — c.1937</h4>
+        <p>Multiple viewpoints simultaneously. Geometric deconstruction. The face is analyzed, not observed. The goal: show how a mind knows a face, not how an eye sees it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second comparison: Baroque vs Abstract -->
+  <div style="max-width:1100px; margin: 0 auto;">
+    <h3 style="font-family:'Playfair Display',serif; font-style:italic; text-align:center; color:var(--gold-light); font-size:1.5rem; margin-bottom:2rem;">Light — Then and Now</h3>
+  </div>
+  <div class="comp-grid" style="max-width:1100px; margin: 0 auto;">
+    <div class="comp-card">
+      <div class="comp-visual">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="vermLight" cx="20%" cy="25%" r="60%">
+              <stop offset="0%" stop-color="#e8d8b0" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#a08040" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#000000" stop-opacity="0.9"/>
+            </radialGradient>
+          </defs>
+          <rect width="300" height="400" fill="#0e0c08"/>
+          <rect width="300" height="400" fill="url(#vermLight)"/>
+          <!-- Vermeer domestic interior: woman reading letter -->
+          <rect x="15" y="15" width="5" height="250" fill="#5a4520" opacity="0.8"/><!-- window frame -->
+          <rect x="15" y="15" width="80" height="5" fill="#5a4520" opacity="0.8"/>
+          <rect x="15" y="95" width="80" height="3" fill="#5a4520" opacity="0.6"/>
+          <rect x="90" y="15" width="5" height="250" fill="#5a4520" opacity="0.8"/>
+          <!-- Table cloth -->
+          <path d="M 80 280 Q 100 265 220 262 Q 260 265 275 280 L 275 400 L 80 400 Z" fill="#2a4a2a" opacity="0.7"/>
+          <!-- Figure reading letter -->
+          <path d="M 90 380 Q 95 300 108 260 Q 120 230 135 220 L 195 220 Q 210 232 220 260 Q 228 300 230 380 Z" fill="#1a2a4a" opacity="0.9"/><!-- dress/skirt -->
+          <path d="M 118 220 Q 125 190 138 178 Q 150 168 165 170 Q 178 172 185 185 Q 192 200 190 220 Z" fill="#c4906a" opacity="0.9"/><!-- torso/bust lit -->
+          <!-- White collar -->
+          <path d="M 118 222 Q 135 215 155 213 Q 172 215 190 222" stroke="#e8e0d0" stroke-width="4" fill="none" opacity="0.8"/>
+          <!-- Head slightly bowed reading -->
+          <ellipse cx="155" cy="152" rx="30" ry="35" fill="#c4906a"/>
+          <!-- Hair up -->
+          <path d="M 125 138 Q 130 115 155 112 Q 178 115 182 135 Q 175 120 155 118 Q 133 120 128 138 Z" fill="#2a1808" opacity="0.95"/>
+          <!-- Letter in hands -->
+          <rect x="135" y="195" width="38" height="28" rx="2" fill="#e8ddc0" opacity="0.9" transform="rotate(-8,154,209)"/>
+          <!-- Light on letter -->
+          <rect x="137" y="197" width="34" height="24" rx="1" fill="#f0e8cc" opacity="0.5" transform="rotate(-8,154,209)"/>
+          <!-- Map on wall behind (Vermeer always had a map) -->
+          <rect x="120" y="30" width="160" height="95" fill="#8a7840" opacity="0.35"/>
+          <rect x="122" y="32" width="156" height="91" fill="#9a8850" opacity="0.2"/>
+        </svg>
+      </div>
+      <div class="comp-label">
+        <h4>Woman Reading a Letter — Vermeer Style, c.1663</h4>
+        <p>Natural window light modeled on the figure with extraordinary subtlety. The entire painting is about the quality of morning light. Technically flawless. Emotionally hushed.</p>
+      </div>
+    </div>
+
+    <div class="comp-vs">⟷</div>
+
+    <!-- Rothko color field -->
+    <div class="comp-card">
+      <div class="comp-visual">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="rothTop" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#8a2020"/>
+              <stop offset="100%" stop-color="#5a0e0e"/>
+            </radialGradient>
+            <radialGradient id="rothMid" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#c03030"/>
+              <stop offset="100%" stop-color="#8a1818"/>
+            </radialGradient>
+            <radialGradient id="rothBot" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stop-color="#3a0808"/>
+              <stop offset="100%" stop-color="#200404"/>
+            </radialGradient>
+          </defs>
+          <!-- Rothko: No. 61 style - color field -->
+          <rect width="300" height="400" fill="#2a0808"/>
+          <!-- Top rectangle - deep crimson -->
+          <rect x="20" y="20" width="260" height="140" fill="url(#rothTop)"/>
+          <!-- Subtle edge blurring - Rothko's characteristic soft edges -->
+          <rect x="20" y="155" width="260" height="8" fill="#6a1010" opacity="0.5"/>
+          <rect x="20" y="150" width="260" height="5" fill="#7a1818" opacity="0.3"/>
+          <!-- Middle rectangle - brighter red/orange -->
+          <rect x="20" y="163" width="260" height="130" fill="url(#rothMid)"/>
+          <!-- Bottom rectangle - near black -->
+          <rect x="20" y="288" width="260" height="92" fill="url(#rothBot)"/>
+          <!-- Soft transition between rectangles -->
+          <rect x="20" y="285" width="260" height="10" fill="#5a0e0e" opacity="0.4"/>
+          <rect x="20" y="290" width="260" height="8" fill="#3a0808" opacity="0.5"/>
+          <!-- Outer dark border -->
+          <rect x="0" y="0" width="20" height="400" fill="#1a0404" opacity="0.8"/>
+          <rect x="280" y="0" width="20" height="400" fill="#1a0404" opacity="0.8"/>
+          <rect x="0" y="0" width="300" height="20" fill="#1a0404" opacity="0.8"/>
+          <rect x="0" y="380" width="300" height="20" fill="#1a0404" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="comp-label">
+        <h4>Color Field Painting — Rothko Style, c.1961</h4>
+        <p>No object, no figure, no narrative. Three rectangles of red. Stand before a large Rothko for five minutes — the colors begin to breathe. People have wept without knowing why. This IS light. Just not observed light.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ QUOTE ════════════════════════════════════════ -->
+<div class="quote-divider">
+  <blockquote>Every child is an artist. The problem is how to remain an artist once we grow up.</blockquote>
+  <cite>— Pablo Picasso</cite>
+</div>
+
+<!-- ════════════════════════════════════════ TIMELINE ════════════════════════════════════════ -->
+<section class="timeline-section">
+  <h2>The Full Arc — At a Glance</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="t-date">1400s–1600s</div>
+      <h3>Renaissance — The Summit of Skill</h3>
+      <p>Masaccio, Leonardo, Michelangelo, Raphael. Perfect command of light, anatomy, perspective. Shared purpose: honor God and capture reality. An apprentice trains 15 years before touching a major surface. Art is collective, disciplined, and transcendently beautiful.</p>
+      <span class="t-tag tag-beauty">PEAK SHARED BEAUTY</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1600s–1750s</div>
+      <h3>Baroque & Rococo — Drama, then Decoration</h3>
+      <p>Caravaggio's tenebrism shocks the Church with dirty-footed apostles. Rembrandt paints the psychology of aging. Vermeer captures morning light with impossible subtlety. Then Rococo frilliness signals aristocratic decadence. Still masterful throughout.</p>
+      <span class="t-tag tag-beauty">MASTERFUL · INTENSE</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1839</div>
+      <h3>📷 Photography — The Crisis Begins</h3>
+      <p>A machine reproduces reality in seconds. Painters must find a new purpose. Every subsequent art movement is an answer to the question: what can painting do that photography cannot?</p>
+      <span class="t-tag tag-shift">THE GREAT DISRUPTION</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1860s–1890s</div>
+      <h3>Impressionism — How Light Feels</h3>
+      <p>Monet, Renoir, Degas, Pissarro. Rejected from the official Salon. Paint how the eye actually perceives light — in patches and flickers, not sharp outlines. Scandalous in 1874. Now the most beloved paintings in the world.</p>
+      <span class="t-tag tag-shift">BEAUTIFUL · SUBJECTIVE</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1886–1910s</div>
+      <h3>Post-Impressionism — Art Goes Inward</h3>
+      <p>Van Gogh paints emotional truth. Cézanne paints geometric structure. Gauguin paints primitivist escape. The door to abstraction opens a crack. Individually brilliant; collectively, they broke art's connection to optical reality forever.</p>
+      <span class="t-tag tag-shift">GENIUS · INCREASINGLY PERSONAL</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1907–1930s</div>
+      <h3>Cubism & Abstraction — Painting Ideas</h3>
+      <p>Picasso and Braque: multiple viewpoints simultaneously. Kandinsky: pure abstract emotion with no subject at all. Mondrian: perfect grids. Art is now fully conceptual — about ideas of seeing, not seeing itself.</p>
+      <span class="t-tag tag-break">BREAKS FROM TRADITION</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1916–1923</div>
+      <h3>Dada — Art as Philosophical Bomb</h3>
+      <p>Post-WWI nihilism. Duchamp submits a urinal as "Fountain." The point: the art world is absurd, civilization is absurd, therefore art must be absurd. NOT incompetence — deliberate, devastating provocation that changed what "art" could mean.</p>
+      <span class="t-tag tag-break">INTENTIONAL DECONSTRUCTION</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1920s–1940s</div>
+      <h3>Surrealism — The Dream World</h3>
+      <p>Dalí, Magritte, Ernst, Kahlo. Access the unconscious mind. Hyper-realistic technique in service of impossible imagery. Dream logic rather than visual logic. Often technically brilliant — but depicting the impossible made to look real.</p>
+      <span class="t-tag tag-idea">DEEPLY CONCEPTUAL · OFTEN BEAUTIFUL</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1940s–1960s</div>
+      <h3>Abstract Expressionism & Pop Art</h3>
+      <p>Pollock drips paint from the floor — the gesture IS the art. Rothko's color fields move people to tears with no imagery. Warhol prints soup cans — commerce as art, art as commerce. Skill at rendering is now entirely optional.</p>
+      <span class="t-tag tag-break">CONCEPT OVER CRAFT</span>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">1960s–Today</div>
+      <h3>Contemporary Art — Anything, Anyone, Anywhere</h3>
+      <p>Damien Hirst: shark in formaldehyde. Banksy: shreds his own painting at auction. NFTs. AI-generated images. Conceptual installations. The question "Is this art?" IS the artwork. The art market rewards novelty, brand, and critical endorsement over craft.</p>
+      <span class="t-tag tag-idea">THE OPEN QUESTION</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ VERDICT ════════════════════════════════════════ -->
+<section class="verdict">
+  <div class="verdict-inner">
+    <h2>So — Did Something <em>Go Wrong?</em></h2>
+
+    <p>This is the most important question — and it deserves an honest answer, not a diplomatic one.</p>
+
+    <p><strong>The Renaissance was beautiful because four things aligned perfectly:</strong> a clear shared purpose (honor God and capture reality), an agreed standard of excellence (anatomical precision, perspective, chiaroscuro — all objectively measurable), a rigorous apprenticeship tradition that produced genuine mastery, and a public audience that could understand and judge what it was looking at. When you saw a Raphael, you didn't need a critic to explain it. You could see that it was extraordinary.</p>
+
+    <div class="answer-box">
+      The Renaissance artist asked: <em>"How can I paint this as perfectly as possible?"</em><br><br>
+      The modern artist asks: <em>"What is the idea I want to express — and does painting it even serve that idea?"</em>
+    </div>
+
+    <p>These are not the same question. Neither is objectively wrong. But the shift had real costs that the art world has been reluctant to acknowledge honestly.</p>
+
+    <h3>What Was Lost</h3>
+    <p>The shared language of beauty. The sense that art should reward the viewer's gaze with something beyond what ordinary life provides. The dignity of craft — the idea that the ability to make something extraordinary by hand, after years of discipline, is itself a form of honor. And most importantly: the <em>connection between artist and audience</em>. When most people enter a contemporary art gallery and feel confused, alienated, or vaguely fraudulent, the art world typically diagnoses this as the audience's failure to understand. This is a strange and arrogant position for what is supposed to be a communication medium.</p>
+
+    <h3>What Was Gained</h3>
+    <p>Art that challenges comfortable assumptions. Art that doesn't beautify suffering — that can represent the horror of war (Picasso's Guernica), the terror of the unconscious (Dalí), the violence of history (Goya). Art that experiments with new visual languages that have no precedent. The freedom to make work about anything — not just what a Church or king approves. Some of this is genuinely important. Kandinsky's discovery that pure abstraction could move people emotionally is as significant as any Renaissance breakthrough. Duchamp's philosophical provocation genuinely expanded what art could mean.</p>
+
+    <h3>What Genuinely Went Wrong</h3>
+    <p>The art market. When collectors, auction houses, and galleries began paying astronomical sums for conceptual work, the system became one where the <em>story around the art</em> — who made it, what critic endorsed it, which collection it came from — became more valuable than the object. This rewarded clever self-promotion as much as genuine vision. An artist with an excellent publicist and the right social connections could place fundamentally empty work in major institutions. Since there is no longer any agreed standard of excellence to measure against, no one can prove the emperor has no clothes — and saying so merely marks you as unsophisticated.</p>
+
+    <div class="gold-box">
+      Picasso's Cubism looked ugly and chaotic to 1910 audiences. Now we see its structural genius. Some contemporary art that looks meaningless today will be understood as visionary in 100 years. But not all of it — and possibly not most of it. The art world currently has no reliable filter for which is which. That is the real problem.
+    </div>
+
+    <h3>The Question Behind Your Question</h3>
+    <p>You are not wrong to love Renaissance art deeply and feel alienated by much contemporary work. That is not ignorance — it is a legitimate aesthetic and philosophical position that many serious thinkers share, including artists. Roger Scruton, the philosopher, spent years making this argument. Tom Wolfe wrote a devastating satirical book about the contemporary art world called <em>The Painted Word</em>, arguing that modern art had become incomprehensible without the accompanying text of critical theory — that the theory had replaced the art.</p>
+    <p>What's worth understanding is <em>why</em> the shift happened — not to accept everything that followed as equally valid, but to see clearly which modern work genuinely grapples with something real, and which is dressed-up emptiness given a philosophical veneer after the fact.</p>
+    <p>The Renaissance masterworks are extraordinary because the people who made them had devoted their entire lives to the discipline of making them. They earned their beauty through decades of effort. The question to ask of any work of art, old or new, is still the same one: <em>Did someone put themselves completely into this? Does it offer me something I could not have found without it?</em></p>
+    <p>Sometimes the answer is yes, even for a Rothko rectangle. Often it is no, for a shark in formaldehyde. Trust your eye, your feeling, and your judgment. The history of art gives you more than enough material to calibrate them.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+  <p>THE ARC OF ART · RENAISSANCE TO MODERNITY · A VISUAL & INTELLECTUAL JOURNEY</p>
+  <p style="margin-top:0.5rem; font-size:0.65rem; opacity:0.5;">All paintings are original stylized impressions created to illustrate artistic styles and techniques</p>
+</section>
+
+</body>
+</html>
