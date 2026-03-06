@@ -9,7 +9,6 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════ NAV ══════════════════════════════ -->
 <nav class="nav">
   <div class="nav-logo">
     Studiolo
@@ -28,7 +27,6 @@
   </div>
 </nav>
 
-<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -41,7 +39,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════ ABOUT ══════════════════════════════ -->
 <section class="section" id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -85,7 +82,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════ ART ══════════════════════════════ -->
 <section class="section" id="art">
   <div class="section-inner">
     <div class="section-label" style="color:var(--art);">Art & Art History</div>
@@ -93,7 +89,6 @@
     <div class="divider" style="background:var(--art);"></div>
     <p class="section-intro reveal">From the breathtaking mastery of the Renaissance to the deliberate chaos of Modernism — why did we build the most beautiful visual tradition in history, and then dismantle it?</p>
 
-    <!-- Featured Article -->
     <div class="article-card reveal">
       <div class="article-card-visual">
         <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
@@ -109,10 +104,8 @@
             </radialGradient>
           </defs>
           <rect width="400" height="360" fill="url(#cardBg)"/>
-          <!-- Grid lines suggestion -->
           <line x1="200" y1="0" x2="200" y2="360" stroke="rgba(201,168,76,0.05)" stroke-width="1"/>
           <line x1="0" y1="180" x2="400" y2="180" stroke="rgba(201,168,76,0.05)" stroke-width="1"/>
-          <!-- Renaissance half -->
           <ellipse cx="110" cy="155" rx="55" ry="65" fill="url(#cardFace)"/>
           <path d="M 145 90 Q 165 100 165 155 Q 165 210 148 220 Q 165 208 167 155 Q 167 100 158 92 Z" fill="#1a0804" opacity="0.5"/>
           <ellipse cx="93" cy="148" rx="12" ry="8" fill="#1a1008"/>
@@ -121,7 +114,6 @@
           <circle cx="128" cy="149" r="4.5" fill="#080502"/>
           <path d="M 95 190 Q 110 196 126 190" stroke="#5a2a10" stroke-width="2" fill="none" opacity="0.8"/>
           <path d="M 55 90 Q 110 72 165 90 Q 165 65 130 58 Q 110 54 90 58 Q 70 65 55 90 Z" fill="#1a1008" opacity="0.95"/>
-          <!-- Cubist half -->
           <polygon points="220,90 300,85 314,225 210,230" fill="#c4956a" opacity="0.85"/>
           <polygon points="300,85 340,110 340,225 314,225" fill="#9a6a40" opacity="0.8"/>
           <polygon points="180,115 220,90 210,230 175,212" fill="#aa7850" opacity="0.78"/>
@@ -132,11 +124,8 @@
           <polygon points="242,155 258,185 238,192 228,175" fill="#8a5a30" opacity="0.8"/>
           <polygon points="222,208 262,203 268,218 228,222" fill="#8a2a15" opacity="0.85"/>
           <polygon points="185,112 300,85 308,60 200,55 183,68" fill="#1a1008" opacity="0.95"/>
-          <!-- Dividing line - timeline crack -->
           <line x1="196" y1="0" x2="200" y2="360" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" stroke-dasharray="6,4"/>
-          <!-- Gold glow at crack -->
           <rect x="193" y="0" width="7" height="360" fill="url(#cardBg)" opacity="0.3"/>
-          <!-- Labels -->
           <text x="100" y="290" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="8" font-family="monospace">RENAISSANCE</text>
           <text x="100" y="302" text-anchor="middle" fill="rgba(201,168,76,0.25)" font-size="7" font-family="monospace">1400–1600</text>
           <text x="295" y="290" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="8" font-family="monospace">MODERN</text>
@@ -153,7 +142,6 @@
       </div>
     </div>
 
-    <!-- Coming soon articles -->
     <div class="coming-soon-grid reveal">
       <div class="coming-card">
         <h4>Vermeer & the Camera Obscura</h4>
@@ -174,7 +162,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════ MUSIC ══════════════════════════════ -->
 <section class="section" id="music">
   <div class="section-inner">
     <div class="section-label" style="color:var(--music);">Music</div>
@@ -222,7 +209,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════ NATURAL HISTORY ══════════════════════════════ -->
 <section class="section" id="nature">
   <div class="section-inner">
     <div class="section-label" style="color:var(--nature);">Natural History</div>
@@ -295,10 +281,37 @@
         <p>Every photograph is also a document of entropy. The people in old photographs are all dead now. That knowledge transforms every image into something vertiginous — a moment stolen from time.</p>
       </div>
     </div>
+
+    <!-- ── BUS RIDE ARCHIVE CARD ── -->
+    <div class="divider" style="background:var(--photo); opacity:0.4; margin-top:4rem;"></div>
+    <div class="section-label" style="color:var(--photo); margin-top:3rem; margin-bottom:1.5rem;">Original Work</div>
+
+    <div class="article-card reveal" style="border-color:rgba(42,106,138,0.25); max-width:900px;">
+      <div class="article-card-visual" style="background:#060c11; min-height:320px; position:relative; overflow:hidden;">
+        <img
+          src="https://64.media.tumblr.com/d9175d08abd1fe6893e745c945f67b19524f4dad/9c66933edd34ef97-81/s1280x1920/d9175d08abd1fe6893e745c945f67b19524f4dad.jpg"
+          alt="Bus Ride Photographs Archive — ICTS Bengaluru"
+          style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0; filter:brightness(0.55) contrast(1.1);"
+          loading="lazy">
+        <div style="position:absolute; bottom:1.2rem; left:1.4rem; font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.18em; color:rgba(140,190,210,0.8); text-transform:uppercase;">Archive XV · ICTS, Bengaluru · 01.03.2026</div>
+      </div>
+      <div class="article-card-body" style="background:rgba(42,106,138,0.04);">
+        <div>
+          <div class="article-tag" style="color:var(--photo); border-color:rgba(42,106,138,0.4);">ONGOING SERIES · 18 ARCHIVES</div>
+          <h3 style="font-style:italic;">Bus Ride Photographs Archive</h3>
+          <p>An ongoing photographic study of Bengaluru shot entirely through bus windows — black and white, unposed, unedited. Each archive is one journey between ICTS and NCBS. No matter whether blurry or in focus, each image reveals a depth beneath the surface: layers beneath what was considered ordinary.</p>
+          <p style="margin-top:0.8rem; font-size:0.9rem; color:rgba(245,240,232,0.3);">150+ photographs · black & white · Bengaluru, 2026 –</p>
+        </div>
+        <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1rem;">
+          <a href="articles/bus-ride-archive.html" class="read-link" style="color:var(--photo); border-color:rgba(42,106,138,0.4);">VIEW GALLERY & STATEMENT →</a>
+          <a href="https://studies-of-natural-history.tumblr.com" target="_blank" class="read-link" style="color:rgba(42,106,138,0.5); border-color:rgba(42,106,138,0.2);">TUMBLR ARCHIVE ↗</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ══════════════════════════════ BOOKS ══════════════════════════════ -->
 <section class="section" id="books">
   <div class="section-inner">
     <div class="section-label" style="color:var(--books);">Books & Literature</div>
@@ -347,7 +360,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
 <footer class="footer">
   <div class="footer-logo">Studiolo</div>
   <div class="footer-tagline">JEEVAN KUMAR · SOLIVAGANT42 · A CABINET OF CURIOSITIES</div>
@@ -361,17 +373,15 @@
     <a href="#books">Books</a>
     <a href="https://github.com/solivagant42" target="_blank">GitHub ↗</a>
   </div>
-  <div class="footer-copy">© 2025 Jeevan Kumar · Built with curiosity, not frameworks</div>
+  <div class="footer-copy">© 2026 Jeevan Kumar · Built with curiosity, not frameworks</div>
 </footer>
 
 <script>
-  // Mobile nav toggle
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
   toggle.addEventListener('click', () => links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -383,8 +393,7 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Smooth active nav highlight
-  const sections = document.querySelectorAll('section[id], footer');
+  const sections = document.querySelectorAll('section[id]');
   const navItems = document.querySelectorAll('.nav-links a');
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
