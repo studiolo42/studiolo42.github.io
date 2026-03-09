@@ -5,13 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Arc of Art — Studiolo · Jeevan Kumar</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
 <style>
-  /* article-page overrides — nav spacing */
-  .hero { min-height: 0; padding-top: 8rem; padding-bottom: 4rem; }
-  body > .nav + * { padding-top: 0; }
-</style>
-<style>
+  /* ── PROGRESS BAR ── */
+  #progress-bar {
+    position: fixed; top: 0; left: 0; z-index: 300;
+    height: 2px; width: 0%;
+    background: linear-gradient(90deg,
+      rgba(201,168,76,0.1), #c9a84c, #e8cc7a, #c9a84c, rgba(201,168,76,0.1));
+    transition: width 0.08s linear;
+    pointer-events: none;
+  }
+
+  /* ── TOP NAV ── */
+  .top-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3rem;
+    background: rgba(14,11,7,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .nav-back {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.2em;
+    color: rgba(245,240,232,0.42); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: #c9a84c; }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-style: italic;
+    color: #c9a84c; text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .nav-genre {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem; letter-spacing: 0.2em;
+    color: #c9a84c; opacity: 0.6; text-transform: uppercase;
+  }
+
   :root {
     --gold: #c9a84c;
     --gold-light: #e8cc7a;
@@ -610,15 +642,29 @@
 </head>
 <body>
 <!-- NAV -->
-<nav class="nav"><a class="nav-logo" href="../index.html" style="text-decoration:none;">Studiolo<span>JEEVAN KUMAR</span></a><ul class="nav-links"><li><a href="../index.html#about">About</a></li><li><a href="../index.html#art">Art</a></li><li><a href="../index.html#music">Music</a></li><li><a href="../index.html#nature">Natural History</a></li><li><a href="../index.html#photography">Photography</a></li><li><a href="../index.html#books">Books</a></li></ul></nav>
-<div style="max-width:1200px;margin:0 auto;padding:6.5rem 2rem 0;"><a href="../index.html#art" class="article-nav-back">← Back to Studiolo</a></div>
+<div id="progress-bar"></div>
+
+<nav class="top-nav">
+  <a href="../index.html" class="nav-back">← Back to Studiolo</a>
+  <a href="../index.html" class="nav-brand">Studiolo</a>
+  <div class="nav-genre">Art &amp; Art History</div>
+</nav>
 
 <!-- ════════════════════════════════════════ HERO ════════════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-ornament">✦ A Visual & Intellectual Journey ✦</div>
-  <h1>The <em>Arc</em><br>of Art</h1>
-  <p class="hero-sub">From the breathtaking mastery of the Renaissance to the deliberate chaos of Modernism — what happened, why, and whether anything truly went wrong.</p>
-  <div class="scroll-hint">↓ SCROLL TO EXPLORE ↓</div>
+<section class="hero" style="min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:10rem 3rem 6rem; position:relative; background:radial-gradient(ellipse at 30% 40%, rgba(201,168,76,0.06) 0%, transparent 65%), linear-gradient(160deg,#1a1208 0%,#0e0b07 50%,#0a0704 100%); overflow:hidden;">
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(201,168,76,0.025) 80px,rgba(201,168,76,0.025) 81px),repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(201,168,76,0.025) 80px,rgba(201,168,76,0.025) 81px);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-2rem;right:-1rem;font-family:'Playfair Display',serif;font-size:clamp(18rem,38vw,36rem);font-weight:900;font-style:italic;color:rgba(201,168,76,0.03);line-height:1;pointer-events:none;user-select:none;">A</div>
+  <div style="position:relative;z-index:1;max-width:820px;">
+    <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.3em;color:#c9a84c;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s ease 0.2s forwards;">Art &amp; Art History · Essay</div>
+    <div style="width:60px;height:1px;background:#c9a84c;opacity:0.4;margin-bottom:2rem;animation:fadeUp 0.8s ease 0.35s forwards;"></div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:900;line-height:1.05;color:#f5f0e8;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s ease 0.4s forwards;">The <em style="color:#c9a84c;">Arc</em><br>of Art</h1>
+    <p style="font-size:clamp(1.1rem,1.8vw,1.35rem);color:rgba(245,240,232,0.42);line-height:1.75;max-width:640px;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease 0.6s forwards;">From the breathtaking mastery of the Renaissance to the deliberate chaos of Modernism — what happened, why, and whether anything truly went wrong.</p>
+    <div style="display:flex;gap:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s ease 0.8s forwards;">
+      <div style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;color:rgba(201,168,76,0.45);text-transform:uppercase;">Written by <span style="display:block;color:#c9a84c;font-size:0.62rem;margin-top:0.2rem;">Jeevan Kumar</span></div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;color:rgba(201,168,76,0.45);text-transform:uppercase;">Reading time <span style="display:block;color:#c9a84c;font-size:0.62rem;margin-top:0.2rem;">~25 minutes</span></div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;color:rgba(201,168,76,0.45);text-transform:uppercase;">Era <span style="display:block;color:#c9a84c;font-size:0.62rem;margin-top:0.2rem;">1400 – Present</span></div>
+    </div>
+  </div>
 </section>
 
 <!-- ════════════════════════════════════════ BIG QUESTION ════════════════════════════════════════ -->
@@ -1100,32 +1146,32 @@
   <p class="section-sub">Six forces collided in the 19th century and shattered the 400-year tradition of painted beauty</p>
   <div class="factors-grid">
     <div class="factor-card">
-      <span class="factor-icon"></span>
+      <span class="factor-icon">📷</span>
       <h3>Photography (1839)</h3>
       <p>When the daguerreotype appeared, it could capture a human face more accurately than ten years of painting training. The existential question was immediate: if a machine can perfectly reproduce reality, what is the purpose of a painter? Every subsequent art movement is an attempt to answer this.</p>
     </div>
     <div class="factor-card">
-      <span class="factor-icon"></span>
+      <span class="factor-icon">⚙️</span>
       <h3>The Industrial Revolution</h3>
       <p>Cities became grey, mechanical, and inhuman. The Romantics fled to nature and emotion in protest. Later, modernists embraced the machine aesthetic. Either way, the serene world of Renaissance painting felt remote and dishonest. Artists wanted to paint how the new world <em>felt</em> — fractured, fast, ugly, electric.</p>
     </div>
     <div class="factor-card">
-      <span class="factor-icon"></span>
+      <span class="factor-icon">🏛️</span>
       <h3>Loss of Religious Patronage</h3>
       <p>The Church had funded art for centuries with a clear directive: glorify God. As secularism rose, this shared mission collapsed. Artists became free — but free to do <em>what</em>? Without an agreed purpose, art splintered into hundreds of competing private visions. There was no longer any shared standard of success.</p>
     </div>
     <div class="factor-card">
-      <span class="factor-icon"></span>
+      <span class="factor-icon">💣</span>
       <h3>World War I (1914–1918)</h3>
       <p>Twenty million dead in industrial-scale slaughter. Classical beauty now felt like a lie — a prettified mask over the real face of civilization, which had just shown itself capable of factory-scale murder. Artists like the Dadaists responded with deliberate ugliness and absurdity as acts of moral honesty. If culture produced this, then culture must be destroyed.</p>
     </div>
     <div class="factor-card">
-      <span class="factor-icon"></span>
+      <span class="factor-icon">🧠</span>
       <h3>Freud & The Unconscious</h3>
       <p>Freud's discovery that beneath our rational surface lurked irrational dreams, desires, and fears gave artists permission to bypass rational beauty entirely. The Surrealists painted the unconscious — impossible dreamscapes that made no visual logic but felt psychologically truer than any realistic scene could.</p>
     </div>
     <div class="factor-card">
-      <span class="factor-icon"></span>
+      <span class="factor-icon">📜</span>
       <h3>Philosophy Changes Everything</h3>
       <p>Hegel argued art's purpose was to express <em>Spirit and Ideas</em>, not to imitate nature. Nietzsche declared old values dead. By the early 20th century, the art world had accepted that skill in representation was philosophically irrelevant — what mattered was the concept, the statement, the provocation.</p>
     </div>
@@ -2006,7 +2052,7 @@
     </div>
     <div class="timeline-item">
       <div class="t-date">1839</div>
-      <h3> Photography — The Crisis Begins</h3>
+      <h3>📷 Photography — The Crisis Begins</h3>
       <p>A machine reproduces reality in seconds. Painters must find a new purpose. Every subsequent art movement is an answer to the question: what can painting do that photography cannot?</p>
       <span class="t-tag tag-shift">THE GREAT DISRUPTION</span>
     </div>
@@ -2092,51 +2138,40 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<section class="footer">
-  <p>THE ARC OF ART · RENAISSANCE TO MODERNITY · A VISUAL & INTELLECTUAL JOURNEY</p>
-  <p style="margin-top:0.5rem; font-size:0.65rem; opacity:0.5;">All paintings are original stylized impressions created to illustrate artistic styles and techniques</p>
+<!-- MORE IN THIS GENRE -->
+<section style="background:#14100a;border-top:1px solid rgba(201,168,76,0.1);padding:5rem 2rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;color:#c9a84c;text-transform:uppercase;margin-bottom:0.6rem;">Continue Reading</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-style:italic;color:#f5f0e8;margin-bottom:3rem;">More in Art &amp; Art History</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;">
+      <a href="caravaggio.html" style="border:1px solid rgba(201,168,76,0.12);padding:1.5rem;text-decoration:none;display:block;transition:border-color 0.25s,background 0.25s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.12)'">
+        <div style="font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;color:#c9a84c;text-transform:uppercase;margin-bottom:0.7rem;">Essay</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#f5f0e8;margin-bottom:0.5rem;line-height:1.3;">Why Caravaggio Was Dangerous</h4>
+        <p style="font-size:0.9rem;color:rgba(245,240,232,0.42);margin-bottom:0;line-height:1.6;">A murderer who painted saints. How darkness itself became the medium.</p>
+        <span style="display:inline-flex;align-items:center;gap:0.5rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;color:#c9a84c;text-transform:uppercase;margin-top:1rem;">Read →</span>
+      </a>
+      <div style="border:1px solid rgba(201,168,76,0.12);padding:1.5rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;color:#c9a84c;opacity:0.6;text-transform:uppercase;margin-bottom:0.7rem;">Coming Soon</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#f5f0e8;margin-bottom:0.5rem;line-height:1.3;">Vermeer &amp; the Camera Obscura</h4>
+        <p style="font-size:0.9rem;color:rgba(245,240,232,0.42);margin-bottom:0;line-height:1.6;">Did the master of light cheat? The science behind his impossible interiors.</p>
+        <span style="display:inline-block;margin-top:0.8rem;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;color:#c9a84c;opacity:0.4;text-transform:uppercase;">In preparation</span>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.12);padding:1.5rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;color:#c9a84c;opacity:0.6;text-transform:uppercase;margin-bottom:0.7rem;">Coming Soon</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#f5f0e8;margin-bottom:0.5rem;line-height:1.3;">The Colour Blue</h4>
+        <p style="font-size:0.9rem;color:rgba(245,240,232,0.42);margin-bottom:0;line-height:1.6;">Ultramarine cost more than gold. How one pigment shaped the history of painting.</p>
+        <span style="display:inline-block;margin-top:0.8rem;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;color:#c9a84c;opacity:0.4;text-transform:uppercase;">In preparation</span>
+      </div>
+    </div>
+    <a href="../index.html#art" style="display:inline-flex;align-items:center;gap:0.5rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;color:#c9a84c;text-transform:uppercase;text-decoration:none;margin-top:2.5rem;">← All Art essays</a>
+  </div>
 </section>
 
+<footer style="background:#0a0805;border-top:1px solid rgba(201,168,76,0.07);padding:2.5rem;text-align:center;">
+  <a href="../index.html" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;color:#c9a84c;text-decoration:none;display:inline-block;margin-bottom:0.5rem;">Studiolo</a>
+  <div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;color:rgba(245,240,232,0.42);text-transform:uppercase;">A Cabinet of Curiosities · © 2026 Jeevan Kumar</div>
+  <div style="font-size:0.65rem;color:rgba(245,240,232,0.2);margin-top:0.5rem;font-family:'Space Mono',monospace;">All paintings are original stylized impressions created to illustrate artistic styles</div>
+</footer>
 
-
-  <script>
-  // Scroll progress
-  const bar = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
-  }, { passive: true });
-
-  // Mobile nav
-  const toggle = document.getElementById('navToggle');
-  const links  = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Active nav highlight
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        document.querySelectorAll('.nav-links a').forEach(a => {
-          a.style.color = '';
-          if (a.getAttribute('href') === '#' + entry.target.id) a.style.color = 'var(--gold)';
-        });
-      }
-    });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
-  </script>
-  
 </body>
 </html>
