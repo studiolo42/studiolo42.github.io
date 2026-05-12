@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botany — Natural History · Studiolo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:    #06080a;
+      --deep:     #080d08;
+      --ink:      #0b0f0b;
+      --moss:     #1a2e1a;
+      --fern:     #2d4a2d;
+      --sage:     #4a7c59;
+      --leaf:     #6aab7a;
+      --pale:     #c8dfc0;
+      --parchment:#f2ede4;
+      --gold:     #c9a84c;
+      --amber:    #b8883a;
+      --text:     rgba(200,223,192,0.82);
+      --text-dim: rgba(200,223,192,0.38);
+      --text-faint:rgba(200,223,192,0.18);
+      --font-display: 'Cormorant Garamond', 'Georgia', serif;
+      --font-fell:    'IM Fell English', 'Georgia', serif;
+      --font-mono:    'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      border-bottom: 1px solid rgba(74,124,89,0.12);
+      background: rgba(6,8,10,0.88);
+      backdrop-filter: blur(12px);
+    }
+    .nav-brand {
+      display: flex; flex-direction: column;
+    }
+    .nav-brand-top {
+      font-family: var(--font-mono); font-size: 0.48rem;
+      letter-spacing: 0.28em; color: var(--text-dim); text-transform: uppercase;
+    }
+    .nav-brand-name {
+      font-family: var(--font-display); font-size: 1.15rem;
+      font-style: italic; color: var(--pale); text-decoration: none;
+    }
+    .nav-crumb {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: var(--font-mono); font-size: 0.48rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim);
+    }
+    .nav-crumb a { color: var(--sage); text-decoration: none; transition: color 0.2s; }
+    .nav-crumb a:hover { color: var(--leaf); }
+    .nav-crumb span { color: var(--text-faint); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 3rem 5rem;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 30% 60%, #0d1f0d 0%, #060808 60%);
+    }
+    .hero-bg-svg {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.52rem;
+      letter-spacing: 0.3em; color: var(--sage); text-transform: uppercase;
+      margin-bottom: 1.2rem; position: relative; z-index: 1;
+    }
+    .hero-title {
+      font-family: var(--font-fell); font-size: clamp(4rem, 10vw, 9rem);
+      font-style: italic; font-weight: 400;
+      line-height: 0.92; color: var(--pale);
+      position: relative; z-index: 1; margin-bottom: 1.6rem;
+    }
+    .hero-title em { color: var(--leaf); font-style: normal; }
+    .hero-subtitle {
+      font-family: var(--font-display); font-size: 1.15rem;
+      font-style: italic; color: var(--text-dim); line-height: 1.8;
+      max-width: 520px; position: relative; z-index: 1; margin-bottom: 2.5rem;
+    }
+    .hero-meta {
+      display: flex; gap: 3rem; position: relative; z-index: 1;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label {
+      font-family: var(--font-mono); font-size: 0.44rem;
+      letter-spacing: 0.22em; color: var(--text-faint); text-transform: uppercase;
+    }
+    .meta-val {
+      font-family: var(--font-display); font-size: 1rem; color: var(--text);
+    }
+
+    /* ── DECORATIVE RULE ── */
+    .herb-rule {
+      display: flex; align-items: center; gap: 1.2rem;
+      margin: 1.5rem 0 3.5rem;
+    }
+    .herb-rule-line { flex: 1; height: 1px; background: currentColor; opacity: 0.1; }
+    .herb-rule-leaf { opacity: 0.3; font-size: 1.1rem; }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      position: relative; z-index: 1;
+      max-width: 1200px; margin: 0 auto;
+      padding: 8rem 3rem 6rem;
+    }
+
+    /* ── SECTION LABEL ── */
+    .sec-label {
+      font-family: var(--font-mono); font-size: 0.5rem;
+      letter-spacing: 0.28em; color: var(--sage); text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ── INTRO TEXT ── */
+    .intro-text {
+      font-family: var(--font-display); font-size: 1.2rem;
+      line-height: 1.95; color: var(--text);
+      max-width: 780px; margin-bottom: 1.4rem;
+    }
+    .intro-text em { color: var(--leaf); font-style: italic; }
+
+    /* ── CHAPTERS GRID ── */
+    .chapters-heading {
+      font-family: var(--font-fell); font-size: 2.4rem;
+      font-style: italic; color: var(--pale); margin-bottom: 0.5rem;
+    }
+
+    .chapters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1px;
+      background: rgba(74,124,89,0.1);
+      border: 1px solid rgba(74,124,89,0.12);
+      margin-top: 3rem;
+    }
+    .chapter-card {
+      background: var(--black);
+      padding: 2rem 1.8rem;
+      border-left: 2px solid transparent;
+      transition: border-color 0.3s, background 0.25s;
+      text-decoration: none;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      position: relative; overflow: hidden;
+      color: inherit;
+    }
+    .chapter-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 0% 50%, rgba(74,124,89,0.06) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .chapter-card:hover { border-left-color: rgba(74,124,89,0.55); }
+    .chapter-card:hover::before { opacity: 1; }
+    .chapter-card.available:hover { background: rgba(74,124,89,0.04); }
+    .chapter-card.soon { cursor: default; }
+
+    .ch-num {
+      font-family: var(--font-mono); font-size: 0.48rem;
+      letter-spacing: 0.22em; color: var(--text-faint); text-transform: uppercase;
+    }
+    .ch-roman {
+      font-family: var(--font-display); font-size: 2rem;
+      font-style: italic; color: rgba(74,124,89,0.25); line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .ch-title {
+      font-family: var(--font-fell); font-size: 1.15rem;
+      font-style: italic; color: var(--pale); line-height: 1.3;
+    }
+    .ch-subtitle {
+      font-family: var(--font-mono); font-size: 0.48rem;
+      letter-spacing: 0.12em; color: var(--sage); text-transform: uppercase;
+      margin-top: 0.1rem;
+    }
+    .ch-desc {
+      font-size: 0.9rem; line-height: 1.65;
+      color: var(--text-dim); margin-top: 0.3rem;
+    }
+    .ch-tag {
+      display: inline-block; margin-top: 0.8rem;
+      font-family: var(--font-mono); font-size: 0.44rem;
+      letter-spacing: 0.18em; text-transform: uppercase; padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(74,124,89,0.3); color: var(--sage);
+    }
+    .ch-tag.soon-tag {
+      border-color: rgba(200,223,192,0.08); color: var(--text-faint);
+    }
+    .ch-arrow {
+      margin-top: 1rem; font-family: var(--font-mono); font-size: 0.62rem;
+      color: var(--sage); transition: transform 0.2s;
+    }
+    .chapter-card.available:hover .ch-arrow { transform: translateX(5px); }
+
+    /* ── KINGDOMS STRIP ── */
+    .kingdoms-strip {
+      margin: 5rem 0;
+      padding: 2.5rem;
+      border: 1px solid rgba(74,124,89,0.15);
+      background: rgba(13,20,13,0.6);
+      position: relative; overflow: hidden;
+    }
+    .kingdoms-strip::after {
+      content: 'Plantae';
+      position: absolute; right: -1rem; top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-fell); font-size: 8rem;
+      font-style: italic; color: rgba(74,124,89,0.04);
+      pointer-events: none; white-space: nowrap;
+    }
+
+    .kingdoms-label {
+      font-family: var(--font-mono); font-size: 0.48rem;
+      letter-spacing: 0.26em; color: var(--sage); text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .kingdoms-row {
+      display: flex; gap: 1px; flex-wrap: wrap;
+    }
+    .kingdom-cell {
+      flex: 1; min-width: 130px;
+      padding: 1.2rem 1rem;
+      background: rgba(6,8,10,0.8);
+      border-top: 2px solid transparent;
+      transition: border-color 0.3s;
+      text-align: center;
+    }
+    .kingdom-cell.highlight { border-top-color: var(--sage); background: rgba(74,124,89,0.07); }
+    .kingdom-cell .k-icon { font-size: 1.6rem; margin-bottom: 0.4rem; opacity: 0.8; }
+    .kingdom-cell .k-name {
+      font-family: var(--font-fell); font-size: 1rem; font-style: italic;
+      color: var(--pale); margin-bottom: 0.2rem;
+    }
+    .kingdom-cell.highlight .k-name { color: var(--leaf); }
+    .kingdom-cell .k-sub {
+      font-family: var(--font-mono); font-size: 0.42rem;
+      letter-spacing: 0.12em; color: var(--text-faint); text-transform: uppercase;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(74,124,89,0.1);
+      padding: 2.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--font-mono); font-size: 0.46rem;
+      letter-spacing: 0.18em; color: var(--text-faint); text-transform: uppercase;
+    }
+    footer a { color: var(--sage); text-decoration: none; }
+    footer a:hover { color: var(--leaf); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── PROGRESS BAR ── */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; z-index: 200;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, rgba(74,124,89,0.2), var(--leaf), rgba(74,124,89,0.2));
+      transition: width 0.08s linear; pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 1rem 1.5rem; }
+      .hero { padding: 0 1.5rem 4rem; }
+      main { padding: 6rem 1.5rem 4rem; }
+      .chapters-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <span class="nav-brand-top">Studiolo · A Cabinet of Curiosities</span>
+    <a class="nav-brand-name" href="../../index.html">Studiolo</a>
+  </div>
+  <div class="nav-crumb">
+    <a href="../../index.html">Home</a>
+    <span>·</span>
+    <a href="../../index.html#nature">Natural History</a>
+    <span>·</span>
+    <span style="color:var(--sage)">Botany</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Background botanical SVG -->
+  <svg class="hero-bg-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Faint fern-like structures -->
+    <g opacity="0.055" stroke="rgba(106,171,122,1)" stroke-width="0.8" fill="none">
+      <!-- Large fern left -->
+      <path d="M 120 900 Q 100 700 90 500"/>
+      <path d="M 90 700 Q 50 660 20 640"/>
+      <path d="M 90 700 Q 130 660 155 640"/>
+      <path d="M 90 660 Q 45 615 10 590"/>
+      <path d="M 90 660 Q 135 615 165 590"/>
+      <path d="M 90 620 Q 40 570 5 540"/>
+      <path d="M 90 620 Q 140 570 175 540"/>
+      <path d="M 90 580 Q 38 525 0 490"/>
+      <path d="M 90 580 Q 142 525 180 490"/>
+      <path d="M 90 540 Q 35 480 -5 440"/>
+      <path d="M 90 540 Q 145 480 185 440"/>
+      <path d="M 92 500 Q 38 435 -5 390"/>
+      <path d="M 92 500 Q 148 435 190 390"/>
+      <!-- Large fern right -->
+      <path d="M 1350 900 Q 1370 700 1380 500"/>
+      <path d="M 1380 700 Q 1420 660 1445 640"/>
+      <path d="M 1380 700 Q 1340 660 1315 640"/>
+      <path d="M 1380 660 Q 1425 615 1450 590"/>
+      <path d="M 1380 660 Q 1335 615 1305 590"/>
+      <path d="M 1380 620 Q 1430 570 1460 540"/>
+      <path d="M 1380 620 Q 1330 570 1295 540"/>
+      <path d="M 1380 580 Q 1432 525 1465 490"/>
+      <path d="M 1380 580 Q 1328 525 1290 490"/>
+      <!-- Scattered leaves -->
+      <ellipse cx="700" cy="150" rx="60" ry="20" transform="rotate(-30 700 150)"/>
+      <ellipse cx="900" cy="200" rx="45" ry="15" transform="rotate(20 900 200)"/>
+      <ellipse cx="500" cy="180" rx="50" ry="18" transform="rotate(-15 500 180)"/>
+      <!-- Cell grid faint -->
+      <rect x="1100" y="300" width="280" height="280" rx="4"/>
+      <line x1="1100" y1="440" x2="1380" y2="440"/>
+      <line x1="1240" y1="300" x2="1240" y2="580"/>
+    </g>
+    <!-- Botanical label faint watermark -->
+    <text x="720" y="480" text-anchor="middle" fill="rgba(74,124,89,0.03)"
+      font-family="Georgia" font-size="200" font-style="italic">Botany</text>
+  </svg>
+
+  <div class="hero-eyebrow">✦ &nbsp; Natural History · Plant Biology &nbsp; ✦</div>
+  <h1 class="hero-title">
+    <em>Botany</em><br>
+    The Science of<br>
+    Plant Life
+  </h1>
+  <p class="hero-subtitle">
+    A systematic study of the plant kingdom — from the molecular machinery of cells to the evolutionary arcs across 500 million years. Based on <em>Raven's Biology of Plants</em>.
+  </p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Primary Text</span>
+      <span class="meta-val">Raven's Biology of Plants</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Chapters</span>
+      <span class="meta-val">30 + Appendices</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Domain</span>
+      <span class="meta-val">Natural History</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main>
+
+  <!-- Intro -->
+  <div class="sec-label reveal">Introduction</div>
+  <p class="intro-text reveal">
+    Botany is one of the oldest sciences and one of the most consequential. Plants are the foundation of nearly every food chain on Earth, the primary producers of atmospheric oxygen, and the originators of most terrestrial ecosystems. To understand plants is to understand the architecture of life itself.
+  </p>
+  <p class="intro-text reveal">
+    This collection follows <em>Raven's Biology of Plants</em> — the foundational university text — chapter by chapter, with detailed essays, visual schematics, flowcharts, and diagrams to make the material vivid and precise.
+  </p>
+
+  <!-- Kingdoms strip -->
+  <div class="kingdoms-strip reveal">
+    <div class="kingdoms-label">The Six Kingdoms of Life — Our Focus</div>
+    <div class="kingdoms-row">
+      <div class="kingdom-cell">
+        <div class="k-icon">🦠</div>
+        <div class="k-name">Bacteria</div>
+        <div class="k-sub">Prokaryota</div>
+      </div>
+      <div class="kingdom-cell">
+        <div class="k-icon">🧫</div>
+        <div class="k-name">Archaea</div>
+        <div class="k-sub">Prokaryota</div>
+      </div>
+      <div class="kingdom-cell">
+        <div class="k-icon">🔬</div>
+        <div class="k-name">Protista</div>
+        <div class="k-sub">Eukaryota</div>
+      </div>
+      <div class="kingdom-cell">
+        <div class="k-icon">🍄</div>
+        <div class="k-name">Fungi</div>
+        <div class="k-sub">Eukaryota</div>
+      </div>
+      <div class="kingdom-cell highlight">
+        <div class="k-icon">🌿</div>
+        <div class="k-name">Plantae</div>
+        <div class="k-sub">Our Focus</div>
+      </div>
+      <div class="kingdom-cell">
+        <div class="k-icon">🐾</div>
+        <div class="k-name">Animalia</div>
+        <div class="k-sub">Eukaryota</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chapters -->
+  <div class="sec-label reveal">Contents</div>
+  <h2 class="chapters-heading reveal">Chapters</h2>
+
+  <div class="herb-rule reveal" style="color:var(--sage)">
+    <div class="herb-rule-line"></div>
+    <div class="herb-rule-leaf">✦</div>
+    <div class="herb-rule-line"></div>
+  </div>
+
+  <div class="chapters-grid">
+
+    <!-- Chapter 1 — AVAILABLE -->
+    <a href="chapter-1.html" class="chapter-card available reveal">
+      <div class="ch-num">Chapter I</div>
+      <div class="ch-roman">I</div>
+      <div class="ch-title">Botany: An Introduction</div>
+      <div class="ch-subtitle">Biology · Life · Evolution · Classification</div>
+      <p class="ch-desc">The fundamental questions: What is biology? What is life? What is a plant? From the characteristics of living organisms to the kingdoms of life, natural selection, the cell theory, and the first 500 million years of plant evolution.</p>
+      <div class="ch-tag">Read Now</div>
+      <div class="ch-arrow">READ THE CHAPTER →</div>
+    </a>
+
+    <!-- Chapter 2 — AVAILABLE -->
+    <a href="chapter-2.html" class="chapter-card available reveal">
+      <div class="ch-num">Chapter II</div>
+      <div class="ch-roman">II</div>
+      <div class="ch-title">The Molecular Composition of Plant Cells</div>
+      <div class="ch-subtitle">Carbon · Macromolecules · Water · Chemical Formulas</div>
+      <p class="ch-desc">Carbohydrates, lipids, proteins, nucleic acids — the chemical alphabet from which all life is written. The central role of carbon, the extraordinary properties of water, and all key molecular formulas.</p>
+      <div class="ch-tag">Read Now</div>
+      <div class="ch-arrow">READ THE CHAPTER →</div>
+    </a>
+
+    <!-- Chapter 3 -->
+    <div class="chapter-card soon reveal">
+      <div class="ch-num">Chapter III</div>
+      <div class="ch-roman">III</div>
+      <div class="ch-title">The Plant Cell & the Cell Cycle</div>
+      <div class="ch-subtitle">Organelles · Mitosis · Cytokinesis</div>
+      <p class="ch-desc">The plant cell in full detail — from the cell wall and vacuole to plastids and plasmodesmata. The cell cycle: how a single cell becomes many.</p>
+      <div class="ch-tag soon-tag">Coming Soon</div>
+    </div>
+
+    <!-- Chapter 4 -->
+    <div class="chapter-card soon reveal">
+      <div class="ch-num">Chapter IV</div>
+      <div class="ch-roman">IV</div>
+      <div class="ch-title">Energetics & Metabolism</div>
+      <div class="ch-subtitle">Thermodynamics · Enzymes · ATP</div>
+      <p class="ch-desc">The laws of thermodynamics as they apply to life. How enzymes lower activation energy. ATP as the universal energy currency of all living cells.</p>
+      <div class="ch-tag soon-tag">Coming Soon</div>
+    </div>
+
+    <!-- Chapter 5 -->
+    <div class="chapter-card soon reveal">
+      <div class="ch-num">Chapter V</div>
+      <div class="ch-roman">V</div>
+      <div class="ch-title">Photosynthesis</div>
+      <div class="ch-subtitle">Light Reactions · Calvin Cycle · C4 · CAM</div>
+      <p class="ch-desc">The most important biochemical process on Earth. How plants capture light energy and convert it into chemical energy. The light-dependent and light-independent reactions in full.</p>
+      <div class="ch-tag soon-tag">Coming Soon</div>
+    </div>
+
+    <!-- Chapter 6 -->
+    <div class="chapter-card soon reveal">
+      <div class="ch-num">Chapter VI</div>
+      <div class="ch-roman">VI</div>
+      <div class="ch-title">Respiration</div>
+      <div class="ch-subtitle">Glycolysis · Krebs · Electron Transport</div>
+      <p class="ch-desc">How plants (and all organisms) extract energy from sugars. Glycolysis, the Krebs cycle, and the electron transport chain — the three acts of cellular respiration.</p>
+      <div class="ch-tag soon-tag">Coming Soon</div>
+    </div>
+
+    <!-- Chapter 7 -->
+    <div class="chapter-card soon reveal">
+      <div class="ch-num">Chapter VII</div>
+      <div class="ch-roman">VII</div>
+      <div class="ch-title">Cell-to-Cell Communication</div>
+      <div class="ch-subtitle">Signals · Hormones · Receptors</div>
+      <p class="ch-desc">How plant cells talk to each other. Signal transduction pathways, plant hormones, and the molecular basis of how plants respond to their environment.</p>
+      <div class="ch-tag soon-tag">Coming Soon</div>
+    </div>
+
+    <!-- Chapter 12 -->
+    <div class="chapter-card soon reveal">
+      <div class="ch-num">Chapter XII</div>
+      <div class="ch-roman">XII</div>
+      <div class="ch-title">Origin & Evolution of Land Plants</div>
+      <div class="ch-subtitle">Charophytes → Embryophytes</div>
+      <p class="ch-desc">The most dramatic transition in plant evolution: from aquatic green algae to the first land plants. How plants conquered the terrestrial world 475 million years ago.</p>
+      <div class="ch-tag soon-tag">Coming Soon</div>
+    </div>
+
+    <!-- Chapter 30 -->
+    <div class="chapter-card soon reveal">
+      <div class="ch-num">Chapter XXX</div>
+      <div class="ch-roman">XXX</div>
+      <div class="ch-title">Plant–Environment Interactions</div>
+      <div class="ch-subtitle">Ecology · Adaptation · Stress</div>
+      <p class="ch-desc">How plants respond to light, temperature, water stress, herbivory, and competition. The molecular and physiological mechanisms of environmental adaptation.</p>
+      <div class="ch-tag soon-tag">Coming Soon</div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <span><a href="../../index.html">← Studiolo</a></span>
+  <span>Botany · Natural History · Based on Raven's Biology of Plants</span>
+  <span>© Jeevan Kumar Papaganti</span>
+</footer>
+
+<script>
+  // Progress bar
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+  }, { passive: true });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

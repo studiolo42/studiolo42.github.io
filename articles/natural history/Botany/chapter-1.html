@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter I — Botany: An Introduction · Studiolo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:      #06080a;
+      --deep:       #08100a;
+      --ink:        #0b0f0b;
+      --moss:       #1a2e1a;
+      --fern:       #2d4a2d;
+      --sage:       #4a7c59;
+      --leaf:       #6aab7a;
+      --pale:       #c8dfc0;
+      --parchment:  #f2ede4;
+      --gold:       #c9a84c;
+      --amber:      #b8883a;
+      --blue-dim:   #2a4a6a;
+      --blue:       #4a8aaa;
+      --text:       rgba(200,223,192,0.82);
+      --text-dim:   rgba(200,223,192,0.42);
+      --text-faint: rgba(200,223,192,0.18);
+      --font-display:'Cormorant Garamond','Georgia',serif;
+      --font-fell:   'IM Fell English','Georgia',serif;
+      --font-mono:   'Space Mono',monospace;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--font-display);
+      overflow-x: hidden;
+      counter-reset: section;
+    }
+
+    /* grain */
+    body::before {
+      content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity:0.5;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1.1rem 3rem;
+      border-bottom:1px solid rgba(74,124,89,0.12);
+      background:rgba(6,8,10,0.9); backdrop-filter:blur(14px);
+    }
+    .nav-brand { font-family:var(--font-fell); font-size:1rem; font-style:italic; color:var(--pale); text-decoration:none; }
+    .nav-crumb {
+      display:flex; align-items:center; gap:0.6rem;
+      font-family:var(--font-mono); font-size:0.44rem;
+      letter-spacing:0.18em; text-transform:uppercase; color:var(--text-faint);
+    }
+    .nav-crumb a { color:var(--sage); text-decoration:none; }
+    .nav-crumb a:hover { color:var(--leaf); }
+
+    /* ── PROGRESS ── */
+    #progress-bar {
+      position:fixed; top:0; left:0; z-index:200;
+      height:2px; width:0%;
+      background:linear-gradient(90deg, rgba(74,124,89,0.2), var(--leaf), rgba(74,124,89,0.2));
+      transition:width 0.08s linear; pointer-events:none;
+    }
+
+    /* ── CHAPTER HERO ── */
+    .ch-hero {
+      min-height:70vh; display:flex; flex-direction:column; justify-content:flex-end;
+      padding:0 4rem 5rem;
+      position:relative; overflow:hidden;
+      background:radial-gradient(ellipse at 20% 70%, #0d1f0e 0%, #060808 70%);
+    }
+    .ch-hero-bg { position:absolute; inset:0; z-index:0; pointer-events:none; }
+    .ch-tag {
+      font-family:var(--font-mono); font-size:0.5rem;
+      letter-spacing:0.3em; color:var(--sage); text-transform:uppercase;
+      position:relative; z-index:1; margin-bottom:1rem;
+    }
+    .ch-title {
+      font-family:var(--font-fell); font-size:clamp(2.8rem,8vw,7rem);
+      font-style:italic; line-height:0.95; color:var(--pale);
+      position:relative; z-index:1; margin-bottom:0.6rem;
+    }
+    .ch-title em { color:var(--leaf); font-style:normal; }
+    .ch-tagline {
+      font-family:var(--font-display); font-size:1.1rem;
+      font-style:italic; color:var(--text-dim); max-width:500px;
+      position:relative; z-index:1; margin-bottom:2rem; line-height:1.8;
+    }
+    .ch-meta-row {
+      display:flex; gap:3rem; position:relative; z-index:1; flex-wrap:wrap;
+    }
+    .ch-meta { display:flex; flex-direction:column; gap:0.2rem; }
+    .ch-meta-label {
+      font-family:var(--font-mono); font-size:0.42rem;
+      letter-spacing:0.22em; color:var(--text-faint); text-transform:uppercase;
+    }
+    .ch-meta-val { font-family:var(--font-display); font-size:0.95rem; color:var(--text); }
+
+    /* ── TABLE OF CONTENTS ── */
+    .toc-wrap {
+      background:rgba(13,20,13,0.7); border:1px solid rgba(74,124,89,0.15);
+      padding:2rem 2.5rem; margin:4rem 0;
+      position:relative; overflow:hidden;
+    }
+    .toc-wrap::before {
+      content:'§'; position:absolute; right:1rem; top:-1rem;
+      font-family:var(--font-fell); font-size:10rem;
+      color:rgba(74,124,89,0.04); pointer-events:none;
+    }
+    .toc-label {
+      font-family:var(--font-mono); font-size:0.46rem;
+      letter-spacing:0.26em; color:var(--sage); text-transform:uppercase; margin-bottom:1.2rem;
+    }
+    .toc-list { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+    .toc-list li a {
+      display:flex; align-items:center; gap:1rem; text-decoration:none;
+      color:var(--text-dim); font-family:var(--font-display); font-size:1rem;
+      font-style:italic; transition:color 0.2s;
+    }
+    .toc-list li a:hover { color:var(--leaf); }
+    .toc-list li a .toc-num {
+      font-family:var(--font-mono); font-size:0.42rem;
+      letter-spacing:0.12em; color:var(--text-faint);
+      font-style:normal; min-width:2.5rem;
+    }
+    .toc-list li a .toc-line {
+      flex:1; height:1px; background:rgba(74,124,89,0.12);
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width:860px; margin:0 auto; padding:0 3rem 8rem;
+      position:relative; z-index:1;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom:6rem; padding-top:2rem;
+    }
+    .section-num {
+      font-family:var(--font-mono); font-size:0.46rem;
+      letter-spacing:0.28em; color:var(--sage); text-transform:uppercase;
+      margin-bottom:0.5rem;
+    }
+    .section-heading {
+      font-family:var(--font-fell); font-size:2.4rem;
+      font-style:italic; color:var(--pale); margin-bottom:1.5rem; line-height:1.1;
+    }
+    .section-heading em { color:var(--leaf); font-style:normal; }
+
+    /* Decorative rule */
+    .herb-rule {
+      display:flex; align-items:center; gap:1rem;
+      margin:1.2rem 0 2.2rem; color:var(--sage);
+    }
+    .herb-rule-line { flex:1; height:1px; background:currentColor; opacity:0.15; }
+    .herb-rule-gem { width:4px; height:4px; transform:rotate(45deg); background:currentColor; opacity:0.35; flex-shrink:0; }
+
+    /* Body text */
+    .body-text {
+      font-family:var(--font-display); font-size:1.12rem;
+      line-height:1.95; color:var(--text); margin-bottom:1.3rem;
+    }
+    .body-text em { color:var(--leaf); font-style:italic; }
+    .body-text strong { color:var(--pale); font-weight:600; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left:2px solid rgba(74,124,89,0.45);
+      padding:1rem 1.5rem; margin:2rem 0;
+      font-family:var(--font-fell); font-size:1.4rem;
+      font-style:italic; color:var(--leaf); line-height:1.5;
+    }
+    .pull-quote cite {
+      display:block; margin-top:0.5rem;
+      font-family:var(--font-mono); font-size:0.44rem;
+      letter-spacing:0.15em; color:var(--text-faint); font-style:normal;
+    }
+
+    /* ── SCHEMATIC CARDS ── */
+    .schema-card {
+      border:1px solid rgba(74,124,89,0.18);
+      background:rgba(10,16,10,0.8);
+      padding:2rem 2rem 1.8rem;
+      margin:2.5rem 0;
+      position:relative; overflow:hidden;
+    }
+    .schema-card-label {
+      font-family:var(--font-mono); font-size:0.44rem;
+      letter-spacing:0.26em; color:var(--sage); text-transform:uppercase;
+      margin-bottom:0.6rem;
+    }
+    .schema-card-title {
+      font-family:var(--font-fell); font-size:1.3rem;
+      font-style:italic; color:var(--pale); margin-bottom:1.4rem;
+    }
+
+    /* SVG schematics responsive */
+    .schema-svg {
+      width:100%; height:auto; display:block;
+    }
+
+    /* ── CHARACTERISTIC CARDS ── */
+    .char-grid {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+      background:rgba(74,124,89,0.1); border:1px solid rgba(74,124,89,0.12);
+      margin:2rem 0;
+    }
+    .char-cell {
+      background:var(--black); padding:1.5rem 1.4rem;
+      border-top:2px solid transparent; transition:border-color 0.3s,background 0.25s;
+    }
+    .char-cell:hover { border-top-color:rgba(74,124,89,0.5); background:rgba(74,124,89,0.04); }
+    .char-icon { font-size:1.4rem; margin-bottom:0.5rem; }
+    .char-name {
+      font-family:var(--font-fell); font-size:1.05rem;
+      font-style:italic; color:var(--pale); margin-bottom:0.4rem;
+    }
+    .char-desc {
+      font-size:0.88rem; line-height:1.65; color:var(--text-dim);
+    }
+    .char-sub {
+      font-family:var(--font-mono); font-size:0.42rem;
+      letter-spacing:0.12em; color:var(--sage); text-transform:uppercase;
+      margin-top:0.4rem;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      margin:2rem 0; position:relative;
+      padding-left:2.5rem;
+    }
+    .timeline::before {
+      content:''; position:absolute; left:0.6rem; top:0; bottom:0;
+      width:1px; background:linear-gradient(to bottom, transparent, rgba(74,124,89,0.4), transparent);
+    }
+    .tl-item {
+      position:relative; margin-bottom:2rem;
+      padding-bottom:2rem; border-bottom:1px solid rgba(74,124,89,0.08);
+    }
+    .tl-item:last-child { border-bottom:none; margin-bottom:0; }
+    .tl-dot {
+      position:absolute; left:-2.4rem; top:0.25rem;
+      width:10px; height:10px;
+      border:1px solid rgba(74,124,89,0.6);
+      background:var(--black); transform:rotate(45deg);
+    }
+    .tl-era {
+      font-family:var(--font-mono); font-size:0.46rem;
+      letter-spacing:0.2em; color:var(--sage); text-transform:uppercase; margin-bottom:0.3rem;
+    }
+    .tl-title {
+      font-family:var(--font-fell); font-size:1.1rem;
+      font-style:italic; color:var(--pale); margin-bottom:0.4rem;
+    }
+    .tl-text { font-size:0.9rem; line-height:1.7; color:var(--text-dim); }
+
+    /* ── KEY TERM ── */
+    .key-terms {
+      display:flex; flex-wrap:wrap; gap:1px;
+      background:rgba(74,124,89,0.08); border:1px solid rgba(74,124,89,0.12);
+      margin:2rem 0;
+    }
+    .kt-item {
+      background:var(--black); padding:1rem 1.2rem; flex:1; min-width:200px;
+    }
+    .kt-term {
+      font-family:var(--font-fell); font-size:1rem; font-style:italic;
+      color:var(--leaf); margin-bottom:0.2rem;
+    }
+    .kt-def { font-size:0.82rem; line-height:1.6; color:var(--text-dim); }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      border:1px solid rgba(201,168,76,0.2);
+      background:rgba(201,168,76,0.04);
+      padding:1.4rem 1.6rem; margin:2rem 0;
+    }
+    .info-box-label {
+      font-family:var(--font-mono); font-size:0.42rem;
+      letter-spacing:0.2em; color:var(--gold); text-transform:uppercase; margin-bottom:0.6rem;
+    }
+    .info-box p { font-size:0.95rem; line-height:1.75; color:rgba(245,240,232,0.65); }
+    .info-box em { color:var(--gold); font-style:italic; }
+
+    /* Scroll reveal */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    @media(max-width:768px){
+      .nav { padding:1rem 1.5rem; }
+      .ch-hero { padding:0 1.5rem 4rem; }
+      .content { padding:0 1.5rem 6rem; }
+      .char-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-brand" href="../../index.html">Studiolo</a>
+  <div class="nav-crumb">
+    <a href="../../index.html#nature">Natural History</a>
+    <span>·</span>
+    <a href="botany.html">Botany</a>
+    <span>·</span>
+    <span style="color:var(--sage)">Chapter I</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ch-hero">
+  <svg class="ch-hero-bg" viewBox="0 0 1440 630" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.06" stroke="rgba(106,171,122,1)" stroke-width="0.7" fill="none">
+      <path d="M 200 630 Q 180 480 170 320 Q 155 200 140 100"/>
+      <path d="M 170 500 Q 110 460 60 440"/>
+      <path d="M 170 500 Q 230 455 265 430"/>
+      <path d="M 170 440 Q 105 395 50 370"/>
+      <path d="M 170 440 Q 238 392 278 365"/>
+      <path d="M 170 380 Q 100 330 38 300"/>
+      <path d="M 170 380 Q 242 328 285 298"/>
+      <path d="M 170 320 Q 95 265 25 230"/>
+      <path d="M 170 320 Q 248 262 295 228"/>
+      <path d="M 1280 630 Q 1300 480 1310 320 Q 1325 200 1340 100"/>
+      <path d="M 1310 500 Q 1370 460 1415 440"/>
+      <path d="M 1310 500 Q 1248 455 1210 430"/>
+      <path d="M 1310 440 Q 1375 395 1430 370"/>
+      <path d="M 1310 440 Q 1240 392 1198 365"/>
+      <circle cx="720" cy="80" r="40" stroke="rgba(106,171,122,0.5)"/>
+      <circle cx="720" cy="80" r="28" stroke="rgba(106,171,122,0.3)"/>
+      <line x1="720" y1="40" x2="720" y2="120"/>
+      <line x1="680" y1="80" x2="760" y2="80"/>
+    </g>
+    <text x="720" y="340" text-anchor="middle" fill="rgba(74,124,89,0.025)"
+      font-family="Georgia" font-size="180" font-style="italic">Introduction</text>
+  </svg>
+
+  <div class="ch-tag">Botany · Chapter I · Raven's Biology of Plants</div>
+  <h1 class="ch-title">Botany: An<br><em>Introduction</em></h1>
+  <p class="ch-tagline">From the question "What is life?" to the first 500 million years of plant evolution — the foundations of botanical science.</p>
+  <div class="ch-meta-row">
+    <div class="ch-meta">
+      <span class="ch-meta-label">Topics</span>
+      <span class="ch-meta-val">Biology · Life · Classification · Evolution</span>
+    </div>
+    <div class="ch-meta">
+      <span class="ch-meta-label">Schematics</span>
+      <span class="ch-meta-val">8 Diagrams</span>
+    </div>
+    <div class="ch-meta">
+      <span class="ch-meta-label">Est. Read</span>
+      <span class="ch-meta-val">~30 min</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- Table of Contents -->
+  <div class="toc-wrap reveal">
+    <div class="toc-label">Chapter Contents</div>
+    <ol class="toc-list">
+      <li><a href="#what-is-biology"><span class="toc-num">§ 1</span>What Is Biology?<div class="toc-line"></div></a></li>
+      <li><a href="#characteristics"><span class="toc-num">§ 2</span>Characteristics of Living Organisms<div class="toc-line"></div></a></li>
+      <li><a href="#what-is-plant"><span class="toc-num">§ 3</span>What Is a Plant?<div class="toc-line"></div></a></li>
+      <li><a href="#kingdoms"><span class="toc-num">§ 4</span>The Kingdoms of Life<div class="toc-line"></div></a></li>
+      <li><a href="#evolution"><span class="toc-num">§ 5</span>Evolution & Natural Selection<div class="toc-line"></div></a></li>
+      <li><a href="#cell-theory"><span class="toc-num">§ 6</span>The Cell Theory<div class="toc-line"></div></a></li>
+      <li><a href="#scientific-method"><span class="toc-num">§ 7</span>The Scientific Method<div class="toc-line"></div></a></li>
+      <li><a href="#plant-diversity"><span class="toc-num">§ 8</span>Plant Diversity & Evolution Timeline<div class="toc-line"></div></a></li>
+    </ol>
+  </div>
+
+
+  <!-- ══ § 1 WHAT IS BIOLOGY ══ -->
+  <section class="section" id="what-is-biology">
+    <div class="section-num reveal">§ 1</div>
+    <h2 class="section-heading reveal">What Is <em>Biology</em>?</h2>
+    <div class="herb-rule reveal"><div class="herb-rule-line"></div><div class="herb-rule-gem"></div><div class="herb-rule-line"></div></div>
+
+    <p class="body-text reveal">
+      <em>Biology</em> — from the Greek <strong>bios</strong> (life) and <strong>logos</strong> (study) — is the scientific study of life in all its forms. It asks the most fundamental questions that can be asked about the natural world: What is alive? How does it work? How did it come to be? How does one living thing relate to all others?
+    </p>
+    <p class="body-text reveal">
+      Botany is the branch of biology dedicated to plants — and it is one of the oldest sciences. The ancient Greeks, particularly Theophrastus (371–287 BCE), a student of Aristotle, produced the first systematic descriptions of plants. His works <em>Historia Plantarum</em> (Inquiry into Plants) and <em>De Causis Plantarum</em> (On the Causes of Plants) remained the standard botanical references for nearly 1,500 years.
+    </p>
+
+    <div class="pull-quote reveal">
+      "The desire of knowledge, like the thirst of riches, increases ever with the acquisition of it."
+      <cite>— Laurence Sterne (1713–1768)</cite>
+    </div>
+
+    <p class="body-text reveal">
+      Today botany encompasses <strong>plant morphology</strong> (form and structure), <strong>plant physiology</strong> (how plants function), <strong>plant ecology</strong> (how plants interact with their environment), <strong>plant taxonomy</strong> (how plants are classified), and <strong>plant evolution</strong> (how plants have changed through time). These are not separate subjects — they are interlocking lenses on the same living systems.
+    </p>
+
+    <!-- Schematic 1: Biology tree -->
+    <div class="schema-card reveal">
+      <div class="schema-card-label">Schematic 1 · Conceptual Map</div>
+      <div class="schema-card-title">The Branches of Botany</div>
+      <svg class="schema-svg" viewBox="0 0 780 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 Z" fill="rgba(74,124,89,0.6)"/>
+          </marker>
+        </defs>
+        <!-- Root node -->
+        <rect x="295" y="14" width="190" height="46" rx="2" fill="none" stroke="rgba(74,124,89,0.6)" stroke-width="1"/>
+        <text x="390" y="32" text-anchor="middle" fill="rgba(200,223,192,0.9)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="13">Biology</text>
+        <text x="390" y="50" text-anchor="middle" fill="rgba(74,124,89,0.65)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">Study of Life</text>
+
+        <!-- Branch lines -->
+        <line x1="390" y1="60" x2="390" y2="90" stroke="rgba(74,124,89,0.35)" stroke-width="1" marker-end="url(#arr)"/>
+        <rect x="295" y="90" width="190" height="46" rx="2" fill="rgba(74,124,89,0.08)" stroke="rgba(74,124,89,0.5)" stroke-width="1.2"/>
+        <text x="390" y="110" text-anchor="middle" fill="rgba(106,171,122,0.9)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">Botany</text>
+        <text x="390" y="127" text-anchor="middle" fill="rgba(74,124,89,0.65)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">Study of Plants</text>
+
+        <!-- Sub-branches line -->
+        <line x1="390" y1="136" x2="390" y2="160" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+        <line x1="80" y1="160" x2="700" y2="160" stroke="rgba(74,124,89,0.25)" stroke-width="1"/>
+
+        <!-- 6 sub nodes -->
+        <g>
+          <!-- Morphology -->
+          <line x1="80" y1="160" x2="80" y2="188" stroke="rgba(74,124,89,0.25)" stroke-width="1" marker-end="url(#arr)"/>
+          <rect x="20" y="188" width="120" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+          <text x="80" y="208" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Morphology</text>
+          <text x="80" y="228" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="6.5">Form &amp; Structure</text>
+        </g>
+        <g>
+          <!-- Physiology -->
+          <line x1="210" y1="160" x2="210" y2="188" stroke="rgba(74,124,89,0.25)" stroke-width="1" marker-end="url(#arr)"/>
+          <rect x="150" y="188" width="120" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+          <text x="210" y="208" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Physiology</text>
+          <text x="210" y="228" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="6.5">How Plants Work</text>
+        </g>
+        <g>
+          <!-- Ecology -->
+          <line x1="340" y1="160" x2="340" y2="188" stroke="rgba(74,124,89,0.25)" stroke-width="1" marker-end="url(#arr)"/>
+          <rect x="280" y="188" width="120" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+          <text x="340" y="208" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Ecology</text>
+          <text x="340" y="228" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="6.5">Plant &amp; Environment</text>
+        </g>
+        <g>
+          <!-- Taxonomy -->
+          <line x1="470" y1="160" x2="470" y2="188" stroke="rgba(74,124,89,0.25)" stroke-width="1" marker-end="url(#arr)"/>
+          <rect x="410" y="188" width="120" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+          <text x="470" y="208" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Taxonomy</text>
+          <text x="470" y="228" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="6.5">Classification</text>
+        </g>
+        <g>
+          <!-- Genetics -->
+          <line x1="600" y1="160" x2="600" y2="188" stroke="rgba(74,124,89,0.25)" stroke-width="1" marker-end="url(#arr)"/>
+          <rect x="540" y="188" width="120" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+          <text x="600" y="208" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Genetics</text>
+          <text x="600" y="228" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="6.5">Heredity &amp; Genes</text>
+        </g>
+        <g>
+          <!-- Evolution -->
+          <line x1="700" y1="160" x2="700" y2="188" stroke="rgba(74,124,89,0.25)" stroke-width="1" marker-end="url(#arr)"/>
+          <rect x="660" y="188" width="110" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+          <text x="715" y="208" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Evolution</text>
+          <text x="715" y="228" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="6.5">Change Over Time</text>
+        </g>
+
+        <!-- Key insight -->
+        <rect x="20" y="270" width="740" height="52" rx="2" fill="rgba(74,124,89,0.05)" stroke="rgba(74,124,89,0.15)" stroke-width="1"/>
+        <text x="390" y="292" text-anchor="middle" fill="rgba(200,223,192,0.55)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">All branches are interconnected — they are lenses on the same living system</text>
+        <text x="390" y="312" text-anchor="middle" fill="rgba(74,124,89,0.45)" font-family="'Space Mono',monospace" font-size="7">THEOPHRASTUS · 371 BCE → PRESENT</text>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ══ § 2 CHARACTERISTICS OF LIFE ══ -->
+  <section class="section" id="characteristics">
+    <div class="section-num reveal">§ 2</div>
+    <h2 class="section-heading reveal">Characteristics of <em>Living Organisms</em></h2>
+    <div class="herb-rule reveal"><div class="herb-rule-line"></div><div class="herb-rule-gem"></div><div class="herb-rule-line"></div></div>
+
+    <p class="body-text reveal">
+      Before we can study life, we must ask: what <em>is</em> life? This is deceptively difficult. A flame consumes fuel and produces heat and matter — but it is not alive. A crystal grows and has an orderly structure — but it is not alive. What distinguishes the living from the non-living?
+    </p>
+    <p class="body-text reveal">
+      Biologists have identified a set of properties that, taken together, characterise all known living organisms. No single property is sufficient — viruses replicate but cannot metabolise independently; fire consumes energy but does not evolve. It is the <strong>full constellation of properties</strong> that defines life.
+    </p>
+
+    <!-- 8 characteristics grid -->
+    <div class="char-grid reveal">
+      <div class="char-cell">
+        <div class="char-icon">🔋</div>
+        <div class="char-name">Ordered Complexity</div>
+        <p class="char-desc">Living things are highly organised — atoms → molecules → organelles → cells → tissues → organs → organisms. This order is maintained against the thermodynamic tendency toward disorder.</p>
+        <div class="char-sub">Entropy must be actively resisted</div>
+      </div>
+      <div class="char-cell">
+        <div class="char-icon">⚡</div>
+        <div class="char-name">Metabolism</div>
+        <p class="char-desc">All living things capture and transform energy. Plants do this primarily through photosynthesis — converting light energy into chemical energy stored in sugars. This energy drives all cellular processes.</p>
+        <div class="char-sub">Anabolism + Catabolism = Metabolism</div>
+      </div>
+      <div class="char-cell">
+        <div class="char-icon">📈</div>
+        <div class="char-name">Growth & Development</div>
+        <p class="char-desc">Living organisms grow and develop according to a genetic programme. A plant grows from a single cell (the zygote) into a complex multicellular organism via cell division, elongation, and differentiation.</p>
+        <div class="char-sub">Directed by the genome</div>
+      </div>
+      <div class="char-cell">
+        <div class="char-icon">🔄</div>
+        <div class="char-name">Reproduction</div>
+        <p class="char-desc">All living things reproduce, passing genetic information to offspring. Plants do this both sexually (flowers, seeds) and asexually (runners, rhizomes, vegetative propagation). Reproduction is not individual survival — it is species continuity.</p>
+        <div class="char-sub">Sexual · Asexual · Vegetative</div>
+      </div>
+      <div class="char-cell">
+        <div class="char-icon">🌡️</div>
+        <div class="char-name">Response to Stimuli</div>
+        <p class="char-desc">Living things respond to environmental signals. Plants are exquisitely sensitive — they grow toward light (phototropism), toward gravity (gravitropism), and respond to touch (thigmotropism). The Venus flytrap snaps shut in milliseconds.</p>
+        <div class="char-sub">Tropisms · Turgor · Signalling</div>
+      </div>
+      <div class="char-cell">
+        <div class="char-icon">⚖️</div>
+        <div class="char-name">Homeostasis</div>
+        <p class="char-desc">Life maintains internal stability despite external fluctuation. Plants regulate water balance (osmosis, stomatal opening/closing), internal pH, and temperature within functional limits. Regulation requires constant energy expenditure.</p>
+        <div class="char-sub">Dynamic equilibrium maintained</div>
+      </div>
+      <div class="char-cell">
+        <div class="char-icon">🔀</div>
+        <div class="char-name">Evolution & Adaptation</div>
+        <p class="char-desc">Populations of living things change over generations through natural selection. This is the key insight that unifies all of biology. Adaptations — traits that increase fitness — accumulate over time.</p>
+        <div class="char-sub">Darwin · Wallace · 1859</div>
+      </div>
+      <div class="char-cell">
+        <div class="char-icon">🧬</div>
+        <div class="char-name">Heredity</div>
+        <p class="char-desc">Living things inherit traits from their parents via DNA. The genetic code — A, T, G, C — is universal across all of life. This universality is one of the strongest pieces of evidence that all life shares a common ancestor.</p>
+        <div class="char-sub">DNA → RNA → Protein</div>
+      </div>
+    </div>
+
+    <!-- Flowchart: Is it alive? -->
+    <div class="schema-card reveal">
+      <div class="schema-card-label">Schematic 2 · Decision Flowchart</div>
+      <div class="schema-card-title">Is It Alive? — A Diagnostic Flowchart</div>
+      <svg class="schema-svg" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 Z" fill="rgba(74,124,89,0.7)"/>
+          </marker>
+          <marker id="arrNo" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 Z" fill="rgba(180,80,60,0.7)"/>
+          </marker>
+        </defs>
+
+        <!-- Start -->
+        <ellipse cx="350" cy="28" rx="80" ry="20" fill="none" stroke="rgba(74,124,89,0.5)" stroke-width="1"/>
+        <text x="350" y="33" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'Space Mono',monospace" font-size="9">START</text>
+        <line x1="350" y1="48" x2="350" y2="70" stroke="rgba(74,124,89,0.4)" stroke-width="1" marker-end="url(#arr2)"/>
+
+        <!-- Q1 -->
+        <polygon points="350,70 490,108 350,146 210,108" fill="none" stroke="rgba(74,124,89,0.45)" stroke-width="1"/>
+        <text x="350" y="104" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Cellular structure?</text>
+        <text x="350" y="120" text-anchor="middle" fill="rgba(74,124,89,0.5)" font-family="'Space Mono',monospace" font-size="7">Made of cells?</text>
+        <!-- Yes -->
+        <line x1="350" y1="146" x2="350" y2="168" stroke="rgba(74,124,89,0.4)" stroke-width="1" marker-end="url(#arr2)"/>
+        <text x="360" y="160" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="8">YES</text>
+        <!-- No -->
+        <line x1="490" y1="108" x2="580" y2="108" stroke="rgba(180,80,60,0.4)" stroke-width="1" marker-end="url(#arrNo)"/>
+        <text x="530" y="103" text-anchor="middle" fill="rgba(180,80,60,0.6)" font-family="'Space Mono',monospace" font-size="8">NO</text>
+        <rect x="560" y="90" width="120" height="36" rx="2" fill="rgba(180,80,60,0.08)" stroke="rgba(180,80,60,0.3)" stroke-width="1"/>
+        <text x="620" y="107" text-anchor="middle" fill="rgba(180,80,60,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="10">Not alive</text>
+        <text x="620" y="119" text-anchor="middle" fill="rgba(180,80,60,0.45)" font-family="'Space Mono',monospace" font-size="7">(crystal, fire, etc.)</text>
+
+        <!-- Q2 -->
+        <polygon points="350,168 490,206 350,244 210,206" fill="none" stroke="rgba(74,124,89,0.45)" stroke-width="1"/>
+        <text x="350" y="202" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Metabolism?</text>
+        <text x="350" y="218" text-anchor="middle" fill="rgba(74,124,89,0.5)" font-family="'Space Mono',monospace" font-size="7">Captures/uses energy?</text>
+        <line x1="350" y1="244" x2="350" y2="266" stroke="rgba(74,124,89,0.4)" stroke-width="1" marker-end="url(#arr2)"/>
+        <text x="360" y="258" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="8">YES</text>
+        <line x1="210" y1="206" x2="120" y2="206" stroke="rgba(180,80,60,0.4)" stroke-width="1" marker-end="url(#arrNo)"/>
+        <text x="165" y="201" text-anchor="middle" fill="rgba(180,80,60,0.6)" font-family="'Space Mono',monospace" font-size="8">NO</text>
+        <rect x="0" y="190" width="120" height="32" rx="2" fill="rgba(180,80,60,0.08)" stroke="rgba(180,80,60,0.3)" stroke-width="1"/>
+        <text x="60" y="207" text-anchor="middle" fill="rgba(180,80,60,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="10">Not alive</text>
+        <text x="60" y="217" text-anchor="middle" fill="rgba(180,80,60,0.45)" font-family="'Space Mono',monospace" font-size="7">(dead organism)</text>
+
+        <!-- Q3 -->
+        <polygon points="350,266 490,304 350,342 210,304" fill="none" stroke="rgba(74,124,89,0.45)" stroke-width="1"/>
+        <text x="350" y="300" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Reproduction?</text>
+        <text x="350" y="316" text-anchor="middle" fill="rgba(74,124,89,0.5)" font-family="'Space Mono',monospace" font-size="7">Capable of reproducing?</text>
+        <line x1="350" y1="342" x2="350" y2="364" stroke="rgba(74,124,89,0.4)" stroke-width="1" marker-end="url(#arr2)"/>
+        <text x="360" y="356" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="8">YES</text>
+
+        <!-- Q4 -->
+        <polygon points="350,364 490,402 350,440 210,402" fill="none" stroke="rgba(74,124,89,0.45)" stroke-width="1"/>
+        <text x="350" y="398" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Heredity (DNA)?</text>
+        <text x="350" y="414" text-anchor="middle" fill="rgba(74,124,89,0.5)" font-family="'Space Mono',monospace" font-size="7">Genetic information?</text>
+        <line x1="350" y1="440" x2="350" y2="462" stroke="rgba(74,124,89,0.4)" stroke-width="1" marker-end="url(#arr2)"/>
+        <text x="360" y="455" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="8">YES</text>
+
+        <!-- ALIVE -->
+        <ellipse cx="350" cy="482" rx="100" ry="18" fill="rgba(74,124,89,0.15)" stroke="rgba(74,124,89,0.6)" stroke-width="1.2"/>
+        <text x="350" y="487" text-anchor="middle" fill="rgba(106,171,122,0.9)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="13">ALIVE</text>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ══ § 3 WHAT IS A PLANT ══ -->
+  <section class="section" id="what-is-plant">
+    <div class="section-num reveal">§ 3</div>
+    <h2 class="section-heading reveal">What Is a <em>Plant</em>?</h2>
+    <div class="herb-rule reveal"><div class="herb-rule-line"></div><div class="herb-rule-gem"></div><div class="herb-rule-line"></div></div>
+
+    <p class="body-text reveal">
+      Intuitively, we all know what a plant is — the oak tree, the grass, the rose, the seaweed. But a precise scientific definition is surprisingly subtle. The kingdom Plantae as currently understood includes approximately <strong>390,000 known species</strong>, and botanists continue to discover thousands more each year.
+    </p>
+    <p class="body-text reveal">
+      The defining features of plants can be summarised in four properties that distinguish them from animals, fungi, and bacteria:
+    </p>
+
+    <div class="schema-card reveal">
+      <div class="schema-card-label">Schematic 3 · Comparison Diagram</div>
+      <div class="schema-card-title">What Makes a Plant a Plant?</div>
+      <svg class="schema-svg" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg">
+        <!-- Headers -->
+        <text x="180" y="30" text-anchor="middle" fill="rgba(106,171,122,0.9)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="15">Plants</text>
+        <text x="390" y="30" text-anchor="middle" fill="rgba(200,223,192,0.5)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="15">Property</text>
+        <text x="590" y="30" text-anchor="middle" fill="rgba(200,223,192,0.4)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="15">Others</text>
+        <line x1="20" y1="38" x2="700" y2="38" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+
+        <!-- Row 1: Photosynthesis -->
+        <rect x="20" y="48" width="680" height="64" fill="rgba(74,124,89,0.04)"/>
+        <text x="180" y="74" text-anchor="middle" fill="rgba(106,171,122,0.8)" font-family="'Space Mono',monospace" font-size="9">✓ Primary producers</text>
+        <text x="180" y="90" text-anchor="middle" fill="rgba(74,124,89,0.6)" font-family="'Space Mono',monospace" font-size="7">Chlorophyll a &amp; b</text>
+        <text x="390" y="76" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Photosynthesis</text>
+        <text x="390" y="92" text-anchor="middle" fill="rgba(200,223,192,0.3)" font-family="'Space Mono',monospace" font-size="7">Light → Chemical Energy</text>
+        <text x="590" y="74" text-anchor="middle" fill="rgba(180,80,60,0.55)" font-family="'Space Mono',monospace" font-size="9">✗ Most lack this</text>
+        <text x="590" y="90" text-anchor="middle" fill="rgba(180,80,60,0.35)" font-family="'Space Mono',monospace" font-size="7">Animals, Fungi: heterotrophs</text>
+
+        <!-- Row 2: Cell Wall -->
+        <rect x="20" y="112" width="680" height="64" fill="rgba(74,124,89,0.02)"/>
+        <text x="180" y="138" text-anchor="middle" fill="rgba(106,171,122,0.8)" font-family="'Space Mono',monospace" font-size="9">✓ Cellulose cell walls</text>
+        <text x="180" y="154" text-anchor="middle" fill="rgba(74,124,89,0.6)" font-family="'Space Mono',monospace" font-size="7">Primary + Secondary walls</text>
+        <text x="390" y="140" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Rigid Cell Walls</text>
+        <text x="390" y="156" text-anchor="middle" fill="rgba(200,223,192,0.3)" font-family="'Space Mono',monospace" font-size="7">Structural support &amp; protection</text>
+        <text x="590" y="138" text-anchor="middle" fill="rgba(180,80,60,0.55)" font-family="'Space Mono',monospace" font-size="9">Varies: Fungi (chitin)</text>
+        <text x="590" y="154" text-anchor="middle" fill="rgba(180,80,60,0.35)" font-family="'Space Mono',monospace" font-size="7">Animals: no cell wall</text>
+
+        <!-- Row 3: Embryo -->
+        <rect x="20" y="176" width="680" height="64" fill="rgba(74,124,89,0.04)"/>
+        <text x="180" y="202" text-anchor="middle" fill="rgba(106,171,122,0.8)" font-family="'Space Mono',monospace" font-size="9">✓ Embryo retained</text>
+        <text x="180" y="218" text-anchor="middle" fill="rgba(74,124,89,0.6)" font-family="'Space Mono',monospace" font-size="7">Protected by parent tissue</text>
+        <text x="390" y="204" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Embryophyta</text>
+        <text x="390" y="220" text-anchor="middle" fill="rgba(200,223,192,0.3)" font-family="'Space Mono',monospace" font-size="7">Embryo on parent plant</text>
+        <text x="590" y="204" text-anchor="middle" fill="rgba(180,80,60,0.55)" font-family="'Space Mono',monospace" font-size="9">✗ Algae: no retention</text>
+        <text x="590" y="220" text-anchor="middle" fill="rgba(180,80,60,0.35)" font-family="'Space Mono',monospace" font-size="7">Key defining character</text>
+
+        <!-- Row 4: Alternation -->
+        <rect x="20" y="240" width="680" height="64" fill="rgba(74,124,89,0.02)"/>
+        <text x="180" y="266" text-anchor="middle" fill="rgba(106,171,122,0.8)" font-family="'Space Mono',monospace" font-size="9">✓ Both generations</text>
+        <text x="180" y="282" text-anchor="middle" fill="rgba(74,124,89,0.6)" font-family="'Space Mono',monospace" font-size="7">Sporophyte + Gametophyte</text>
+        <text x="390" y="268" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Alternation of Generations</text>
+        <text x="390" y="284" text-anchor="middle" fill="rgba(200,223,192,0.3)" font-family="'Space Mono',monospace" font-size="7">Haploid / Diploid cycles</text>
+        <text x="590" y="268" text-anchor="middle" fill="rgba(180,80,60,0.55)" font-family="'Space Mono',monospace" font-size="9">Animals: no such cycle</text>
+        <text x="590" y="284" text-anchor="middle" fill="rgba(180,80,60,0.35)" font-family="'Space Mono',monospace" font-size="7">Unique to plants &amp; algae</text>
+
+        <!-- Bottom border -->
+        <line x1="20" y1="312" x2="700" y2="312" stroke="rgba(74,124,89,0.12)" stroke-width="1"/>
+        <text x="390" y="332" text-anchor="middle" fill="rgba(74,124,89,0.4)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">~390,000 KNOWN SPECIES · LARGEST AUTOTROPHIC KINGDOM</text>
+        <text x="390" y="348" text-anchor="middle" fill="rgba(74,124,89,0.25)" font-family="'Space Mono',monospace" font-size="7">PRODUCE ~50% OF EARTH'S OXYGEN · BASE OF MOST FOOD CHAINS</text>
+      </svg>
+    </div>
+
+    <div class="info-box reveal">
+      <div class="info-box-label">Key Insight</div>
+      <p>Plants are <em>autotrophs</em> — they make their own food from inorganic compounds using energy from sunlight. This single fact is what makes plant life foundational: without autotrophs, no heterotrophs (animals, fungi, most bacteria) could exist. Every food chain on Earth ultimately traces back to photosynthesis — to a plant, alga, or cyanobacterium capturing a photon of light.</p>
+    </div>
+  </section>
+
+
+  <!-- ══ § 4 KINGDOMS ══ -->
+  <section class="section" id="kingdoms">
+    <div class="section-num reveal">§ 4</div>
+    <h2 class="section-heading reveal">The <em>Kingdoms</em> of Life</h2>
+    <div class="herb-rule reveal"><div class="herb-rule-line"></div><div class="herb-rule-gem"></div><div class="herb-rule-line"></div></div>
+
+    <p class="body-text reveal">
+      How do we organise the 8–10 million estimated species on Earth into a coherent system? This is the problem of <em>taxonomy</em> — the science of classification. The modern system traces back to Carl Linnaeus (1707–1778), who introduced the binomial nomenclature still used today: every species has a two-part Latin name, e.g. <em>Homo sapiens</em> or <em>Quercus robur</em>.
+    </p>
+    <p class="body-text reveal">
+      The modern classification recognises a hierarchy of nested groups. The broadest level is the <strong>Domain</strong> (Bacteria, Archaea, Eukarya), then <strong>Kingdom</strong>, and successively more specific levels: Phylum → Class → Order → Family → Genus → Species.
+    </p>
+
+    <!-- Taxonomy hierarchy schematic -->
+    <div class="schema-card reveal">
+      <div class="schema-card-label">Schematic 4 · Hierarchical Diagram</div>
+      <div class="schema-card-title">Taxonomic Classification — from Domain to Species</div>
+      <svg class="schema-svg" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+            <path d="M0,0 L0,5 L5,2.5 Z" fill="rgba(74,124,89,0.5)"/>
+          </marker>
+        </defs>
+
+        <!-- Left column: levels -->
+        <g font-family="'Space Mono',monospace" font-size="8" fill="rgba(74,124,89,0.5)" letter-spacing="1">
+          <text x="20" y="36">DOMAIN</text>
+          <text x="20" y="86">KINGDOM</text>
+          <text x="20" y="136">PHYLUM</text>
+          <text x="20" y="186">CLASS</text>
+          <text x="20" y="236">ORDER</text>
+          <text x="20" y="286">FAMILY</text>
+          <text x="20" y="336">GENUS</text>
+        </g>
+
+        <!-- Width bars representing scope -->
+        <!-- Domain -->
+        <rect x="110" y="20" width="590" height="30" rx="2" fill="none" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+        <text x="405" y="40" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Eukarya</text>
+        <text x="660" y="40" fill="rgba(74,124,89,0.4)" font-family="'Space Mono',monospace" font-size="7">All with nuclei</text>
+
+        <!-- Kingdom -->
+        <rect x="130" y="70" width="520" height="30" rx="2" fill="none" stroke="rgba(74,124,89,0.32)" stroke-width="1"/>
+        <text x="390" y="90" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Plantae</text>
+        <text x="620" y="90" fill="rgba(74,124,89,0.4)" font-family="'Space Mono',monospace" font-size="7">~390k spp.</text>
+
+        <!-- Phylum -->
+        <rect x="150" y="120" width="440" height="30" rx="2" fill="none" stroke="rgba(74,124,89,0.34)" stroke-width="1"/>
+        <text x="370" y="140" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Tracheophyta (vascular plants)</text>
+
+        <!-- Class -->
+        <rect x="170" y="170" width="370" height="30" rx="2" fill="none" stroke="rgba(74,124,89,0.36)" stroke-width="1"/>
+        <text x="355" y="190" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Magnoliopsida (dicots)</text>
+
+        <!-- Order -->
+        <rect x="190" y="220" width="300" height="30" rx="2" fill="none" stroke="rgba(74,124,89,0.38)" stroke-width="1"/>
+        <text x="340" y="240" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Fagales</text>
+
+        <!-- Family -->
+        <rect x="210" y="270" width="240" height="30" rx="2" fill="none" stroke="rgba(74,124,89,0.42)" stroke-width="1"/>
+        <text x="330" y="290" text-anchor="middle" fill="rgba(200,223,192,0.65)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Fagaceae</text>
+
+        <!-- Genus + Species -->
+        <rect x="230" y="320" width="180" height="30" rx="2" fill="rgba(74,124,89,0.1)" stroke="rgba(74,124,89,0.6)" stroke-width="1.2"/>
+        <text x="320" y="335" text-anchor="middle" fill="rgba(106,171,122,0.9)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Quercus robur</text>
+        <text x="320" y="346" text-anchor="middle" fill="rgba(74,124,89,0.6)" font-family="'Space Mono',monospace" font-size="6">English Oak</text>
+
+        <!-- Connector lines -->
+        <line x1="405" y1="50" x2="390" y2="70" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+        <line x1="390" y1="100" x2="370" y2="120" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+        <line x1="370" y1="150" x2="355" y2="170" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+        <line x1="355" y1="200" x2="340" y2="220" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+        <line x1="340" y1="250" x2="330" y2="270" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+        <line x1="330" y1="300" x2="320" y2="320" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+
+        <!-- Note -->
+        <text x="600" y="348" text-anchor="middle" fill="rgba(74,124,89,0.3)" font-family="'Space Mono',monospace" font-size="7">Example: English Oak</text>
+        <text x="600" y="360" text-anchor="middle" fill="rgba(74,124,89,0.2)" font-family="'Space Mono',monospace" font-size="6">Binomial: Linnaeus 1753</text>
+      </svg>
+    </div>
+
+    <div class="key-terms reveal">
+      <div class="kt-item">
+        <div class="kt-term">Taxonomy</div>
+        <p class="kt-def">The science of naming, describing, and classifying organisms based on shared characteristics and evolutionary history.</p>
+      </div>
+      <div class="kt-item">
+        <div class="kt-term">Binomial Nomenclature</div>
+        <p class="kt-def">The two-part Latin naming system: Genus + species (always italicised). Introduced by Linnaeus in 1753.</p>
+      </div>
+      <div class="kt-item">
+        <div class="kt-term">Phylogeny</div>
+        <p class="kt-def">The evolutionary history and relationships among organisms, now reconstructed using molecular data (DNA sequences).</p>
+      </div>
+      <div class="kt-item">
+        <div class="kt-term">Clade</div>
+        <p class="kt-def">A group consisting of an ancestor and all of its descendants — the basic unit of modern (cladistic) classification.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ § 5 EVOLUTION ══ -->
+  <section class="section" id="evolution">
+    <div class="section-num reveal">§ 5</div>
+    <h2 class="section-heading reveal">Evolution & <em>Natural Selection</em></h2>
+    <div class="herb-rule reveal"><div class="herb-rule-line"></div><div class="herb-rule-gem"></div><div class="herb-rule-line"></div></div>
+
+    <p class="body-text reveal">
+      Charles Darwin's <em>On the Origin of Species</em> (1859) is the most important book in the history of biology. Its central insight — that species change over time through the mechanism of <strong>natural selection</strong> — unified all of biology and explained the diversity of life without invoking supernatural causes.
+    </p>
+    <p class="body-text reveal">
+      Darwin observed four undeniable facts about the natural world and drew from them a logical conclusion of staggering power:
+    </p>
+
+    <!-- Darwin's logic schematic -->
+    <div class="schema-card reveal">
+      <div class="schema-card-label">Schematic 5 · Logical Argument</div>
+      <div class="schema-card-title">Darwin's Four Observations → One Conclusion</div>
+      <svg class="schema-svg" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr4" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 Z" fill="rgba(201,168,76,0.7)"/>
+          </marker>
+        </defs>
+
+        <!-- 4 Observations -->
+        <text x="360" y="22" text-anchor="middle" fill="rgba(74,124,89,0.6)" font-family="'Space Mono',monospace" font-size="8" letter-spacing="2">FOUR OBSERVATIONS</text>
+        <line x1="60" y1="30" x2="660" y2="30" stroke="rgba(74,124,89,0.15)" stroke-width="1"/>
+
+        <!-- Obs 1 -->
+        <rect x="20" y="42" width="155" height="80" rx="2" fill="none" stroke="rgba(74,124,89,0.35)" stroke-width="1"/>
+        <text x="98" y="60" text-anchor="middle" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">OBS. 1</text>
+        <text x="98" y="78" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Overproduction</text>
+        <text x="98" y="96" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">All species produce</text>
+        <text x="98" y="108" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">more offspring than</text>
+        <text x="98" y="120" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">can survive</text>
+
+        <!-- Obs 2 -->
+        <rect x="190" y="42" width="155" height="80" rx="2" fill="none" stroke="rgba(74,124,89,0.35)" stroke-width="1"/>
+        <text x="268" y="60" text-anchor="middle" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">OBS. 2</text>
+        <text x="268" y="78" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Variation</text>
+        <text x="268" y="96" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">Individuals within</text>
+        <text x="268" y="108" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">a species vary in</text>
+        <text x="268" y="120" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">their traits</text>
+
+        <!-- Obs 3 -->
+        <rect x="360" y="42" width="155" height="80" rx="2" fill="none" stroke="rgba(74,124,89,0.35)" stroke-width="1"/>
+        <text x="438" y="60" text-anchor="middle" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">OBS. 3</text>
+        <text x="438" y="78" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Heritability</text>
+        <text x="438" y="96" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">Variations are</text>
+        <text x="438" y="108" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">passed from parent</text>
+        <text x="438" y="120" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">to offspring</text>
+
+        <!-- Obs 4 -->
+        <rect x="530" y="42" width="165" height="80" rx="2" fill="none" stroke="rgba(74,124,89,0.35)" stroke-width="1"/>
+        <text x="613" y="60" text-anchor="middle" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">OBS. 4</text>
+        <text x="613" y="78" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Limited Resources</text>
+        <text x="613" y="96" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">Environment cannot</text>
+        <text x="613" y="108" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">support unlimited</text>
+        <text x="613" y="120" text-anchor="middle" fill="rgba(200,223,192,0.45)" font-family="'Space Mono',monospace" font-size="7">population growth</text>
+
+        <!-- THEREFORE arrows -->
+        <line x1="98" y1="122" x2="98" y2="155" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+        <line x1="268" y1="122" x2="268" y2="155" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+        <line x1="438" y1="122" x2="438" y2="155" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+        <line x1="613" y1="122" x2="613" y2="155" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+        <line x1="98" y1="155" x2="613" y2="155" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+        <line x1="360" y1="155" x2="360" y2="185" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" marker-end="url(#arr4)"/>
+
+        <text x="360" y="172" text-anchor="middle" fill="rgba(201,168,76,0.5)" font-family="'Space Mono',monospace" font-size="8" letter-spacing="2">THEREFORE</text>
+
+        <!-- Natural Selection Box -->
+        <rect x="130" y="188" width="460" height="64" rx="2" fill="rgba(74,124,89,0.12)" stroke="rgba(74,124,89,0.5)" stroke-width="1.3"/>
+        <text x="360" y="212" text-anchor="middle" fill="rgba(106,171,122,0.95)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="16">Natural Selection</text>
+        <text x="360" y="232" text-anchor="middle" fill="rgba(200,223,192,0.55)" font-family="'Space Mono',monospace" font-size="8">Individuals with favourable variations survive &amp; reproduce more</text>
+        <text x="360" y="246" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">Their traits become more common in the population over generations</text>
+
+        <!-- Arrow to Evolution -->
+        <line x1="360" y1="252" x2="360" y2="278" stroke="rgba(74,124,89,0.45)" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- Outcomes -->
+        <line x1="130" y1="278" x2="590" y2="278" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+        <line x1="200" y1="278" x2="200" y2="300" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+        <line x1="360" y1="278" x2="360" y2="300" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+        <line x1="520" y1="278" x2="520" y2="300" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+
+        <rect x="120" y="300" width="160" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.25)" stroke-width="1"/>
+        <text x="200" y="320" text-anchor="middle" fill="rgba(200,223,192,0.6)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Adaptation</text>
+        <text x="200" y="338" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">Traits ↑ fitness</text>
+        <text x="200" y="348" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">accumulate</text>
+
+        <rect x="280" y="300" width="160" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.25)" stroke-width="1"/>
+        <text x="360" y="320" text-anchor="middle" fill="rgba(200,223,192,0.6)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Speciation</text>
+        <text x="360" y="338" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">New species arise</text>
+        <text x="360" y="348" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">from populations</text>
+
+        <rect x="440" y="300" width="160" height="52" rx="2" fill="none" stroke="rgba(74,124,89,0.25)" stroke-width="1"/>
+        <text x="520" y="320" text-anchor="middle" fill="rgba(200,223,192,0.6)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="11">Diversity</text>
+        <text x="520" y="338" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">Life's variety</text>
+        <text x="520" y="348" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">explained</text>
+
+        <!-- Citation -->
+        <text x="360" y="388" text-anchor="middle" fill="rgba(74,124,89,0.3)" font-family="'Space Mono',monospace" font-size="7">DARWIN · On the Origin of Species · 1859</text>
+        <text x="360" y="400" text-anchor="middle" fill="rgba(74,124,89,0.2)" font-family="'Space Mono',monospace" font-size="7">Independently proposed by Alfred Russel Wallace · Same year</text>
+      </svg>
+    </div>
+
+    <p class="body-text reveal">
+      It is crucial to understand what natural selection does <em>not</em> imply. Evolution has no direction or goal. Organisms do not evolve <em>toward</em> perfection. Natural selection simply means that, given heritable variation and differential survival, the composition of a population will change over time. That is all — and it is everything.
+    </p>
+
+    <div class="pull-quote reveal">
+      "There is grandeur in this view of life... from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved."
+      <cite>— Charles Darwin, On the Origin of Species, 1859</cite>
+    </div>
+  </section>
+
+
+  <!-- ══ § 6 CELL THEORY ══ -->
+  <section class="section" id="cell-theory">
+    <div class="section-num reveal">§ 6</div>
+    <h2 class="section-heading reveal">The <em>Cell Theory</em></h2>
+    <div class="herb-rule reveal"><div class="herb-rule-line"></div><div class="herb-rule-gem"></div><div class="herb-rule-line"></div></div>
+
+    <p class="body-text reveal">
+      The <strong>cell theory</strong> is one of the foundational principles of all of biology. It was developed in the mid-19th century through the work of Matthias Schleiden (plants, 1838), Theodor Schwann (animals, 1839), and Rudolf Virchow (cell division, 1855). Together, their work established three fundamental principles that remain unchanged today.
+    </p>
+
+    <div class="schema-card reveal">
+      <div class="schema-card-label">Schematic 6 · Three-Pillar Diagram</div>
+      <div class="schema-card-title">The Three Tenets of Cell Theory</div>
+      <svg class="schema-svg" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Pillar 1 -->
+        <rect x="30" y="20" width="200" height="220" rx="2" fill="rgba(74,124,89,0.06)" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+        <rect x="30" y="20" width="200" height="4" fill="rgba(74,124,89,0.5)"/>
+        <text x="130" y="55" text-anchor="middle" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="28" opacity="0.2">I</text>
+        <text x="130" y="100" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">All living things</text>
+        <text x="130" y="118" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">are composed</text>
+        <text x="130" y="136" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">of cells</text>
+        <text x="130" y="175" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">The cell is the</text>
+        <text x="130" y="188" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">fundamental unit of life</text>
+        <text x="130" y="225" text-anchor="middle" fill="rgba(74,124,89,0.5)" font-family="'Space Mono',monospace" font-size="6.5">Schleiden &amp; Schwann</text>
+        <text x="130" y="237" text-anchor="middle" fill="rgba(74,124,89,0.35)" font-family="'Space Mono',monospace" font-size="6">1838–1839</text>
+
+        <!-- Pillar 2 -->
+        <rect x="260" y="20" width="200" height="220" rx="2" fill="rgba(74,124,89,0.06)" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+        <rect x="260" y="20" width="200" height="4" fill="rgba(74,124,89,0.5)"/>
+        <text x="360" y="55" text-anchor="middle" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="28" opacity="0.2">II</text>
+        <text x="360" y="100" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">The cell is the</text>
+        <text x="360" y="118" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">basic unit of</text>
+        <text x="360" y="136" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">structure &amp; function</text>
+        <text x="360" y="175" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">Carries out all</text>
+        <text x="360" y="188" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">vital life processes</text>
+        <text x="360" y="225" text-anchor="middle" fill="rgba(74,124,89,0.5)" font-family="'Space Mono',monospace" font-size="6.5">Schleiden &amp; Schwann</text>
+        <text x="360" y="237" text-anchor="middle" fill="rgba(74,124,89,0.35)" font-family="'Space Mono',monospace" font-size="6">1838–1839</text>
+
+        <!-- Pillar 3 -->
+        <rect x="490" y="20" width="200" height="220" rx="2" fill="rgba(74,124,89,0.06)" stroke="rgba(74,124,89,0.3)" stroke-width="1"/>
+        <rect x="490" y="20" width="200" height="4" fill="rgba(74,124,89,0.5)"/>
+        <text x="590" y="55" text-anchor="middle" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="28" opacity="0.2">III</text>
+        <text x="590" y="100" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">All cells arise</text>
+        <text x="590" y="118" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">from pre-existing</text>
+        <text x="590" y="136" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="14">cells</text>
+        <text x="590" y="175" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">Omnis cellula</text>
+        <text x="590" y="188" text-anchor="middle" fill="rgba(200,223,192,0.35)" font-family="'Space Mono',monospace" font-size="7">e cellula</text>
+        <text x="590" y="225" text-anchor="middle" fill="rgba(74,124,89,0.5)" font-family="'Space Mono',monospace" font-size="6.5">Rudolf Virchow</text>
+        <text x="590" y="237" text-anchor="middle" fill="rgba(74,124,89,0.35)" font-family="'Space Mono',monospace" font-size="6">1855</text>
+      </svg>
+    </div>
+
+    <p class="body-text reveal">
+      The third tenet — <em>omnis cellula e cellula</em> ("every cell from a cell") — was Virchow's revolutionary insight. It ruled out the concept of <strong>spontaneous generation</strong> — the idea that living things could arise from non-living matter — which had been accepted since Aristotle. Today, we understand that the first cells arose approximately 3.8 billion years ago through abiogenesis, but that every subsequent cell has arisen only from a pre-existing cell.
+    </p>
+  </section>
+
+
+  <!-- ══ § 7 SCIENTIFIC METHOD ══ -->
+  <section class="section" id="scientific-method">
+    <div class="section-num reveal">§ 7</div>
+    <h2 class="section-heading reveal">The <em>Scientific Method</em></h2>
+    <div class="herb-rule reveal"><div class="herb-rule-line"></div><div class="herb-rule-gem"></div><div class="herb-rule-line"></div></div>
+
+    <p class="body-text reveal">
+      Science is not a collection of facts — it is a <em>method</em> for generating reliable knowledge about the natural world. The scientific method is the systematic process by which scientists ask questions, test hypotheses, and build knowledge.
+    </p>
+    <p class="body-text reveal">
+      Crucially, science progresses by <strong>falsification</strong>, not by proof. A hypothesis is scientific only if it can, in principle, be shown to be wrong. We can never prove a theory — we can only fail to disprove it. The more a theory withstands attempts at falsification, the more confidence we have in it. Evolution and cell theory have withstood 160+ years of rigorous testing.
+    </p>
+
+    <div class="schema-card reveal">
+      <div class="schema-card-label">Schematic 7 · Cyclical Process</div>
+      <div class="schema-card-title">The Scientific Method — A Continuous Cycle</div>
+      <svg class="schema-svg" viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrCycle" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 Z" fill="rgba(74,124,89,0.65)"/>
+          </marker>
+          <marker id="arrRed" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 Z" fill="rgba(180,80,60,0.65)"/>
+          </marker>
+        </defs>
+
+        <!-- Centre label -->
+        <circle cx="350" cy="230" r="55" fill="rgba(74,124,89,0.06)" stroke="rgba(74,124,89,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="350" y="225" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Scientific</text>
+        <text x="350" y="242" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="12">Method</text>
+
+        <!-- Step 1: Observation -->
+        <rect x="265" y="14" width="170" height="56" rx="2" fill="rgba(74,124,89,0.1)" stroke="rgba(74,124,89,0.5)" stroke-width="1.2"/>
+        <text x="350" y="36" text-anchor="middle" fill="rgba(74,124,89,0.7)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">STEP 1</text>
+        <text x="350" y="52" text-anchor="middle" fill="rgba(200,223,192,0.85)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="13">Observation</text>
+        <text x="350" y="64" text-anchor="middle" fill="rgba(200,223,192,0.4)" font-family="'Space Mono',monospace" font-size="6.5">Notice a phenomenon</text>
+
+        <!-- Step 2: Question — right top -->
+        <rect x="520" y="80" width="160" height="56" rx="2" fill="none" stroke="rgba(74,124,89,0.38)" stroke-width="1"/>
+        <text x="600" y="102" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">STEP 2</text>
+        <text x="600" y="118" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="13">Question</text>
+        <text x="600" y="130" text-anchor="middle" fill="rgba(200,223,192,0.4)" font-family="'Space Mono',monospace" font-size="6.5">Ask what / why / how</text>
+
+        <!-- Step 3: Hypothesis — right bottom -->
+        <rect x="520" y="190" width="160" height="56" rx="2" fill="none" stroke="rgba(74,124,89,0.38)" stroke-width="1"/>
+        <text x="600" y="212" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">STEP 3</text>
+        <text x="600" y="228" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="13">Hypothesis</text>
+        <text x="600" y="240" text-anchor="middle" fill="rgba(200,223,192,0.4)" font-family="'Space Mono',monospace" font-size="6.5">Testable prediction</text>
+
+        <!-- Step 4: Experiment — bottom -->
+        <rect x="265" y="380" width="170" height="56" rx="2" fill="none" stroke="rgba(74,124,89,0.38)" stroke-width="1"/>
+        <text x="350" y="402" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">STEP 4</text>
+        <text x="350" y="418" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="13">Experiment</text>
+        <text x="350" y="430" text-anchor="middle" fill="rgba(200,223,192,0.4)" font-family="'Space Mono',monospace" font-size="6.5">Test the hypothesis</text>
+
+        <!-- Step 5: Analysis — left bottom -->
+        <rect x="20" y="270" width="160" height="56" rx="2" fill="none" stroke="rgba(74,124,89,0.38)" stroke-width="1"/>
+        <text x="100" y="292" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">STEP 5</text>
+        <text x="100" y="308" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="13">Analysis</text>
+        <text x="100" y="320" text-anchor="middle" fill="rgba(200,223,192,0.4)" font-family="'Space Mono',monospace" font-size="6.5">Interpret results</text>
+
+        <!-- Step 6: Conclusion — left top -->
+        <rect x="20" y="120" width="160" height="56" rx="2" fill="none" stroke="rgba(74,124,89,0.38)" stroke-width="1"/>
+        <text x="100" y="142" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="1">STEP 6</text>
+        <text x="100" y="158" text-anchor="middle" fill="rgba(200,223,192,0.75)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="13">Conclusion</text>
+        <text x="100" y="170" text-anchor="middle" fill="rgba(200,223,192,0.4)" font-family="'Space Mono',monospace" font-size="6.5">Support / reject H</text>
+
+        <!-- Arrows connecting steps -->
+        <!-- 1 → 2 -->
+        <path d="M 435,42 Q 480,55 520,100" stroke="rgba(74,124,89,0.4)" stroke-width="1.2" fill="none" marker-end="url(#arrCycle)"/>
+        <!-- 2 → 3 -->
+        <line x1="600" y1="136" x2="600" y2="190" stroke="rgba(74,124,89,0.4)" stroke-width="1.2" marker-end="url(#arrCycle)"/>
+        <!-- 3 → 4 -->
+        <path d="M 520,228 Q 480,310 435,390" stroke="rgba(74,124,89,0.4)" stroke-width="1.2" fill="none" marker-end="url(#arrCycle)"/>
+        <!-- 4 → 5 -->
+        <path d="M 265,420 Q 190,420 180,330" stroke="rgba(74,124,89,0.4)" stroke-width="1.2" fill="none" marker-end="url(#arrCycle)"/>
+        <!-- 5 → 6 -->
+        <line x1="100" y1="270" x2="100" y2="176" stroke="rgba(74,124,89,0.4)" stroke-width="1.2" marker-end="url(#arrCycle)"/>
+        <!-- 6 → 1 (supports → publish) -->
+        <path d="M 180,145 Q 220,80 265,45" stroke="rgba(74,124,89,0.4)" stroke-width="1.2" fill="none" marker-end="url(#arrCycle)"/>
+
+        <!-- Reject → revise hypothesis -->
+        <text x="28" y="218" fill="rgba(180,80,60,0.5)" font-family="'Space Mono',monospace" font-size="7">H rejected?</text>
+        <path d="M 100,120 Q 100,80 200,60 Q 280,42 265,42" stroke="rgba(180,80,60,0.3)" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrRed)"/>
+        <text x="90" y="88" fill="rgba(180,80,60,0.4)" font-family="'Space Mono',monospace" font-size="6.5">Revise &amp;</text>
+        <text x="90" y="100" fill="rgba(180,80,60,0.4)" font-family="'Space Mono',monospace" font-size="6.5">retest</text>
+
+        <!-- Publish label -->
+        <text x="350" y="454" text-anchor="middle" fill="rgba(74,124,89,0.3)" font-family="'Space Mono',monospace" font-size="7">Peer review · Publication · Replication · Theory building</text>
+      </svg>
+    </div>
+
+    <div class="info-box reveal">
+      <div class="info-box-label">Hypothesis vs Theory — A Critical Distinction</div>
+      <p>In everyday language, "theory" means a guess. In science, a <em>theory</em> is an explanation that has been tested and supported by substantial evidence — it is the highest level of scientific confidence. <em>Evolution</em> is a theory in this sense: not a guess, but a well-established explanation supported by evidence from genetics, palaeontology, comparative anatomy, biogeography, and ecology. A <em>hypothesis</em>, by contrast, is a testable prediction made before gathering evidence.</p>
+    </div>
+  </section>
+
+
+  <!-- ══ § 8 PLANT DIVERSITY TIMELINE ══ -->
+  <section class="section" id="plant-diversity">
+    <div class="section-num reveal">§ 8</div>
+    <h2 class="section-heading reveal">Plant Diversity & <em>Evolution Timeline</em></h2>
+    <div class="herb-rule reveal"><div class="herb-rule-line"></div><div class="herb-rule-gem"></div><div class="herb-rule-line"></div></div>
+
+    <p class="body-text reveal">
+      The plant kingdom as we know it today is the result of approximately <strong>500 million years of evolution</strong> — from the first tentative colonisation of land by algae-like ancestors to the extraordinary diversity of flowering plants (angiosperms) that dominate most of Earth's terrestrial environments today.
+    </p>
+    <p class="body-text reveal">
+      Each major transition in plant evolution solved a problem posed by the terrestrial environment: desiccation, reproduction without water, structural support against gravity, and dispersal across dry land. These transitions are not just historical curiosities — they are the foundation for understanding everything else in botany.
+    </p>
+
+    <!-- Timeline -->
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">~3,500 Million Years Ago</div>
+        <div class="tl-title">Cyanobacteria — The First Photosynthesisers</div>
+        <p class="tl-text">Cyanobacteria (blue-green algae) become the first organisms to perform oxygenic photosynthesis. Over the following billion years, they pump oxygen into Earth's atmosphere, transforming the planet and making complex multicellular life possible. The Great Oxidation Event (~2,400 Mya) is their legacy.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">~1,200 Million Years Ago</div>
+        <div class="tl-title">Green Algae (Chlorophytes) Arise</div>
+        <p class="tl-text">The green algae emerge — aquatic photosynthetic eukaryotes. Crucially, the charophytes (a group of green algae) are the closest living relatives of land plants, and share several key biochemical and developmental features with them. All land plants descended from charophyte ancestors.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">~470–500 Million Years Ago · Ordovician</div>
+        <div class="tl-title">First Land Plants — The Conquest of Land</div>
+        <p class="tl-text">Small, non-vascular plants resembling modern liverworts colonise damp areas near water. This is one of the most dramatic transitions in evolutionary history. These plants lack true roots, stems, and leaves — but they have cuticles (waxy coatings to prevent desiccation) and sporopollenin (UV-resistant spore walls). The land is transformed.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">~430 Million Years Ago · Silurian</div>
+        <div class="tl-title">Vascular Plants — Internal Plumbing</div>
+        <p class="tl-text">Plants evolve <strong>vascular tissue</strong>: xylem (for water transport upward) and phloem (for sugar transport). This allows plants to grow tall — no longer limited by diffusion distance. The first vascular plants (<em>Cooksonia</em>) are simple branching stems, but they represent an enormous leap in plant architecture.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">~360 Million Years Ago · Devonian</div>
+        <div class="tl-title">Seeds — Reproduction Freed from Water</div>
+        <p class="tl-text">The evolution of the <strong>seed</strong> is arguably the most important innovation in plant history. Seeds enclose the embryo in a protective coat with its own food supply, freeing plants from the need for water for fertilisation. The first seed plants (pteridosperms, or seed ferns) dominate the late Devonian landscape.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">~250–65 Million Years Ago · Mesozoic</div>
+        <div class="tl-title">Gymnosperms — The Age of Conifers</div>
+        <p class="tl-text">The gymnosperms (conifers, cycads, ginkgos, gnetophytes) dominate Mesozoic landscapes alongside the dinosaurs. "Gymnosperm" means "naked seed" — the seeds are exposed on cone scales, not enclosed in a fruit. Today's giant redwoods and Scots pines are gymnosperms, unchanged in fundamental anatomy for hundreds of millions of years.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">~130 Million Years Ago · Early Cretaceous</div>
+        <div class="tl-title">Angiosperms — The Flowering Revolution</div>
+        <p class="tl-text">The flowering plants (angiosperms) appear and diversify explosively — Darwin called their rapid rise "an abominable mystery." The angiosperm revolution is tied to the co-evolution of flowers and pollinators (insects, birds, bats). Seeds enclosed in fruits allow more effective dispersal. Today, angiosperms comprise ~90% of all plant species — some 300,000 species.</p>
+      </div>
+    </div>
+
+    <!-- Evolutionary transition schematic -->
+    <div class="schema-card reveal">
+      <div class="schema-card-label">Schematic 8 · Evolutionary Sequence</div>
+      <div class="schema-card-title">The Major Transitions in Plant Evolution</div>
+      <svg class="schema-svg" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrEvo" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 Z" fill="rgba(74,124,89,0.6)"/>
+          </marker>
+        </defs>
+
+        <!-- Timeline base -->
+        <line x1="30" y1="100" x2="695" y2="100" stroke="rgba(74,124,89,0.2)" stroke-width="1"/>
+
+        <!-- Nodes -->
+        <!-- 1: Algae -->
+        <circle cx="60" cy="100" r="10" fill="none" stroke="rgba(74,124,89,0.5)" stroke-width="1.2"/>
+        <text x="60" y="75" text-anchor="middle" fill="rgba(200,223,192,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">Green</text>
+        <text x="60" y="87" text-anchor="middle" fill="rgba(200,223,192,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">Algae</text>
+        <text x="60" y="126" text-anchor="middle" fill="rgba(74,124,89,0.45)" font-family="'Space Mono',monospace" font-size="6">1,200 Mya</text>
+
+        <!-- Arrow 1→2 -->
+        <line x1="70" y1="100" x2="168" y2="100" stroke="rgba(74,124,89,0.35)" stroke-width="1.2" marker-end="url(#arrEvo)"/>
+        <text x="120" y="91" text-anchor="middle" fill="rgba(74,124,89,0.4)" font-family="'Space Mono',monospace" font-size="6">Cuticle · Spores</text>
+
+        <!-- 2: Bryophytes -->
+        <circle cx="175" cy="100" r="10" fill="none" stroke="rgba(74,124,89,0.5)" stroke-width="1.2"/>
+        <text x="175" y="75" text-anchor="middle" fill="rgba(200,223,192,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">Bryo-</text>
+        <text x="175" y="87" text-anchor="middle" fill="rgba(200,223,192,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">phytes</text>
+        <text x="175" y="126" text-anchor="middle" fill="rgba(74,124,89,0.45)" font-family="'Space Mono',monospace" font-size="6">475 Mya</text>
+
+        <!-- Arrow 2→3 -->
+        <line x1="185" y1="100" x2="283" y2="100" stroke="rgba(74,124,89,0.35)" stroke-width="1.2" marker-end="url(#arrEvo)"/>
+        <text x="235" y="91" text-anchor="middle" fill="rgba(74,124,89,0.4)" font-family="'Space Mono',monospace" font-size="6">Vascular tissue</text>
+
+        <!-- 3: Seedless Vascular -->
+        <circle cx="290" cy="100" r="10" fill="none" stroke="rgba(74,124,89,0.5)" stroke-width="1.2"/>
+        <text x="290" y="72" text-anchor="middle" fill="rgba(200,223,192,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">Seedless</text>
+        <text x="290" y="84" text-anchor="middle" fill="rgba(200,223,192,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">Vascular</text>
+        <text x="290" y="126" text-anchor="middle" fill="rgba(74,124,89,0.45)" font-family="'Space Mono',monospace" font-size="6">430 Mya</text>
+
+        <!-- Arrow 3→4 -->
+        <line x1="300" y1="100" x2="398" y2="100" stroke="rgba(74,124,89,0.35)" stroke-width="1.2" marker-end="url(#arrEvo)"/>
+        <text x="350" y="91" text-anchor="middle" fill="rgba(74,124,89,0.4)" font-family="'Space Mono',monospace" font-size="6">Seed evolution</text>
+
+        <!-- 4: Gymnosperms -->
+        <circle cx="405" cy="100" r="10" fill="none" stroke="rgba(74,124,89,0.5)" stroke-width="1.2"/>
+        <text x="405" y="75" text-anchor="middle" fill="rgba(200,223,192,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">Gymno-</text>
+        <text x="405" y="87" text-anchor="middle" fill="rgba(200,223,192,0.7)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">sperms</text>
+        <text x="405" y="126" text-anchor="middle" fill="rgba(74,124,89,0.45)" font-family="'Space Mono',monospace" font-size="6">360 Mya</text>
+
+        <!-- Arrow 4→5 -->
+        <line x1="415" y1="100" x2="513" y2="100" stroke="rgba(74,124,89,0.35)" stroke-width="1.2" marker-end="url(#arrEvo)"/>
+        <text x="465" y="91" text-anchor="middle" fill="rgba(74,124,89,0.4)" font-family="'Space Mono',monospace" font-size="6">Flower · Fruit</text>
+
+        <!-- 5: Angiosperms -->
+        <circle cx="520" cy="100" r="14" fill="rgba(74,124,89,0.15)" stroke="rgba(74,124,89,0.65)" stroke-width="1.5"/>
+        <text x="520" y="75" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">Angio-</text>
+        <text x="520" y="87" text-anchor="middle" fill="rgba(200,223,192,0.8)" font-family="'IM Fell English',Georgia,serif" font-style="italic" font-size="9.5">sperms</text>
+        <text x="520" y="127" text-anchor="middle" fill="rgba(74,124,89,0.55)" font-family="'Space Mono',monospace" font-size="6">130 Mya–Present</text>
+
+        <!-- Radiation arrow -->
+        <line x1="534" y1="100" x2="695" y2="100" stroke="rgba(74,124,89,0.2)" stroke-width="1.5"/>
+        <!-- Radiation lines -->
+        <line x1="620" y1="100" x2="640" y2="68" stroke="rgba(74,124,89,0.2)" stroke-width="0.8"/>
+        <line x1="635" y1="100" x2="660" y2="72" stroke="rgba(74,124,89,0.2)" stroke-width="0.8"/>
+        <line x1="650" y1="100" x2="675" y2="74" stroke="rgba(74,124,89,0.2)" stroke-width="0.8"/>
+        <line x1="660" y1="100" x2="672" y2="126" stroke="rgba(74,124,89,0.2)" stroke-width="0.8"/>
+        <line x1="672" y1="100" x2="688" y2="128" stroke="rgba(74,124,89,0.2)" stroke-width="0.8"/>
+        <text x="660" y="158" text-anchor="middle" fill="rgba(74,124,89,0.35)" font-family="'Space Mono',monospace" font-size="6.5">~300,000 spp.</text>
+
+        <!-- Bottom time labels -->
+        <text x="360" y="185" text-anchor="middle" fill="rgba(74,124,89,0.25)" font-family="'Space Mono',monospace" font-size="7">500 MILLION YEARS OF PLANT EVOLUTION ——————————————————————→ PRESENT</text>
+      </svg>
+    </div>
+
+    <p class="body-text reveal" style="margin-top:2rem;">
+      Understanding this evolutionary sequence is not merely historical context — it is the key to understanding <em>why</em> plants are structured the way they are. Every feature of a plant's anatomy or physiology, from stomata to wood to flowers, is an evolutionary solution to a problem that plants encountered during their long history on land.
+    </p>
+
+    <div class="pull-quote reveal">
+      "Nothing in biology makes sense except in the light of evolution."
+      <cite>— Theodosius Dobzhansky, 1973</cite>
+    </div>
+  </section>
+
+
+  <!-- Chapter Navigation -->
+  <div style="border-top:1px solid rgba(74,124,89,0.12); padding-top:3rem; margin-top:3rem; display:flex; justify-content:space-between; align-items:center;" class="reveal">
+    <a href="botany.html" style="font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);text-decoration:none;">
+      ← Back to Botany
+    </a>
+    <span style="font-family:var(--font-mono);font-size:0.46rem;letter-spacing:0.18em;color:var(--text-faint);">Chapter II coming soon</span>
+    <span style="font-family:var(--font-mono);font-size:0.46rem;letter-spacing:0.18em;color:var(--text-faint);">Molecular Composition →</span>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid rgba(74,124,89,0.1);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;font-family:'Space Mono',monospace;font-size:0.44rem;letter-spacing:0.18em;color:rgba(200,223,192,0.18);text-transform:uppercase;">
+  <span><a href="../../index.html" style="color:rgba(74,124,89,0.6);text-decoration:none;">← Studiolo</a></span>
+  <span>Botany · Chapter I · Raven's Biology of Plants, 8th Ed.</span>
+  <span>© Jeevan Kumar Papaganti</span>
+</footer>
+
+<script>
+  // Progress bar
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+  }, { passive: true });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
